@@ -1,0 +1,47 @@
+h1 h2 h3 h4 h5 {
+	color:#543e36; 
+	background-color:#0000ff;
+}
+
+a {
+	color:#5e7b3a;
+}
+
+body {
+	background-color: #a6a9a7;
+	background-repeat: repeat-x;
+	background-position: left top;
+	background-size: auto 120px;
+}
+
+.outer-container {
+	background-color: #fff;
+}
+
+.header-logo {
+	margin: 8px 0 8px 37px;
+	height: 104px;
+}
+ 
+.intervention-container h4 {
+	margin-bottom: 10px;
+}
+ 
+.stat-line-right {
+	border-right: none;
+}
+
+body.report-body {
+	background-color: #fff;
+	background-image: none;
+}
+
+.report-row-name {
+	margin: 90px 0 0 220px;
+}
+  
+.report-logo {
+	position: absolute;
+	top: 0;
+}
+
