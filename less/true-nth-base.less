@@ -1,0 +1,129 @@
+/**
+ * Generic styles for TrueNth USA
+ * Compile to CSS to use.
+ * Created by University of Washington CIRG
+ **/
+
+// Default TrueNth variables
+@font-family:						"Helvetica Neue", Helvetica, Arial, sans-serif;	
+@font-size:							14px;
+@line-height:	        			1.428571429;
+@font-color:						#444;
+@headings-color:                    #543e36;
+@link-color:                        #5e7b3a;
+@link-hover-color:      			darken(@link-color, 15%);
+@background-color:					#a6a9a7;
+@header-background-color:			#fff;
+@main-background-color:				#fff;
+@button-primary:					#3d6548; // Green for buttons, can be used with Bootstrap
+@button-primary-border:				darken(@button-primary, 5%);
+
+html {
+  	font-family: @font-family;
+  	color: @font-color;
+  	-webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
+body {
+	background-color: @background-color;
+	margin: 0;
+	font-size: @font-size;
+	line-height: @line-height;
+}
+h1,h2,h3,h4,h5,h6 {
+    color: @headings-color;
+}
+h1, h2 {
+	border-bottom: 1px solid;
+  	padding-bottom: 3px;
+}
+a {
+  color: @link-color;
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    color: @link-hover-color;
+    text-decoration: underline;
+  }
+}
+
+/*** Styles for demo page **/
+.content-container {
+	width: 1170px;
+	margin: 0 auto;
+	background-color: @main-background-color;
+	overflow: auto;
+	padding: 15px;
+}
+.header {
+	width: 100%;
+	background-color: @header-background-color;
+	border-bottom: 2px solid #8D8D8D;
+	> .content-container {
+		background-color: @header-background-color;
+		padding: 5px;
+	}
+	.header-wrap {
+		padding: 5px;
+	}
+}
+
+// Similar to bootstrap-style button
+.basic-btn {
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+
+.btn-tnth-primary {
+  color: #fff;
+  background-color: @button-primary;
+  border-color: @button-primary-border;
+  transition: all 0.3s ease-in-out 0s;        
+  -webkit-transition: all 0.3s ease-in-out 0s;      
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.active,
+  .open > .dropdown-toggle& {
+    color: #fff;
+    background-color: darken(@button-primary, 10%);
+        border-color: darken(@button-primary-border, 12%);
+  }
+  &:active,
+  &.active,
+  .open > .dropdown-toggle& {
+    background-image: none;
+  }
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    &,
+    &:hover,
+    &:focus,
+    &:active,
+    &.active {
+      background-color: @button-primary;
+          border-color: @button-primary-border;
+    }
+  }
+
+  .badge {
+    color:  @button-primary-border;
+    background-color: #fff;
+  }
+}
