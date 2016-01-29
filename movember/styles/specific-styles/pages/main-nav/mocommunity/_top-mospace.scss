@@ -1,0 +1,137 @@
+#top-mospace-wrapper {
+
+    .mocommunity-top-bar {
+        padding: 15px;
+        background: $global-var_featured-color-15;
+        .top-mospace-top-bar_gender {
+            padding-right: 0;
+        }
+        &:after {
+            @include css-triangle('bottom', 6px, $global-var_featured-color-15);
+            position: absolute;
+            left: 50%;
+            margin-left: -6px;
+            margin-top: 15px;
+        }
+        label, span {
+            color: #FFFFFF;
+        }
+
+        span {
+            margin-top: 5px;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        @media #{$global-var_mediaquery-combo-sm-md-lg} {
+            border-radius: 4px;
+        }
+        .top-mospace_top-or-random {
+            #load-top-mos-btn, #load-random-mos-btn {
+                width: 100%;
+            }
+        }
+    }
+
+    // moBlocks wrapper
+    .mospace_moBlocks {
+        padding: 20px 0 10px;
+        .moBlock {
+            .moBlock_details {
+                text-align: center;
+                .moBlock_name {
+
+                }
+                .moBlock_address {
+                    padding-top: 0;
+                    font-style: italic;
+                    text-transform: uppercase;
+                    min-height: 22px;
+                    @include rem('font-size', 1.1rem);
+                    @include rem('line-height', 1.1rem);
+                }
+            }
+            @media #{$global-var_mediaquery-combo-xs-sm} {
+                margin-bottom: 20px;
+            }
+            @media #{$global-var_mediaquery-md} {
+                margin-bottom: 30px;
+            }
+            @media #{$global-var_mediaquery-lg} {
+                margin-bottom: 40px;
+            }
+
+        }
+        .moBlock_alt-style {
+            margin: 0; // to prevent overflow of bootstrap row class
+            background: $global-var_featured-color-1;
+            .moBlock_amount-raised {
+                color: #fff;
+                .moBlock_amount-raised_amount {
+                    color: #fff;
+                    font-weight: 100;
+                    font-family: $global-var_secondary-font-family;
+
+                    // responsive fonts
+                    @media #{$global-var_mediaquery-xs} {
+                        @include rem('font-size', 26px);
+                        @include rem('line-height', 26px);
+                    }
+                    @media #{$global-var_mediaquery-sm} {
+                        @include rem('font-size', 30px);
+                        @include rem('line-height', 30px);
+                    }
+                    @media #{$global-var_mediaquery-md} {
+                        @include rem('font-size', 34px);
+                        @include rem('line-height', 34px);
+                    }
+                    @media #{$global-var_mediaquery-lg} {
+                        @include rem('font-size', 40px);
+                        @include rem('line-height', 40px);
+                    }
+
+
+                }
+                + hr {
+                    border-bottom: 1px solid #fff;
+                }
+            }
+            .moBlock_social-media {
+                padding: 10px 0;
+                + hr {
+                    display: none;
+                }
+            }
+            .view_mospace {
+                padding: 0 0 10px 0;
+                a[class^="btn"] {
+                    width: 100%;
+                }
+            }
+        }
+    }
+    
+    // Pagination
+    .top-mospace_top-pagination,
+    .mospace_moBlocks {
+        + hr {
+            margin: 5px 0 0;
+            padding: 0;
+            border-top: 1px solid #9D9FA1;
+        }
+    }
+    // Get More Mos
+    .top-mospace_get-more-mos {
+        text-align: center;
+
+        &.top-mospace_get-more-mos_top {
+            padding-top: 10px;
+            margin-bottom: -10px;
+        }
+
+        &.top-mospace_get-more-mos_bottom {
+            padding-bottom: 10px;
+            border-bottom: 1px solid black;
+            margin-top: -10px;
+        }
+    }
+}

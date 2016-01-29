@@ -1,0 +1,93 @@
+.section_event-list{
+
+    & + .section_event-list { margin-top: 25px; }
+
+    /*
+    border-top: $separator-border-width-px $separator-border-style $separator-border-color;
+    */
+
+    .section-header { 
+        padding: 25px 0 7px;
+
+        h3 {
+            /*
+            @include font-size-rem(20px);
+            */
+        }
+    }
+
+    .event-list-grid {
+
+        // margin-bottom: 10px;
+    
+        .event-list-container {
+            display: block;
+            width: 100%;
+            margin-top: 5px;
+
+            .event-list-container-inner {
+                @include clearfix;
+
+
+                .event-list_thumbnail {
+                    //width: 167px;
+                    height: 90px;
+                    overflow: hidden;
+                    //margin: 0 5px;
+
+
+                    & > img {
+                        // height: 100%;
+                        // width: auto;
+                        height: auto;
+                        width: 100%;
+                    }
+
+                }
+
+                .event-list_offical { 
+                    position: absolute; 
+                    top: 5px; 
+                    right: 5px;
+                    /*
+                    font-family: $base-theme-font;
+                    */
+                    /*
+                    @include font-size-rem(9.6px);
+                    */
+                    /*
+                    color: $accent-2-color;
+                    */
+                    .icon-movember-logo-container { 
+                        display: inline-block;
+                        /*
+                        background-color: $accent-1-color ;
+                        */
+                        vertical-align: middle;
+                        .icon-movember-logo {  
+                            margin: 5px;     
+                            /*     
+                            @include icon-movember-logo($inverted: true);
+                            */
+                        }        
+                    }                
+                    
+                }
+
+                .event-list_btns {
+                    position: absolute;
+                    bottom: 5px;
+                    right: 5px;
+                    a.button { 
+                        /*
+                        @include font-size-rem(9px);    
+                        */
+                    }                
+                }
+            }            
+        }
+    }
+}
+
+
+

@@ -1,0 +1,47 @@
+/*==========================================================================
+   This is an override of the bootstrap carousel
+==========================================================================*/
+
+.carousel{
+
+    .carousel-control{ // Side arrows
+
+        cursor: pointer;
+        text-decoration:none !important; // strangely IE underlines them on focus
+        background: none;
+        font-size: 25px;
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        top:50%;margin-top:-20px;
+        @include opacity(1);
+        text-shadow: 0 0 5px #000;
+        &:before{color:#FFF;}
+
+        html.ie8 &{
+            // Only for IE8, since it doesn't support text-shadow, add a faded BG so that users can see the arrows on top of white images
+            -ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#1A000000',endColorstr='#33000000')";
+        }
+
+    }
+
+    img{ width:100%; }
+
+    &.carousel_is-inside-modal{
+        overflow:hidden;
+        position:relative;
+        .carousel-inner{
+            position:static; // The arrows don't jump on resize
+        }
+        img{
+            width:auto;height:auto;
+            margin:0 auto;
+        }
+        // If the slider is inside a modal, this allows a nice transition when changing slides:
+        &.carousel_is-transitioning{
+            transition: max-height 1.2s ease, max-width 1.2s ease, min-height .8s ease, min-width .8s ease;
+        }
+    }
+
+}

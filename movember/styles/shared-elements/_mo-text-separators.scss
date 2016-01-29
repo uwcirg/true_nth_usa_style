@@ -1,0 +1,67 @@
+// --------- Text Seperators (horizontal & vertical) --------- //
+
+.mo-text-seperator-horizontal, .mo-text-seperator-vertical {
+
+    position:relative;
+    text-transform:uppercase;
+    text-align:center;
+    color:#000;
+    font-weight:bold;
+    display:block;
+    padding:0;
+
+    &:before{
+        content:'';
+        display:block;
+        position:absolute;
+        border-style:solid;
+        border-color:$global-var_featured-color-7;
+    }
+
+    >span{
+        background:#FFF;
+        display:inline-block;
+    }
+
+}
+
+.mo-text-seperator-horizontal {
+
+    margin:2em 0;
+
+    &:before{
+        top:50%;
+        margin-top:-1px;
+        width:100%;
+        border-width:1px 0 0 0;
+    }
+
+    >span{
+        padding:0 1em;
+        position:relative;
+    }
+
+}
+
+.mo-text-seperator-vertical {
+
+    height:100%;
+    margin:0 2em;
+
+    &:before{
+        left:50%;
+        margin-left:-1px;
+        height:100%;
+        border-width:0 0 0 1px;
+    }
+
+    >span{
+        height:3em;line-height:3em;
+        width:4em;
+        position:absolute;
+        top:50%;left:50%;
+        margin-top:-1.5em;
+        margin-left:-2em;
+    }
+
+}

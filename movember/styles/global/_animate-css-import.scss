@@ -1,0 +1,74 @@
+/*==========================================================================
+   LIBRARY IMPORT
+   The following code was copied from the file "../bower/animate.scss/scss/animate.scss", infact we will NOT include all animations, but only the ones we need
+   Be careful, for future updates you will need to re-copy the code from that file
+==========================================================================*/
+
+// Vendor Helpers
+// ==============
+
+// List of support vendor prefixes.
+$vendors: "-webkit-" "-moz-" "-o-" "";
+
+@mixin vendorize($property, $values...) {
+  @each $vendor in $vendors {
+    #{$vendor}#{$property}: $values;
+  }
+}
+
+@mixin animation-duration($arguments...) {
+  @include vendorize(animation-duration, $arguments);
+}
+
+@mixin animation-fill-mode($arguments...) {
+  @include vendorize(animation-fill-mode, $arguments);
+}
+
+@mixin animation-name($arguments...) {
+  @include vendorize(animation-name, $arguments);
+}
+
+@mixin animation-timing-function($arguments...) {
+  @include vendorize(animation-timing-function, $arguments);
+}
+
+@mixin transform-origin($arguments...) {
+  @include vendorize(transform-origin, $arguments);
+}
+
+@mixin transform-style($arguments...) {
+  @include vendorize(transform-style, $arguments);
+}
+
+@mixin backface-visibility($arguments...) {
+  @include vendorize(backface-visibility, $arguments);
+}
+
+// General
+// =======
+
+// Set some defaults that can be overriden on a per-animation basis.
+.animated {
+  @include animation-duration(0.75s);
+  @include animation-fill-mode(both);
+}
+
+// Animations
+// ==========
+
+// @import "../vendor/bower/animate.scss/scss/animations/bounce";
+// @import "../vendor/bower/animate.scss/scss/animations/fade";
+// @import "../vendor/bower/animate.scss/scss/animations/flash";
+// @import "../vendor/bower/animate.scss/scss/animations/fold";
+// @import "../vendor/bower/animate.scss/scss/animations/grow";
+// @import "../vendor/bower/animate.scss/scss/animations/hinge";
+// @import "../vendor/bower/animate.scss/scss/animations/light-speed";
+// @import "../vendor/bower/animate.scss/scss/animations/pulse";
+// @import "../vendor/bower/animate.scss/scss/animations/roll";
+// @import "../vendor/bower/animate.scss/scss/animations/rotate";
+// @import "../vendor/bower/animate.scss/scss/animations/shake";
+// @import "../vendor/bower/animate.scss/scss/animations/shrink";
+@import "../vendor/bower/animate.scss/scss/animations/swing";
+// @import "../vendor/bower/animate.scss/scss/animations/tada.scss";
+// @import "../vendor/bower/animate.scss/scss/animations/wiggle";
+// @import "../vendor/bower/animate.scss/scss/animations/wobble";

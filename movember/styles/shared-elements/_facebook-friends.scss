@@ -1,0 +1,81 @@
+/* Facebook Mos */
+.partial_facebook-friends {
+  .fb-entries {
+  }
+
+  .fb-entries table tr {
+    height: auto;
+  }
+
+  .fb-entries table tr th {
+  }
+
+  .fb-entries table tr th,
+  .fb-entries table tr td {
+    padding: 0 0;
+    padding-left: 10px;
+  }
+
+  .fb-entries table tr td {
+  }
+
+  .fb-entries table tr th.first,
+  .fb-entries table tr td.first {
+    padding-left: 0;
+  }
+
+  .fb-entries table div.last,
+  .fb-entries table tr.last td {
+  }
+}
+
+/* Adapted Div layout of the above ^^^ */
+.partial_facebook-friends {
+  .facebook_connectedFriends .f-row{
+    background:yellow;
+    width: 100%;
+  }
+
+  .fb-entries {
+  }
+
+  .fb-entries div .f-row {
+    height: auto;
+    margin-bottom: 5px;
+    margin-left: 0px;
+  }
+
+  .fb-entries div .f-row th {
+  }
+
+  .fb-entries div .f-row .f-col:last-child{
+  }
+
+  .fb-entries div .f-row .f-col{
+    padding: 0px 5px 0px 0px;
+    a{
+      img{
+        width: 100%;
+      height: auto;
+      }
+    }
+  }
+
+  .fb-entries div .f-row th,
+  .fb-entries div .f-row td {
+    padding: 0 0;
+    padding-left: 10px;
+  }
+
+  .fb-entries div .f-row td {
+  }
+
+  .fb-entries div .f-row th.first,
+  .fb-entries div .f-row td.first {
+    padding-left: 0;
+  }
+  
+  .fb-entries div div.last,
+  .fb-entries div .f-row.last td {
+  }
+}

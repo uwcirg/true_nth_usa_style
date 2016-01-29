@@ -1,0 +1,448 @@
+/*==========================================================================
+   EVENTS-AND-TICKETING MAIN-PAGE
+==========================================================================*/
+
+.events-and-ticketing-index {
+
+    .events-hero-container {
+        padding: 0;
+
+            h3 {
+                padding-top: 10px;
+                color: $global-var_featured-color-1;
+                text-align: center;
+            }
+
+            hr {
+                margin: 15px 0 20px 0 !important;
+            }
+
+    }
+
+    .events-info-container {
+        padding: 20px 0 10px 0;
+    }
+
+    .redeem-ticket-container {
+        padding: 25px 0 20px 0;
+
+            hr {
+                margin: 10px 0 5px 0 !important;
+            }
+    }
+
+    .buy-tickets-container {
+        padding-top: 30px;
+
+        h2 {
+            margin-bottom: 10px;
+        }
+
+    }
+
+    .mospace-events-table {
+        overflow-x: scroll;
+
+        .buy-button {
+            padding-top: 2px;
+            margin-bottom: 10px;
+            
+            .button{ 
+                white-space:nowrap; 
+            }
+        }
+
+
+        .time-text {
+            font-style: italic;
+            color: $global-var_featured-color-3; 
+            margin: 0;
+
+        }
+
+        table td {
+            vertical-align: top;
+            padding-top: 5px;
+        }
+    }
+
+}
+
+/*==========================================================================
+   BUY TICKETS SUB-PAGE - COMMON STYLES
+==========================================================================*/
+
+// --------- Heading --------- //
+
+.events h1 {
+    @include rem('margin-bottom', 20px);
+}
+
+// --------- Steps --------- //
+
+.buy-event-tickets-details .step-container,
+.buy-event-tickets-payment .step-container,
+.buy-event-tickets-confirmation .step-container {
+    margin-bottom: 20px;
+}
+
+// --------- Form Footer --------- //
+
+.buy-event-tickets-details .form-footer #form_element_submit,
+.buy-event-tickets-payment .form-footer #form_element_continue {
+    @include clearfix;
+    display: inline-block;
+    width: 220px;
+}
+
+.buy-event-tickets-details .form-footer #form_element_submit input[type="submit"],
+.buy-event-tickets-payment .form-footer #form_element_continue button {
+    width: 100%;
+}
+
+.buy-event-tickets-details .form-footer .back-button,
+.buy-event-tickets-payment .form-footer .back-button {
+    display: inline-block;
+    margin-left: 20px;
+    vertical-align: middle;
+}
+
+.buy-event-tickets-details .form-footer .text-caption,
+.buy-event-tickets-payment .form-footer .text-caption {
+    margin-top: 15px;
+    margin-bottom: 30px;
+}
+
+.buy-event-tickets-details,
+.buy-event-tickets-payment {
+    ul.errors{
+        list-style:none;
+        &, li{
+            padding-left:0;
+            margin-left:0;
+        }
+    }
+}
+
+
+// --------- Sidebar --------- //
+
+.buy-event-tickets-sidebar h4 {
+    margin-top: 26px;
+    line-height: 1;
+}
+
+.buy-event-tickets-sidebar h4:first-child {
+    margin-top: 0;
+}
+
+.buy-event-tickets-sidebar .verisign-img img {
+    width: 100%;
+
+    &[name="seal"] {
+        margin-top: -8px;
+    }
+}
+
+/*==========================================================================
+   BUY TICKETS - STEP 1 - DETAILS
+==========================================================================*/
+
+.buy-event-tickets-details {
+
+    // --------- Location --------- //
+
+    #fieldset-parte {
+
+        legend {
+            @extend %h3;
+            @extend %feature-heading-1;
+            margin-bottom: 15px;
+            line-height: 1;
+        }
+
+        dl {
+            margin-bottom: 30px;
+        }
+
+        #form_element_galaparty_id {
+
+            .form_element_label {
+                display: none;
+            }
+
+            #galaparty_id {
+                @include make-md-column(6);
+            }
+        }
+
+        .galaparty_address.callout-block {
+            @include clearfix;
+            width: 100%;
+
+            .galaparty-venue,
+            .galaparty-date {
+                font-weight: bold;
+            }
+
+            .galaparty-date {
+                margin-top: 4px;
+            }
+        }
+    }
+
+
+    // --------- Tickets --------- //
+
+    #fieldset-tickets {
+
+        legend {
+            @extend %h3;
+            @extend %feature-heading-1;
+        }
+
+        dl {
+            @include make-row();
+
+            & > div {
+                @include make-md-column(4);
+
+                // Total Tickets
+
+                &#form_element_total_tickets {
+
+                    #total_tickets {
+                        margin-bottom: 5px;
+                    }
+
+                    p.description {
+                        @extend .alert;
+                        @extend .alert-info;
+                    }
+                }
+
+                // Total Cost
+
+                &#form_element_total_cost {
+                    input#total_cost {
+                        background: $global-var_featured-color-1;
+                        border-color: $global-var_featured-color-1;
+                        text-align: right;
+                        padding-right: 20px;
+                    }
+                }
+            }
+        }
+    }
+
+    // --------- About You --------- //
+
+    #fieldset-about_you {
+
+        legend {
+            @extend %h3;
+            @extend %feature-heading-1;
+        }
+
+        dl {
+            @include make-row();
+
+            // Gender
+
+            #form_element_gender {
+                @include make-md-column(12);
+
+                label[for="gender"] {
+                    display: none;
+                }
+
+                .form_element_input.form_element_radio {
+                    @include clearfix;
+                    margin-bottom: 5px;
+
+                    .form_radio_wrapper,
+                    .form_element_errors {
+                        float: left;
+                        margin-right: 20px;
+                    }
+                }
+            }
+
+            // First and Last Name
+
+            #form_element_firstname,
+            #form_element_lastname {
+                @include make-md-column(6);
+            }
+        }
+
+    }
+
+    // --------- Your Contact Details --------- //
+
+    #fieldset-contact {
+        legend {
+            @extend %h3;
+            @extend %feature-heading-1;
+        }
+
+        p.description {
+            @extend .alert;
+            @extend .alert-info;
+            margin-bottom: 10px;
+        }
+
+        #email {
+            margin-bottom: 5px;
+        }
+    }
+}
+
+/*==========================================================================
+   BUY TICKETS - STEP 2 - PAYMENT
+==========================================================================*/
+
+.buy-event-tickets-payment,
+.donations-pay-donations {
+
+    // --------- Payment Overlay --------- //
+
+    #payment-overlay {
+        display: none;
+    }
+
+    // --------- General Form Styles --------- //
+
+    .form-container {
+        h3 {
+            border-bottom: 1px solid $global-var_featured-color-3;
+            padding: 0 0 4px;
+            margin: 0 0 10px;
+        }
+
+        .payment-errors {
+            color: $global-var_featured-color-error;
+            margin-bottom: 20px;
+        }
+    }
+
+    // --------- Payment Methods --------- //
+
+    .payment-methods {
+
+        // Radio buttons
+
+        .payment-method-radiobuttons {
+            margin-bottom: 10px;
+
+            .form_element_input {
+                @include clearfix;
+
+                .form_radio_wrapper {
+                    float: left;
+                    margin-right: 20px;
+
+                    input[type="radio"] {
+                        float: left;
+                    }
+                }
+            }
+        }
+
+        .payment-method-types {
+            margin-bottom: 20px;
+
+            .payment-method-card {
+                .cms-element-type-image {
+                    display: inline-block;
+                }
+            }
+        }
+
+        // Card Details
+
+        .card-details {
+            margin-bottom: 30px;
+
+            fieldset {
+                @include make-row();
+
+                legend {
+                    display: none;
+                }
+
+                dl {
+                    #form_element_card_name,
+                    #form_element_card_number {
+                        @include make-md-column(12);
+                    }
+
+                    #form_element_expiry_month,
+                    #form_element_expiry_year,
+                    #form_element_cvv {
+                        @include make-md-column(3);
+                    }
+
+                    #form_element_expiry_month label {
+                        white-space: nowrap;
+                    }
+
+                    #form_element_expiry_year {
+                        padding-top: 22px;
+                    }
+
+                    #form_element_cvv {
+                        @include make-md-column(6);
+
+                        #cvv {
+                            width: 180px;
+                        }
+                    }
+
+                    & > .payment-errors {
+                        float: left;
+                        width: 100%;
+                        padding-left: 5px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+/*==========================================================================
+   BUY TICKETS - STEP 3 - CONFIRMATION
+==========================================================================*/
+
+.buy-event-tickets-confirmation {
+
+    // --------- Bring Your Ticket Alert --------- //
+
+    .alert-bring-your-ticket {
+        margin-bottom: 0;
+        margin-top: 20px;
+    }
+
+    // --------- Headings --------- //
+
+    .feature-heading-1 {
+        margin-top: 30px;
+
+        &:first-child {
+            margin-top: 0;
+        }
+    }
+
+    // --------- Share Buttons --------- //
+
+    .share-buttons {
+        margin-top: 10px;
+
+        // Share Via Email
+
+        .chooseEmailClient {
+            display: none;
+        }
+    }
+
+}

@@ -1,0 +1,58 @@
+/*==========================================================================
+   REGISTER EVENT
+==========================================================================*/
+
+body.events-register, body.events-edit {
+
+    #create-an-event-page-intro-text{
+        margin:0 0 40px 0;
+    }
+
+    .event-details {
+        @include rem(margin-top, 20px);
+    }
+
+    .event-terms {
+        @include rem(margin, 20px 0);
+
+        span {
+            color: $global-var_featured-color-8;
+        }
+    }
+
+    .event-type-control{
+        background-color: $global-var_featured-color-1;
+
+        &--title {
+            padding-top: 3%;
+            .title, .description {
+                color: #fff;
+            }
+        }
+        
+        &--options{
+            padding-top: 3%;
+        }
+
+        @media#{$global-var_mediaquery-xs} {
+            height: 100%;
+            &--image {
+                display: none;
+            }
+            &--title {
+                .description {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    // overrides for spacing out the register form
+    .form-group .control-label {
+        margin-top: 2%;
+    }
+
+    #label-image {
+        margin-top: 2%;
+    }
+}

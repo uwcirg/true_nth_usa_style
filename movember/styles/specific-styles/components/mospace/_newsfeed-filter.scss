@@ -1,0 +1,23 @@
+/*==========================================================================
+   NEWSFEED FILTER
+ ~ Filter controls on private mospace pages
+==========================================================================*/
+
+.partial_newsfeed-filter {
+
+    .section-header h3 {
+        margin-top: 15px;
+    }
+
+    // need to push it right to align with the profile image on posts
+    .mospace-post-filtration {
+        margin-left: 5px;
+        span {
+            text-transform: uppercase;
+        }
+        label {
+            text-transform: none;
+            margin-left: 5px;
+        }
+    }
+}

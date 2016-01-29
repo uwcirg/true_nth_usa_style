@@ -1,0 +1,58 @@
+// Find events, location dropdown
+.location-search-autocomplete-dropdown{
+    @extend .dropdown-menu;
+    background:#fff;
+    border:0;
+    width:300px;
+    position:absolute;
+    left:0;top:35px;
+    display:block;
+
+    // Top triangle
+    &:before{
+        @include css-triangle('top', 6px, #000);
+        top:-12px;left:14px;
+    }
+    // Hide/show states
+    visibility:hidden;
+    opacity:0;
+    margin-top:10px;
+    @include transition(opacity .2s ease-out, visibility .2s ease-out, margin-top .2s ease-out);
+    &:before{ margin-top:10px; @include transition(margin-top .2s ease-out); }
+
+    &.active{
+        visibility:visible;
+        opacity:1;
+        margin-top:0;
+        &:before{ margin-top:0; }
+    }
+    // --------- Results header --------- //
+
+    .section-header{
+        margin: 0 15px 4px 15px;
+        padding: 0;
+        h5{
+            margin:0;
+            @include rem(line-height, 15px);
+        }
+    }
+
+    // --------- Results items --------- //
+
+    .section-body{
+        .results{
+            a.item{
+                color:$global-var_featured-color-2;
+                text-transform:uppercase;
+                padding:4px 15px;
+                height:30px;
+                @include ellipsis;
+                @include rem(font-size, 13px);
+                @include rem(line-height, 22px);
+                &:hover, &:focus, &:active{
+                    color:#fff;
+                }
+            }
+        }
+    }
+}

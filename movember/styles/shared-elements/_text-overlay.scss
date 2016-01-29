@@ -1,0 +1,72 @@
+// Define a block of text that appears on top of an image or another block
+// Note: this module is coupled with script/widget/textOverlay.js
+
+// style for the translucent overlay screen
+.js-text-overlay--content {
+    @include alpha-background-color(#000,0.60);
+    &.light-bg {
+        @include alpha-background-color(#FFF,0.60);
+    }
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: -200%;
+    height: 100%;
+    width: 100%;
+    margin: auto;
+    transition: opacity .4s ease, visibility .4s ease, bottom .4s ease;
+    pointer-events: none; // to allow click through
+    > div {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 100%;
+        width: 100%;
+        display: table;
+        margin: auto;
+        > p {
+            display: table-cell;
+            vertical-align: middle;
+            color: #fff;
+            text-align: center;
+            font-size: 26px;
+            &.color-light {
+                color: #000;
+            }
+        }
+    }
+    &.active {
+        opacity: 1;
+        visibility: visible;
+        bottom: 0;
+    }
+}
+
+// style for the title
+.js-text-overlay--title {
+    height: 50px; // set a fixed height for the heading title to space it out
+    display: table;
+    margin: 0 auto;
+    text-align: center;
+    h5 {
+        color:inherit;
+        display: table-cell;
+        vertical-align: middle;
+    }
+}
+
+// style for the icon
+.js-text-overlay--icon {
+    padding-left: 5px;
+    font-size: 20px;
+    display: table-cell;
+    vertical-align: middle;
+    color:inherit;
+    height: 50px; // to center icon with heading title
+    line-height: 50px; // to center icon with heading title
+}

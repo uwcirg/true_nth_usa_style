@@ -1,0 +1,450 @@
+//==========================================================================
+//   REGISTER PAGE
+//==========================================================================
+
+#register-page-content-container {
+    .register-right {
+        h1 {
+            margin-bottom: 5px;
+            font-weight: normal;
+        }
+        h2, h3, .subTitle {
+            width: 100%;
+            float: left;
+            clear: both;
+        }
+        img{
+            margin-top: 20px;
+            width: 100%;
+            height: auto;
+            text-align: center;
+        }
+    }
+    .partial_register-index {
+        ul.registration-jointypes {
+            > li {
+                .registration-jointype {
+                    .or-word {
+                        position: absolute;
+                        top: 50%;
+                        margin-top: -5px;
+                        z-index: 2;
+                        font-weight:bold;
+                        span {
+                            margin: 0;
+                            padding: 3px;
+                            color: #000;
+                            font-weight: bold;
+                        }
+                    }
+                }
+            }
+        }
+        .ff-submit_button_control {
+            margin-top: 35px;
+        }
+    }
+    .form-container {
+        .facebook-connection {
+            display:none;
+        }
+        .ff-field {
+            .form_radio_wrapper {
+                float: left;
+                span#radInput-gender-m, span#radInput-gender-f {
+                    label {
+                        text-transform: none;
+                        font-weight: normal;
+                        margin-left: 5px;
+                    }
+                }
+            }
+        }
+        .register-form {
+            position: relative;
+            overflow: hidden; // Needed for hiding the other sliding panel
+            form {
+                width:300%; // Make space for THREE containers
+                float:left;
+                position: relative;
+            }
+            .note {
+                color: $global-var_featured-color-3;
+                padding: 15px 0 10px 0;
+                @include rem(font-size, 12px);
+            }
+
+            .select-method {
+                @extend %clearfix;
+                ul {
+                    margin: 0;
+                    padding: 0;
+                    li {
+                        display:block;
+                        padding-right: 1%;
+                        list-style: none;
+                        text-align: center;
+                        .icon {
+                            margin: 0;
+                            overflow: hidden;
+                            text-align: center;
+                            @include transition(background .3s ease-out);
+                            a {
+                                display: block;
+                            }
+                        }
+                        label {
+                            font-weight: normal;
+                            text-transform: none;
+                            display: inline-block;
+                            vertical-align: middle;
+                            height: auto;
+                            @include transition(color .2s ease-out);
+                            a.icon-button {
+                                display: inline-block;
+                                vertical-align: middle;
+                                margin-left: 5px;
+                                @include rem(font-size, 20px);
+                                @extend .fa;
+                                &:before {
+                                  @extend .fa-info-circle:before;
+                                }
+                            }
+                            @media #{$global-var_mediaquery-combo-xs-sm}{
+                                margin-bottom:10px;
+                            }
+                        }
+                        // Selected state (note: the "hover state" is related! see below)
+                        &.selected{
+                            .icon{
+                                background:$global-var_featured-color-1;
+                            }
+                            .icon a img{
+                                @include opacity(1);
+                            }
+                            label{
+                                color:$global-var_featured-color-1;
+                                font-weight:bold;
+                            }
+                        }
+                        // Hover state (note: the "selected state" is related! see above)
+                        .icon:hover{
+                            background:$global-var_featured-color-1;
+                            a img{
+                                @include opacity(1);
+                            }
+                            &~label{
+                                color:$global-var_featured-color-1;
+                                font-weight:bold;
+                            }
+                        }
+                    }
+                }
+            }
+            .terms {
+                clear: both;
+                margin: 30px 0 20px 0;
+                .ff-field {
+                    margin-bottom: 0;
+                }
+                label {
+                    display:inline;
+                }
+                a {
+                    text-transform: none;
+                }
+            }
+            .form-controls {
+                .ff-field {
+                    float: left;
+                    width: auto;
+                }
+                .step-back {
+                    padding-left: 20px;
+                    line-height: 36px;
+                }
+            }
+            .forgot-password {
+                padding-top: 10px;
+                a {
+                    text-decoration: none;
+                    text-transform: none;
+                    font-weight: bold;
+                }
+            }
+            #register_next {
+                margin:10px 0 0 0;
+            }
+            .register--step-one, .register--step-two {
+                display: block;
+                position: relative;
+                top: 0; left: 0;
+                width: 33.3333%;
+                float: left;
+                padding:0 1px;
+                // Define some hidden/shown animation
+                opacity: 0;
+                visibility: hidden;
+                @include transition(opacity .4s ease-out, visibility .4s ease-out);
+                &.active {
+                    opacity: 1;
+                    visibility: visible;
+                }
+            }
+            .register--step-two {
+                .or{
+                    width: auto;
+                    float: left;
+                    margin: 0 15px;
+                    text-transform: lowercase;
+                    color: $global-var_featured-color-3;
+                }
+                &.login {
+                    left: 0;
+                    display: block;
+                }
+                .form-row {
+                    display: block;
+                    width: 100%;
+                    margin-top: 10px;
+                    .ff-field {
+                    float: left;
+                    width: 49%;
+                        .textbox-container input {
+                            width: 100%;
+                        }
+                    }
+                    .inline-form-elements-right {
+                        margin-left: 9px;
+                        margin-top: 0;
+                    }
+                }
+                .ff-checkbox_control .ff-errors {
+                    top: 0;
+                }
+                .form-error {
+                    color: $global-var_featured-color-error;
+                    display: block;
+                    width: 100%;
+                    padding-bottom: 15px;
+                }
+                .ff-textbox_control .textbox-container {
+                    position: relative;
+                }
+            }
+            .methods {
+                width: 100%;
+                margin-bottom: 20px;
+                .method-description {
+                    display: block;
+                    width: 100%;
+                    padding-top: 5px;
+                }
+                .previous-team {
+                    display: block;
+                    width: 100%;
+                    text-transform: none;
+                }
+                .team-info {
+                    width: 100%;
+                    display: block;
+                    margin-top: 10px;
+                    .options {
+                        float:left;
+                        height: 160px;
+                        overflow-x: hidden;
+                        position: relative;
+                        display: table;
+                        .method-selected {
+                            position: absolute;
+                            top: 5px;
+                            left: 5px;
+                        }
+                        .row {
+                          background:pink;
+                          width:100%;
+                          float:left;
+                        }
+                        .buttons {
+                            position: absolute;
+                            bottom: 5px;
+                            left: 5px;
+                            .cancel{
+                                margin-left: 15px;
+                            }
+                        }
+                        .name {
+                            color: #000;
+                            @include rem(font-size, 20px);
+                            @include rem(line-height, 20px);
+                            text-transform: uppercase;
+                            font-weight: bold;
+                            display: block;
+                            margin: 10px 0;
+                            width: 100%;
+                            display: table-cell;
+                            vertical-align: middle;
+                        }
+                    }
+                    .icon {
+                        width: 160px;
+                        height: 160px;
+                        margin: 0 10px 0 0;
+                        float: left;
+                        position: relative;
+                        background: #ccc;
+                        .status-holder{
+                            background: rgba(242, 098, 060, 0.8);
+                            color: #fff;
+                            text-transform: uppercase;
+                            position: absolute;
+                            bottom: 0;
+                            left: 0;
+                            width: 100%;
+                        }
+                    }
+                    .method-selected {
+                        font-weight: bold;
+                        font-size: 15px;
+                    }
+                    .status {
+                        color: #fff;
+                        font-weight: bold;
+                        float: left;
+                        padding: 10px 0 10px 55px;
+                        &:before{
+                            float: right;
+                            padding-left: 5px;
+                        }
+                    }
+                    a {
+                        font-size: 14px;
+                        text-transform: none;
+                        font-weight: bold;
+                    }
+                }
+                .ff-errors {
+                    @include rem(margin-top, 20px);
+                }
+            }
+        }
+    }
+    .fb_button {
+        margin-top: 10px;
+    }
+    ul.errors {
+        list-style: none;
+        &, li {
+            padding-left: 0;
+            margin-left: 0;
+        }
+    }
+    .location-search-autocomplete-dropdown {
+        width: 232px;
+    }
+    .registration-messages {
+        display: none;
+    }
+}
+
+//==========================================================================
+// REGISTRATION MODALS
+//==========================================================================
+
+// --------- Common stlye or all modals --------- //
+.register-modal {
+    display: block;
+    width: 100%;
+    height:100%;
+    .ff-labels-on-left_horizontal_fieldset {
+        //display: table;
+        .ff-search_textbox_field {
+            display:table-cell;
+            width:100%;
+            vertical-align:top;
+            padding-right:1%;
+            input { margin:0; }
+        }
+        .ff-search_button_field {
+            display: table-cell;
+            vertical-align: top;
+            width: 0; // This makes the left field occupy as much space as possible
+        }
+    }
+    form {
+        padding: 15px 0;
+    }
+    input[type="submit"] {
+        display: inline-block;
+    }
+    .search-loader, .start-team-message {
+        float: left;
+        width: 100%;
+        padding: 20px 0;
+        text-align: center;
+    }
+}
+
+
+
+// --------- start a team modal --------- //
+.start-team-modal {
+    .textbox-container {
+        input[type="text"] {
+            width: 100%;
+            height: 34px;
+        }
+    }
+}
+
+// --------- team not found --------- //
+.team-not-found {
+    float: left;
+    width: 100%;
+    text-align: center;
+    a {
+        text-transform: none;
+    }
+}
+
+// --------- partial search --------- //
+.join-team--search-results {
+    h3 {
+        font-weight: normal;
+    }
+    &--list {
+        .search-result {
+            float: left;
+            width: 100%;
+            padding: 0;
+            background: none;
+            margin-top: 10px;
+            position:relative;
+        }
+    }
+    .not-teams {
+        display: block;
+        width: 100%;
+        position: relative;
+        min-height: 20px;
+        margin: 20px 0;
+        text-align: center;
+        float: left;
+    }
+}
+
+// --------- team search --------- //
+.team-search {
+    width: 100%;
+    overflow: auto;
+    .team-not-available {
+        padding: 20px 0;
+        span.heading {
+            font-size: 16px;
+            text-transform: uppercase;
+            display: block;
+            width: 100%;
+            margin-bottom: 5px;
+        }
+    }
+}

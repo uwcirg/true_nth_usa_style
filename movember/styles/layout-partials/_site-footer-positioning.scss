@@ -1,0 +1,44 @@
+// WHY THIS FILE?
+// The footer is absolutely positioned in all break points except mobile. This is because, this way, it always sticks to the bottom, even if the page isn't long enough to fill the whole screen's height.
+// Note that, for allowing so, the content container must have some padding-bottom, for giving space to both the footer and the partners containers
+
+$local-var_site-footer-height: 120px;
+$local-var_footer-partners-height: 140px;
+
+#footer-partners{
+    height:$local-var_footer-partners-height;
+    bottom:$local-var_site-footer-height;
+}
+#ft{
+    height:$local-var_site-footer-height;
+    bottom:0;
+}
+#footer-partners, #ft {
+    position:absolute;
+    min-width:100%;
+    @media #{$global-var_mediaquery-xs}{
+        position:relative;
+        height:auto;
+        bottom:auto;
+    }
+}
+
+#content-container{
+
+    // No ads enabled
+    padding-bottom: $local-var_site-footer-height;
+    @media #{$global-var_mediaquery-xs}{ 
+        // On mobile, the footer is position:relative, so no need for padding
+        padding-bottom:0;
+    }
+
+    // Ads enabled:
+    body.ads-enabled &{
+        padding-bottom: $local-var_site-footer-height + $local-var_footer-partners-height;
+        @media #{$global-var_mediaquery-xs}{ 
+            // On mobile, the footer is position:relative, so no need for padding
+            padding-bottom:0;
+        }
+    }
+
+}

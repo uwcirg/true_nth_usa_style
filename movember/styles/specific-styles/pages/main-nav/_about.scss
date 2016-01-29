@@ -1,0 +1,56 @@
+.about-contact {
+	.about-form-container {
+		position: relative;
+		.text-caption {
+			float: right;
+			margin-top: -33px;
+		}
+		dl{
+			margin-bottom: 0;
+		}
+	}
+    .about-other-details{
+        @media #{$global-var_mediaquery-xs}{
+            padding-top:1em;
+            padding-bottom:1em;
+        }
+    }
+
+	h4 {
+		@include rem(margin-bottom, 15px);
+	}
+	.contactDetails {
+		h5 {
+			@include rem(margin-bottom, 0px);
+		}
+	}
+	.zend_form {
+		.sf-textarea {
+			height: 150px;
+		}
+	}
+
+	#fieldset-about{
+		::-webkit-input-placeholder { color:transparent; }
+		::-moz-placeholder { color:transparent; } /* firefox 19+ */
+		:-ms-input-placeholder { color:transparent; } /* ie */
+		input:-moz-placeholder { color:transparent; }
+
+		@media #{$global-var_mediaquery-xs}{
+
+			.form_element_label {
+				height:0;
+				overflow:hidden;
+			}
+
+			::-webkit-input-placeholder { color:#666; }
+			::-moz-placeholder { color:#666; } /* firefox 19+ */
+			:-ms-input-placeholder { color:#666; } /* ie */
+			input:-moz-placeholder { color:#666; }
+		}
+
+		.sf-submit{
+			margin-bottom: 10px;
+		}
+	}
+}

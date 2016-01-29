@@ -1,0 +1,70 @@
+#mo-alert-boxes{
+
+    position:fixed;
+    bottom:40px;top:auto;
+    width:96%;max-width:600px;
+    margin:auto;left:0;right:0; // horizontal alignment (centered)
+
+    .mo-alert-box{
+        position:relative;
+        overflow:hidden;
+        float:left;width:100%; // This is needed in order to disable the margins-collapse
+
+        // Active/inactive states
+        opacity:0;
+        visibility:hidden;
+        margin:-1em auto -4em auto;
+        @include transition(opacity .5s ease, visibility .5s ease, margin .6s ease);
+        &.active{
+            opacity:1;
+            visibility:visible;
+            margin:.3em auto;
+        }
+
+    }
+
+    #mo-alert-box_error{
+        background:#F7EBEB;
+        background:rgba(247, 235, 235, .95);
+        &, *{ color:#AE3B38 !important; }
+    }
+    #mo-alert-box_warning{
+        background:#E7E4DD;
+        background:rgba(231, 228, 221, .95);
+        &, *{ color:#3B2314 !important; }
+    }
+    #mo-alert-box_info{
+        background:#E7EAED;
+        background:rgba(231, 234, 237, .95);
+        &, *{ color:#3E4B54 !important; }
+    }
+    #mo-alert-box_success{
+        background:#E9EBE2;
+        background:rgba(233, 235, 226, .95);
+        &, *{ color:#626A5C !important; }
+    }
+
+    .mo-alert-box--content-host{
+        position:relative;
+    }
+
+    .mo-alert-box--close-btn{
+        position:absolute;
+        top:10px;right:5px;left:auto;
+        @include rem(font-size, 16px);
+        cursor:pointer;
+        width:20px;height:20px;
+    }
+
+    // These containers keep the chosen messages
+    .mo-alert-box--content-guest{
+        width:100%;
+        padding:2em;
+        position:relative;
+        &:before{ // The font-awesome icon
+            margin-left:-19px;
+            margin-right:7px;
+        }
+    }
+
+}

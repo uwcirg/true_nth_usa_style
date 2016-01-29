@@ -1,0 +1,726 @@
+/*==========================================================================
+   DONATE - BODY BACKGROUND STYLE
+==========================================================================*/
+
+body.donate.donate-payment {
+    // remove the false container
+    #fake-container-monolith {
+        display: none;
+    }
+    #content-main {
+        background: transparent; // remove background colour
+    }
+    @media #{$global-var_mediaquery-combo-xs-sm} {
+        background-image: none !important;
+    }
+
+    // This is a hack: native android browsers on tablet (for example on Galaxy) don't support attachment and they mess up the rendering of the bg-image
+    // The class "force-no-css3-transitions" is indeed applied only to those devices, so let's use it to fix this issue
+    &.force-no-css3-transitions{
+        background-attachment: scroll !important;
+    }
+
+    // Override of the default layout so that the page displays half-width on desktop/tablet
+    #content-main>.donate-payment,
+    .donate-security-wrapper{
+        width:50%;
+        padding-left: 1.25%;
+        padding-right: 1.25%;
+        @media #{$global-var_mediaquery-combo-xs-sm} {
+            width:100%;
+        }
+    }
+
+}
+
+/*==========================================================================
+   DONATE THANK YOU PAGE - BODY BACKGROUND STYLE
+==========================================================================*/
+
+body.donate.donate-thank-you {
+    // remove the false container
+    #fake-container-monolith {
+        display: none;
+    }
+    #content-main {
+        background: transparent; // remove background colour
+    }
+    @media #{$global-var_mediaquery-combo-xs-sm} {
+        background-image: none !important;
+    }
+    // This is a hack: native android browsers on tablet (for example on Galaxy) don't support attachment and they mess up the rendering of the bg-image 
+    // The class "force-no-css3-transitions" is indeed applied only to those devices, so let's use it to fix this issue
+    &.force-no-css3-transitions {
+        background-attachment: scroll !important;
+    }
+}
+
+
+/*==========================================================================
+   DONATE - COMMON STYLES
+==========================================================================*/
+
+// --------- Donate Payment Section --------- //
+.donate-payment {
+    background-color: #fff;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 5px;
+
+    // ----- Server Side Payment Error ---- //
+    .payment-errors, .alert-danger {
+        @include rem('font-size', 20px);
+    }
+}
+
+// --------- Donate Security Section --------- //
+.donate-security-wrapper {
+    margin-top: 25px;
+    @include alpha-background-color(#000, 0.40);
+    color: #fff;
+    border-radius: 5px;
+    .security-sidebar {
+        padding: 20px 0 20px 0;
+        font-size: 14px;
+        &--content {
+            img {
+                margin: 0 auto;
+            }
+        }
+    }
+}
+
+/*==========================================================================
+   DONATE LANDING PAGE
+==========================================================================*/
+
+.donate-index {
+
+    // --------- Headings --------- //
+    h1 {
+        @include rem('margin-bottom', 20px);
+    }
+
+    h1,
+    .donate-landing-search h3,
+    .donate-landing-search h6,
+    .donate-landing-general h3,
+    .donate-landing-general h6,
+    .donate-secondary-section h4 {
+        line-height: 1;
+    }
+
+    .donate-landing-search h3,
+    .donate-landing-general h3 {
+        @include rem('margin-bottom', 20px);
+    }
+
+
+    // --------- Search --------- //
+    .donate-landing-search {
+
+        // Submit button
+        #dosubmit {
+            width: 100%;
+        }
+    }
+
+    // --------- Separator --------- //
+    .mo-text-seperator-vertical {
+        line-height: 1;
+        margin: 0;
+        @media #{$global-var_mediaquery-xs}{
+            display: none;
+        }
+    }
+
+    // --------- General --------- //
+    .donate-landing-general {
+        blockquote {
+            margin: 0 0 20px;
+            padding: 0;
+            width: 100%;
+            min-height: 35px;
+            @include rem('font-size', 1.4rem);
+        }
+        @media #{$global-var_mediaquery-xs}{
+            margin-top: 25px;
+        }
+    }
+
+    // --------- Primary Section --------- //
+
+    .donate-landing-primary-section {
+        height: 170px;
+        margin-bottom: 75px;
+
+        h6,
+        input[type="text"] {
+            margin-bottom: 20px;
+        }
+
+        @media #{$global-var_mediaquery-xs}{
+            height: auto;
+            margin-bottom: 55px;
+            margin-top: 15px;
+        }
+    }
+
+    // --------- Secondary Sections --------- //
+
+    .donate-secondary-section {
+        padding-bottom: 30px;
+
+        .donate-secondary-section-hero-image {
+            text-align: center;
+
+            img {
+                width: 80%
+            }
+        }
+
+        .donate-group-header {
+            @extend %h4;
+            @extend %feature-heading-1;
+        }
+
+        .feature-heading-1,
+        .donate-group-header {
+            margin: 75px 0 20px;
+            padding: 0 0 10px;
+            @media #{$global-var_mediaquery-xs}{
+                margin-top: 25px;
+            }
+        }
+
+    }
+}
+
+/*==========================================================================
+   DONATE PAYMENT PAGE
+   This is the main wrapper class that contains all the elements of the donation form
+==========================================================================*/
+
+.donate-funnel.donate-payment {
+    margin-top: 35px;
+
+    // --------- Donation Message --------- //
+    .donation-message-block {
+        &--image {
+            height: 153px;
+            overflow: hidden;
+            img {
+                width: 153px;
+                height: auto;
+            }
+        }
+
+        &--description {
+            p {
+                font-style: italic;
+            }
+        }
+    }
+
+    // ---------- Donation Causes ----------- //
+    // Only shows for General Donation
+    .donation-cause-tile {
+        margin-bottom: 15px;
+        cursor: pointer;
+
+        .donation-cause-tile-image {
+            p {
+                color: #fff;
+                padding: 5px;
+                width: 100%;
+                text-align: center;
+            }
+            img {
+                width: 100%;
+                height: auto;
+            }
+            &--overlay {
+                @include alpha-background-color(#000, 0.60);
+                opacity: 0;
+                visibility: hidden;
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: -100%;
+                height: 100%;
+                width: 100%;
+                margin: auto;
+                transition: opacity 0.25s ease, visibility 0.25s ease, bottom 0.25s ease;
+                > div {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    height: 100%;
+                    width: 100%;
+                    display: table;
+                    margin: auto;
+                    > p {
+                        display: table-cell;
+                        vertical-align: middle;
+                        font-size: 14px;
+                    }
+                }
+                &.active {
+                    opacity: 1;
+                    visibility: visible;
+                    bottom: 0;
+                }
+            }
+        }
+
+        .donation-cause-tile-content {
+            background-color: #000;
+            color: #fff;
+            height: auto;
+
+            .donation-cause-tile-content-block {
+                &--heading {
+                    width: 100%;
+                    height: auto;
+                    color: inherit;
+                    text-align: center;
+                    padding: 5px;
+                    @media #{$global-var_mediaquery-combo-md-lg} {
+                        display: table-cell;
+                        vertical-align: middle;
+                    }
+                }
+                &--description {
+                    color: #FFFFFF;
+                    @media #{$global-var_mediaquery-combo-xs-sm} {
+                        font-size: 14px;
+                        padding: 5px;
+                        text-align: center;
+                    }
+                }
+                @media #{$global-var_mediaquery-combo-md-lg} {
+                    display: table;
+                    height: 100px;
+                    margin: 0 auto;
+                    text-align: center;
+                }
+
+                // center the contents of the block on XS devices
+                @media #{$global-var_mediaquery-combo-xs-sm} {
+                    display: table-cell;
+                    vertical-align: middle;
+                    text-align: center;
+                }
+            }
+            // set a smaller height for Tablets
+            @media #{$global-var_mediaquery-sm} {
+                display: table;
+                height: 175px;
+
+            }
+            @media #{$global-var_mediaquery-xs} {
+                display: table;
+                height: 250px;
+            }
+        }
+
+        &.active {
+            outline: 1px solid #000;
+            .donation-cause-tile-content {
+                background-color: #fff;
+                color: #000;
+
+                .donation-cause-tile-content-block {
+                    &--description {
+                        color: #000;
+                    }
+                }
+            }
+        }
+    }
+
+    // ---------- Donation Target Bar ----------- //
+    // Only shows when target is set for the member and is enabled
+    .donation-target {
+        h5 {
+            display: inline;
+        }
+        &--progress {
+            width: 100%;
+            border: 1px solid #000;
+            margin: 5px 0 10px 0;
+            > div {
+                height: 15px;
+                background-color: #000;
+                color: #fff;
+                transition: width 1s ease;
+            }
+        }
+    }
+
+    // --------- Donation Amount --------- //
+
+    // predefined amounts
+    .donation-amount {
+        &--values {
+            margin-bottom: 20px;
+        }
+
+        // other amount
+        &--other {
+            text-align: right;
+            position: relative;
+
+            .currency {
+                position: absolute;
+                top: 0;
+                left: 10px;
+                bottom: 0;
+                text-align: center;
+                height: 35px;
+                line-height: 35px;
+                width: 35px;
+                background-color: #000;
+                color: #fff;
+            }
+            .ff-textbox_field {
+                margin-left: 40px;
+            }
+        }
+
+        &--target-reach {
+            font-style: italic;
+        }
+
+        // recipient name
+        &--recipient {
+            margin-top: 15px;
+            .currency,.amount-total,.recipient {
+                font-weight: 900;
+            }
+        }
+    }
+
+    .donation-button {
+        a {
+            @media #{$global-var_mediaquery-xs}{
+                margin: 0;
+            }
+        }
+    }
+
+    // ---------------- Donation Occurance -------------//
+    .donation-occurance label {
+        text-transform: capitalize;
+    }
+
+    // ---------- Donation Details  ----------- //
+
+    // Donation privacy checkboxes
+    .donation-privacy {
+        margin: 10px 0 20px 0;
+        &--title {
+            display: inline;
+            text-decoration: underline;
+            &.active {
+                text-decoration: none;
+            }
+        }
+        &--checkbox {
+            display: none;
+            label {
+                display: inline;
+            }
+        }
+    }
+
+    // --------- Payment Details/Methods --------- //
+    .payment-methods {
+        margin-bottom: 20px;
+        // Radio Buttons & Icons
+        .payment-method-radiobuttons {
+            .ff-horizontal_radios_control {
+                @include clearfix;
+                .form_radio_wrapper {
+                    float: left;
+                    margin-right: 20px;
+
+                    input[type="radiobutton"] {
+                        margin-bottom: 0;
+                    }
+                }
+            }
+        }
+
+        // Payment Types
+        .payment-method-types {
+            margin-bottom: 20px;
+            margin-top: 10px;
+            .payment-method-card,
+            .payment-method-paypal {
+                .cms-element.cms-element-type-image {
+                    display: inline-block;
+                }
+            }
+        }
+        // spacing for the card icons
+        .paymentMethod--icons img {
+            margin: 5px;
+        }
+
+        // card details container
+        .card-details {
+            margin: 8px 0px;
+            background-color: $global-var_featured-color-27;
+            border: 1px solid $global-var_featured-color-7;
+            padding: 8px;
+            border-radius: 5px;
+
+            // Card MM and YY
+            .card-expiry-wrapper {
+                .inline-form-element-expiry-month {
+                    padding-left: 0;
+                }
+                .card-expiry-divider {
+                    height: 35px;
+                    line-height: 35px;
+                    text-align: center;
+                }
+                .inline-form-element-expiry-year {
+                    padding-right: 0;
+                }
+            }
+
+            // Card Security
+            .card-security {
+                .element-cvv {
+                    .ff-control {
+                        .textbox-container {
+                            width: 30%;
+                            display: inline-block;
+                        }
+                    }
+                }
+                .ff-errors {
+                    white-space: nowrap;
+                }
+            }
+        }
+        // payment fee minor style
+        .payment-method-fee {
+            .ff-checkbox_field label {
+                display: inline;
+            }
+        }
+    }
+
+    // --------- Shared donation form styles --------- //
+    form {
+        .donation-header {
+            margin-bottom: 25px;
+        }
+
+        .ff-fieldset {
+            min-width: 100%;
+            margin-bottom: 20px; // to space out the blocks on the donation form
+        }
+
+        // textarea
+        #donationMessage {
+            height: 100px;
+        }
+
+        .donate-checkboxes {
+            .ff-checkbox_field {
+                margin-bottom: 10px;
+
+                &:last-child {
+                    margin-bottom: 20px;
+                }
+            }
+        }
+
+        ul.errors {
+            text-align: left;
+            list-style: none;
+            margin: 4px 0;
+
+            &, li {
+                padding-left: 0;
+                margin-left: 0;
+            }
+        }
+    }
+    // close form - this should not nest all the other code in it
+
+    // --------- Gift Aid (UK only) --------- //
+
+    .giftaid {
+        padding: 0 0 15px;
+
+        // Checkbox
+        .giftaid-checkboxes {
+            padding-top: 10px;
+            margin-bottom: 20px;
+
+            input[type="checkbox"] {
+                vertical-align: top;
+            }
+
+            label {
+                width: 90%;
+            }
+        }
+
+        .giftaid-caption {
+            @include rem('font-size', 11px);
+            @include rem('line-height', 15px);
+        }
+        // Logo
+        .giftaid-logo img {
+            width: 100%;
+            height: auto;
+        }
+
+    }
+
+    // --------- UK Address --------- //
+    .state-dd-wrapper,
+    .state-wrapper {
+        display: none;
+        margin-bottom: 25px;
+
+        @media #{$global-var_mediaquery-combo-xs-sm} {
+            margin-bottom: 0;
+        }
+    }
+
+    // --------- Donation is Business --------- //
+    .donation-is-business {
+        margin-bottom: 10px;
+    }
+
+    // --------- Donor is Business --------- //
+    .donor-is-business {
+        padding-bottom: 15px;
+    }
+
+    // --------- Donate Footer --------- //
+    .donate-footer {
+        padding: 20px 0;
+
+        // VISA Checkout
+        #visa-checkout-container {
+            width: 213px; // Note - this is set to fixed width so the text is placed below the logo. If the logo dimensions are changed, this will need to be modified as well
+        }
+
+        // Back button
+
+        .donate-back-button {
+            margin-left: 10px;
+            position: relative;
+            top: 6px;
+        }
+
+        // Required Fields
+
+        .legend-required-field {
+            @include rem('font-size', 1.2rem);
+            margin-top: 20px;
+            color: $global-var_featured-color-3;
+        }
+    }
+
+    // --------- Donate Footer --------- //
+    #visa-checkout-button {
+        cursor: pointer;
+    }
+}
+
+/*==========================================================================
+   DONATE THANK YOU PAGE
+==========================================================================*/
+
+.donate-thankyou-wrapper {
+    background-color: #fff;
+    border-radius: 5px;
+
+    section {
+        padding: 20px;
+    }
+
+    .donate-thankyou-confirmation--download-receipt--icon {
+        color: #fff;
+        margin-left: 5px;
+    }
+
+    .donate-thankyou-share {
+        background-color: #AFB8C2;
+        &--message {
+            font-style: italic;
+            word-wrap: break-word;
+            line-height: 24px;
+        }
+        .chooseEmailClient {
+            display: none;
+            margin-bottom: 10px;
+        }
+    }
+
+    // --------- Receipt Number DONT THINK THIS IS USED? --------- //
+    .receipt-number-wrapper {
+        margin-bottom: 10px;
+        text-align: center;
+
+        .receipt-number,
+        .receipt-label {
+            line-height: 1;
+        }
+
+        .receipt-number {
+            @include rem('font-size', 38px);
+            font-family: $global-var_secondary-font-family;
+            font-weight: 100;
+            color: white;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .receipt-label {
+            color: black;
+            text-transform: uppercase;
+            @include rem('font-size', 12px);
+            font-weight: bold;
+        }
+
+        .interac-details {
+            @include rem('padding', 10px 0px);
+
+            span {
+                @include rem('font-size', 12px);
+                display: block;
+            }
+
+            a {
+                color: $global-var_featured-color-4;
+            }
+        }
+    }
+
+    // --------- Download Alert --------- //
+
+    .alert-download {
+        margin-bottom: 30px;
+    }
+}
+
+/*==========================================================================
+   INTERAC CONFIRMATION PAGE
+==========================================================================*/
+
+.interac-confirmation {
+    display: block;
+}

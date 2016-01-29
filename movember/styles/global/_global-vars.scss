@@ -1,0 +1,166 @@
+/*==========================================================================
+   FEATURED COLORS
+==========================================================================*/
+
+// --------- Common colors --------- //
+
+$global-var_featured-color-error: #B13B38; // Error red
+$global-var_featured-color-ok: #009245; // OK green
+
+// --------- Color Palette --------- //
+
+$global-var_featured-color-1: #5F7783; // new
+$global-var_featured-color-2: #809EAE; // new
+$global-var_featured-color-3: #9F9F9F; // tweaked
+$global-var_featured-color-4: #F8F8F5; // not matching in palette
+$global-var_featured-color-6: #3C2415; // tweaked
+$global-var_featured-color-7: #C4C6C7; // tweaked
+$global-var_featured-color-8: #595959; // tweaked
+$global-var_featured-color-9: #AFB8C2; // new
+$global-var_featured-color-10: #7E725B; // new
+$global-var_featured-color-12: #C2C8AF; // tweaked
+$global-var_featured-color-13: #4C4D4F; // not matching in palette
+$global-var_featured-color-14: #322F31; // not matching in palette
+$global-var_featured-color-15: #959A8F; // tweaked
+$global-var_featured-color-16: #3F4B55; // not matching in palette
+$global-var_featured-color-18: #767769;// tweaked
+$global-var_featured-color-19: #626A5D; // new
+$global-var_featured-color-22: #626E7A; // new
+$global-var_featured-color-25: #AEA590; // new
+$global-var_featured-color-26: #BCB5B0; // new
+$global-var_featured-color-27: #D7D6CB; // new
+
+
+/*
+// Color Palette Backup 2014 - TO BE REMOVED
+$global-var_featured-color-3: #818386;
+$global-var_featured-color-4: #F8F8F5;
+$global-var_featured-color-6: #381F0C;
+$global-var_featured-color-7: #8E9093;
+$global-var_featured-color-8: #747577;
+$global-var_featured-color-11: #5E7683;
+$global-var_featured-color-12: #C1C8AF;
+$global-var_featured-color-13: #4C4D4F;
+$global-var_featured-color-14: #322F31;
+$global-var_featured-color-15: #959A8E;
+$global-var_featured-color-16: #213136;
+$global-var_featured-color-17: #818285;
+$global-var_featured-color-18: #767769;
+*/
+
+// --------- 2015 Campaign Colors --------- //
+
+$global-var_2015-campaign-color-warm-yellow: #FEC00D;
+$global-var_2015-campaign-color-apricot: #FE7F48;
+$global-var_2015-campaign-color-turquoise: #06C8A5;
+$global-var_2015-campaign-color-mint-green: #92FFBE;
+$global-var_2015-campaign-color-dark-green: #1B8B65;
+$global-var_2015-campaign-color-light-yellow: #FFFF8B;
+$global-var_2015-campaign-color-sky-blue: #4CB5E4;
+$global-var_2015-campaign-color-mist: #91D5D4;
+
+/*==========================================================================
+   BASE ELEMENTS
+==========================================================================*/
+
+$global-var_primary-font-color: #000;
+$global-var_base-font-size: 16px;
+$global-var_base-line-height: 24px;
+$global-var_primary-font-family: Arial, Helvetica, sans-serif;
+$global-var_secondary-font-family: "Helvetica Neue Light", "Helvetica Neue", Arial, sans-serif;
+$global-var_featured-font-family-1: 'Montserrat', sans-serif;
+
+/*==========================================================================
+   CONFIG VARS
+==========================================================================*/
+
+$global-var_path-to-imgs: "../../images";
+$global-var_path-to-font-icons: "../../fonts";
+
+/*==========================================================================
+   LAYOUT & GRID
+==========================================================================*/
+
+// --------- Site layout --------- //
+
+// Widths
+$global-var_site-layout-max-width: 1280px;
+$global-var_site-layout-min-width: 320px; // This should be 320px for fully responsive, 1024px for the "interim" site with responsive disabled
+$global-var_site-layout-base-width: 100%;
+
+// Layout padding
+$global-var_site-layout-padding_lg: 110px;
+$global-var_site-layout-padding_md: 54px;
+$global-var_site-layout-padding_sm: 54px;
+$global-var_site-layout-padding_xs: 30px;
+
+// Responsive grid
+$global-var_site-grid-padding: 2.5%; // Padding between the grid's columns
+
+/*==========================================================================
+   MEDIA QUERY
+==========================================================================*/
+
+/*------------------------------------------------------------
+   BREAKPOINTS
+------------------------------------------------------------*/
+
+$global-var_xs-sm-breakpoint: 768px; // This should be 768px for fully responsive, 1px for the "interim" site with responsive disabled
+$global-var_sm-md-breakpoint: 1024px; // This should be 1024px for fully responsive, 2px for the "interim" site with responsive disabled
+$global-var_md-lg-breakpoint: 1280px; // This should be 1280px for fully responsive, 3px for the "interim" site with responsive disabled
+
+/*------------------------------------------------------------
+   MEDIA QUERY RANGES
+------------------------------------------------------------*/
+
+// --------- XS --------- //
+
+$global-var_mediaquery-xs:
+"screen and (max-width:#{$global-var_xs-sm-breakpoint - 1px})";
+$global-var_mediaquery-xs-portrait:
+"screen and (max-width:#{$global-var_xs-sm-breakpoint - 1px}) and (orientation:portrait)";
+$global-var_mediaquery-xs-landscape:
+"screen and (max-width:#{$global-var_xs-sm-breakpoint - 1px}) and (orientation:landscape)";
+
+// --------- SM --------- //
+
+$global-var_mediaquery-sm:
+"screen and (min-width:#{$global-var_xs-sm-breakpoint}) and (max-width:#{$global-var_sm-md-breakpoint - 1px})";
+$global-var_mediaquery-sm-portrait:
+"screen and (min-width:#{$global-var_xs-sm-breakpoint}) and (max-width:#{$global-var_sm-md-breakpoint - 1px}) and (orientation:portrait)";
+$global-var_mediaquery-sm-landscape:
+"screen and (min-width:#{$global-var_xs-sm-breakpoint}) and (max-width:#{$global-var_sm-md-breakpoint - 1px}) and (orientation:landscape)";
+
+// --------- MD --------- //
+
+$global-var_mediaquery-md:
+"screen and (min-width:#{$global-var_sm-md-breakpoint}) and (max-width:#{$global-var_md-lg-breakpoint - 1px})";
+
+// --------- LG --------- //
+
+$global-var_mediaquery-lg:
+"screen and (min-width:#{$global-var_md-lg-breakpoint})";
+
+// --------- XS + SM --------- //
+
+$global-var_mediaquery-combo-xs-sm:
+"screen and (max-width:#{$global-var_sm-md-breakpoint - 1px})";
+$global-var_mediaquery-combo-xs-sm-portrait:
+"screen and (max-width:#{$global-var_sm-md-breakpoint - 1px}) and (orientation:portrait)";
+$global-var_mediaquery-combo-xs-sm-landscape:
+"screen and (max-width:#{$global-var_sm-md-breakpoint - 1px}) and (orientation:landscape)";
+
+// --------- MD + LG --------- //
+
+$global-var_mediaquery-combo-md-lg:
+"screen and (min-width:#{$global-var_sm-md-breakpoint})";
+
+// --------- SM + MD + LG --------- //
+
+$global-var_mediaquery-combo-sm-md-lg:
+"screen and (min-width:#{$global-var_xs-sm-breakpoint})";
+
+// --------- XS + SM + MD --------- //
+
+$global-var_mediaquery-combo-xs-sm-md:
+"screen and (max-width:#{$global-var_md-lg-breakpoint})";

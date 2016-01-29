@@ -1,0 +1,113 @@
+
+// sass/partials/_mospace-downloads.scss
+div.downloads {
+    .cms-element-image {
+        text-align: center;
+    }
+    .download-link {
+        a {
+            width: 178px;
+        }
+    }
+    .section-footer {
+        padding-bottom: 8px;
+    }
+}
+
+#form_element_address_type .form_element_label,
+#form_element_address_type .form_element_input,
+#form_element_venue_type .form_element_label,
+#form_element_venue_type .form_element_input {
+    *display: inline; *zoom: 1; /* inline-block for IE7 */
+    clear: none;
+}
+
+#form_element_address_type .form_element_label {width: 145px}
+#moparty_host #form_element_address_type .description { display: none }
+#moparty_host .back {width: auto}
+
+.fame-prize-sidebox { padding: 0 10px; width: 246px}
+
+div#core-content #mo-money-goes {
+    margin-top: 20px;
+}
+
+.tabbed-content-wrapper #load-more {
+    position: relative;
+    clear: both;
+    float: left;
+}
+.choose-email-client-container p {
+    margin-bottom:0;
+}
+
+
+// sass/partials/_event-type.scss
+/*  -------------------------------
+    The #form_element_ selectors can be replaced with the ew_ class selectors now ...
+    -------------------------------  */
+#core-content .moparty-form-col1 {
+  width: 800px; //479px;
+}
+
+body.event_type legend,
+body.event_type legend {
+  display: block;
+  padding-bottom: 10px;
+  width: 100%;
+}
+body.event_type legend {
+  border-bottom: solid 1px #9a9a9a;
+}
+body.event_type dl.zend_form fieldset dl, /* Assumption: all legends here are followed by a <dl> */
+body.event_type dl.zend_form fieldset dl {
+  padding-top: 10px;
+}
+
+/* This needs to be converted to use class selectors, legacy.
+   It also requires modifying the default Zend Form Element Wrappers  to add the relevant class selectors*/
+.event_type {
+
+  #start_time_hour, #end_time_hour, #start_time_min, #end_time_min, #start_time_ampm, #end_time_ampm {
+    width:60px;
+  }
+
+  .ew_size, .ew_venue_type, .ew_activity_type, .ew_approval_other {
+    width: 25%;
+  }
+
+  #form_element_start_time_hour, #form_element_end_time_hour {
+    clear:left;
+    float:left;
+  }
+  #form_element_start_time_min, #form_element_end_time_min, #form_element_start_time_ampm, #form_element_end_time_ampm {
+    float:left;
+    clear:none !important;
+  }
+
+  #form_element_end_time_ampm {
+    padding-bottom: 8px;
+  }
+
+  #form_element_end_time_ampm, #form_element_start_time_ampm {
+    clear:right;
+  }
+
+}
+
+
+/*  -------------------------------
+    /events/register-event and
+    /mospace/events-and-ticketing/*
+    -------------------------------  */
+body.events-and-ticketing-review .form-footer-required-back {
+  width: 134px; /* To match the inline-styled label widths :| */
+}
+
+/*  ---------------------------------------------
+    /mospace/events-and-ticketing/choose-a-parte/
+    ---------------------------------------------  */
+
+.soldout { color: #c00b0f; font-weight: bold }
+
+

@@ -1,0 +1,53 @@
+/* POST DONATION */
+.post-donation-info{
+
+  .row{
+    display: table;
+    margin:0;
+
+    .rightSide,
+    .leftSide {
+      display: table-cell;
+      vertical-align: top;
+    }
+
+    .rightSide{
+      // float:left;
+      padding: 0px 10px 10px;
+
+      .from, .who{
+          width:100%;
+          clear:both;
+        h5{
+          font-weight: bold;
+          margin-bottom: 0px;
+          @include rem(line-height, 16px);
+        }
+      }
+
+      .text-caption{
+        margin-bottom: 5px;
+      }
+    }
+
+    .leftSide{
+      // float:left;
+/*
+      .number{
+        h1{
+          color:#000;
+
+          font-weight: 100;
+          @include rem(font-size, 40px);
+        }
+      }*/
+
+       .post-donation-info--amount{
+           font-family: $global-var_secondary-font-family;
+           font-weight: 100;
+           color:#000;
+          @include rem(font-size, 40px);
+        }
+    }
+  }
+}

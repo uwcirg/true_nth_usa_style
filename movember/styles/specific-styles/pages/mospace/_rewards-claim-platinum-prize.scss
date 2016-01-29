@@ -1,0 +1,87 @@
+/*==========================================================================
+   PAGES > MOSPACE > REWARDS > CLAIM PLATINUM PRIZE
+==========================================================================*/
+
+.prizes-and-rewards-claim-platinum-prize {
+
+    dl {
+        margin: 0;
+        padding: 0;
+    }
+
+    .description {
+        @extend .alert;
+        @extend .alert-info;
+
+        &.optional {
+            margin-top: -5px;
+        }
+    }
+
+    hr {
+        border: none;
+        height: 0;
+        border-bottom: 1px solid $global-var_featured-color-3;
+        margin: 5px 0 20px;
+    }
+
+    .alert + .alert {
+        margin-top: -10px;
+    }
+
+    #fieldset-yourname {
+        @include make-row();
+
+        #form_element_firstname,
+        #form_element_lastname {
+            @include make-md-column(6);
+        }
+
+        #form_element_phone_number {
+            @include make-md-column(12);
+        }
+    }
+
+    #fieldset-about {
+        @include make-row();
+
+        > legend,
+        #form_element_address1,
+        #form_element_address2 {
+            @include make-md-column(12);
+        }
+    }
+
+    #fieldset-suburbAndPostcode,
+    #fieldset-countryAndState {
+        @include make-row();
+
+        .form_element {
+            @include make-md-column(6);
+        }
+    }
+
+    // --------- Footer --------- //
+
+    .form-footer {
+        padding-top: 20px;
+        padding-bottom: 30px;
+
+        .form-footer-back a {
+            display: inline-block;
+            margin: 5px 0 0 10px;
+        }
+
+        .text-caption {
+            margin-top: 20px;
+        }
+    }
+
+    .confirmation-return-to-mospace {
+        margin-top: 20px;
+    }
+
+    .alert-confirmation {
+        margin-bottom: 10px;
+    }
+}

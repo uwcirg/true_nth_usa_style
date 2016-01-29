@@ -1,0 +1,458 @@
+/*==========================================================================
+   COMMON VARS & MIXINS
+==========================================================================*/
+
+// Outer container
+$mospace-hero-area_height: 342px;
+
+/*==========================================================================
+   HERO AREA STYLE
+==========================================================================*/
+
+.mospace-hero-area{
+    height:$mospace-hero-area_height;
+    background:$global-var_featured-color-2;
+    position: relative;
+
+    /*------------------------------------------------------------
+       GRID'S SLOTS POSITIONING
+    ------------------------------------------------------------*/
+
+    // --------- Generic slots --------- //
+    .hero-slot{
+        position: absolute;
+    }
+
+    // --------- Main Profile img --------- //
+    .hero-slot-1{
+        height:$mospace-hero-area_height;
+        width:30%;
+        top:0;
+        left:0;
+    }
+
+    // --------- Secondary Profile imgs, slot 2 and 3 --------- //
+    .hero-slot-2,
+    .hero-slot-3{
+        height:$mospace-hero-area_height/2;
+        width:20%;
+        left:30%;
+    }
+    .hero-slot-2{ top:0; }
+    .hero-slot-3{ top:$mospace-hero-area_height/2; }
+
+    // --------- Motivational area --------- //
+    .hero-slot-4{
+        height:$mospace-hero-area_height;
+        width:40%;
+        top:0;
+        left:50%; 
+    }
+
+    // --------- Secondary Profile imgs + participation counter --------- //
+    .hero-slot-5,
+    .hero-slot-6,
+    .hero-slot-7{
+        height:$mospace-hero-area_height/3;
+        width:10%;
+        right:0;
+    }
+    .hero-slot-5{ top:0; }
+    .hero-slot-6{ top:$mospace-hero-area_height/3; }
+    .hero-slot-7{ top:$mospace-hero-area_height/3*2; }
+
+    /*------------------------------------------------------------
+       GRID'S COMPONENTS STYLE
+    ------------------------------------------------------------*/
+
+    // --------- Generic containers --------- //
+
+    .hero-slot-img{
+
+        overflow:hidden;
+
+        img{
+            min-height:0;
+            max-height:none;
+            height:auto;
+            min-width:100%;
+            max-width:100%;
+            width:auto;
+            position:absolute;top:0;bottom:0;left:0;right:0;margin:auto; // box-centering
+        }
+
+    }
+
+    .js-hero-slot-img, .js-hero-area-image {
+        cursor: pointer;
+    }
+
+    // --------- Main Profile img --------- //
+    .hero-slot-1{
+        background: $global-var_featured-color-2; // This background is applied in most cases
+
+        .hero-button-container {
+            position: absolute;
+            width:100%;
+            text-align: center;
+
+            &.hero-button-1 {
+                bottom: 35px;
+            }
+
+            &.hero-button-2 {
+                bottom: 80px;
+            }
+          
+            >a{
+                min-width:215px;
+                max-width:98%;
+                overflow:hidden;
+                display: inline-block;
+            }
+        }
+    }
+
+    // Camera upload icon:
+    .hero-area-image--camera-icon{
+        position:absolute;
+        left:auto;top:12px;right:12px;
+        background:#FFF;color:#000;
+        padding:7px;
+        border-radius:4px;
+        @include opacity(.6);
+        transition:opacity .5s ease, font-size .5s ease, padding .5s ease;
+        @include rem(font-size, 26px);
+    }
+    .hero-slot-1:hover .hero-area-image--camera-icon,
+    .hero-slot-1 a:focus .hero-area-image--camera-icon{
+        @include opacity(.8);
+        padding:10px;
+        @include rem(font-size, 30px);
+    }
+
+    // --------- Secondary Profile imgs, slot 2 and 3 --------- //
+    .hero-slot-2,
+    .hero-slot-3{
+        background: $global-var_featured-color-2; // This is the default bg color, see below for other cases
+    }
+
+    // --------- Motivational area, slot4 --------- //
+    .hero-slot-4{
+
+        background: #000; // This is the default bg color, see below for other cases
+
+        blockquote{
+            margin-top:10px;
+            margin-bottom:10px;
+            padding:10px 0 32px 0; // Attention: the padding bottom is used to give space to the footer
+            background: transparent;
+            @include rem(line-height, 20px);
+            min-height: 110px;
+            @media #{$global-var_mediaquery-combo-md-lg}{
+                height: 312px;
+            }
+
+            .hero-motivation-title{
+                color:#FFF;
+                @include rem(font-size, 14px);
+                @include rem(margin-bottom, 3px);
+            }
+
+            .hero-motivation-content{
+                max-height: 240px;
+                display: block;
+                overflow: auto;
+                text-overflow: ellipsis;
+                margin:0;
+                padding:0;
+                color:#FFF;
+                @include rem(font-size, 14px);
+                font-family: $global-var_secondary-font-family;
+            }
+
+            footer{
+
+                position:absolute;
+                bottom:6px;left:0;
+                padding-top:5px;
+                height:26px;
+                line-height:26px;
+                width:100%;
+                white-space:nowrap; // This is needed if the user name is too long
+                overflow:hidden; // This is needed if the user name is too long
+
+                .hero-edit-quote-button{
+                    position:absolute;
+                    top:6px;right:0;
+                    color: #FFF;
+                    background-color:#000; // This is needed to cover the user name if it is too long
+                    @include rem(font-size, 18px);
+                    line-height:26px;
+                    text-decoration: none;
+                    font-weight:normal;
+                    &:focus{
+                        text-decoration: underline;
+                    }
+                }
+
+            }
+
+            .js-update-motivation-container{
+                position:absolute;
+                top:40px;left:0;
+                height:100%;width:100%;
+                overflow:hidden;
+            }
+
+            textarea#js-update-motivation{
+                @include rem(font-size, 14px);
+                line-height:22px;
+                color:black;
+                margin-bottom: 10px;
+                height: 180px;
+                max-height: 180px;
+                @media #{$global-var_mediaquery-xs}{
+                    height: 98px;
+                    max-height: 98px;
+                }
+            }
+        }
+
+    }
+
+    // --------- Participation counter --------- //
+    .hero-slot-5{
+        background: $global-var_featured-color-1; // This is the default bg color, see below for other cases
+
+        &.hero-slot-img {
+           background: $global-var_featured-color-2; // This is the default bg color, see below for other cases
+        }
+    }
+
+    .hero-participation-badge-counter{
+        color:#FFF;
+        background: #000;
+        border-radius:50%;
+        display: block;
+        margin:16px auto 0 auto;
+        width:66px;
+        height:66px;
+        line-height:66px;
+        text-align:center;
+        @include rem(font-size, 40px);
+        font-family: $global-var_featured-font-family-1; // Imported from Google-fonts
+    }
+    .hero-participation-badge-text{
+        color:#FFF;
+        display: block;
+        width:100%;
+        text-align: center;
+        text-transform: uppercase;
+        line-height: 12px;
+        padding:6px 4% 0 4%;
+        white-space: normal;
+        word-wrap: break-word;
+        @include rem(font-size, 10px);
+        font-family: $global-var_featured-font-family-1; // Imported from Google-fonts
+    }
+
+    // --------- Secondary Profile imgs  --------- //
+    .hero-slot-6,
+    .hero-slot-7{
+        background: $global-var_featured-color-9;
+    }
+
+    // --------- Upload image button --------- //
+
+    .hero-slot-upload-img a {
+
+        display:block;
+        position:absolute;
+        top:0;left:0;
+        width:100%;
+        text-align:center;
+        height:$mospace-hero-area_height/3;
+        line-height:$mospace-hero-area_height/3;
+        @include rem(font-size, 60px);
+        text-decoration: none;
+        font-weight:normal;
+        border-radius:0;
+        cursor: pointer;
+
+        // Hover effect
+        background:$global-var_featured-color-2;
+        @include transition(background-color .2s ease-out);
+        &:hover, &:active, &:focus{
+            background:$global-var_featured-color-16;
+        }
+    }
+
+    // --------- Upload icons --------- //
+
+    .hero-slot-upload-img{
+
+        .hero-area-upload-img-icon{
+            position:absolute;
+            left:0;
+            width:100%;text-align:center;
+            @include rem(font-size, 50px);
+            transition:opacity .4s ease, visibility .4s ease, top .6s ease;
+            color:#FFF;
+        }
+        #hero-area-upload-img-icon_rest{ margin-top:-24px; }
+        #hero-area-upload-img-icon_hover{ margin-top:-22px; }
+
+        // Rest/Hover states
+        #hero-area-upload-img-icon_rest,
+        &:hover #hero-area-upload-img-icon_hover{ opacity:1;visibility:visible;top:50%; }
+        #hero-area-upload-img-icon_hover,
+        &:hover #hero-area-upload-img-icon_rest{ opacity:0;visibility:hidden;top:60%; }
+
+    }
+
+    // --------- image-upload <input> (as for 2015, used only in team & network private pages ) --------- //
+
+    .fileinput-button,
+    .fileinput-button input{
+        display:block;
+        position:absolute;
+        top:0;bottom:0;left:0;right:0;width:100%;height:100%;
+    }
+    .fileinput-button{overflow:hidden;}
+    .hero-slot-1{
+        .fileinput-button input{
+            @include opacity(0);
+        }
+    }
+
+    // --------- This is the container for the image upload button for Teams and Networks --------- //
+
+    .hero-slot-upload-img{
+
+        #fileupload {
+            position:absolute;
+            top:0;left:0;
+            width:100%;height:100%;
+            margin:0;padding:0;
+            background:transparent;
+            border:0;
+            @include opacity(0);
+            overflow:hidden;
+        }
+
+    }
+
+    /*------------------------------------------------------------
+       OTHER BACKGROUND-COLOR COMBINATIONS FOR THE GRID
+    ------------------------------------------------------------*/
+
+    // --------- Team page AND Networks page --------- //
+
+    &.mospace-hero-area-team, &.mospace-hero-area-network{
+        background-color:$global-var_featured-color-1;
+        .hero-slot-2,
+        .hero-slot-3{ background-color:#000; }
+        .hero-slot-4{
+            background-color:$global-var_featured-color-1;
+            blockquote{ // Reset the standard border-color of the blockquote into white
+                border-color:#FFF;
+            }
+            blockquote:before{ // Reset the style of the blockquote's arrow
+                border-top-color:#FFF;
+            }
+            blockquote:after{ // Reset the style of the blockquote's arrow
+                border-top-color:$global-var_featured-color-1;
+            }
+            .hero-edit-quote-button{ // Reset the icon for the motivation edit
+                background-color: $global-var_featured-color-1;
+                color:#FFF;
+            }
+        }
+        .hero-slot-5,
+        .hero-slot-6,
+        .hero-slot-7{ background-color:$global-var_featured-color-2; }
+        .hero-slot-5.hero-slot-participation-counter{ // If the slot is the counter slot, keep the original bg-color
+            background-color:$global-var_featured-color-1;
+        }
+    }
+
+    /*------------------------------------------------------------
+       MODS FOR PORTABLE SCREENS
+    ------------------------------------------------------------*/
+    // Both mobile and tablets
+    @media #{$global-var_mediaquery-combo-xs-sm}{
+
+        height:auto;
+        background:#000;
+
+        .hero-slot{
+            position:relative;
+            float:left;
+        }
+
+        .hero-slot-2, .hero-slot-3, .hero-slot-6{
+            display:none;
+        }
+
+        .hero-slot-1, .hero-slot-4{
+            width:50%;
+            height:auto;
+            top:0;left:0;
+        }
+        .hero-slot-4{
+            padding:0 5px;
+        }
+
+        .hero-slot-img img{
+            position:static;
+            display:table;
+            margin:0 auto;
+            width:100%;
+        }
+
+        .hero-slot-5, .hero-slot-7{
+            width:50%;
+            top:0;left:0;
+        }
+        .hero-slot-5{
+            clear:left;
+        }
+
+    }
+    // Only in tablet:
+    @media #{$global-var_mediaquery-sm}{
+
+        // If viewing: member - public view => make the participation-year slot full width
+        &.mospace-hero-area-member{
+            .hero-slot-7-public{ display:none; }
+            .hero-slot-5-public{ width:100%; }
+        }
+
+        // If viewing: team - private view => make the upload-photo slot full width
+        &.mospace-hero-area-team{
+            .hero-slot-5-private{ display:none; }
+            .hero-slot-7-private{ display: none; }
+            .hero-slot-7-private.hero-slot-upload-img{ display: block; width:100%; }
+        }
+
+        // If viewing: team/network - public view => hide the two bottom slots
+        &.mospace-hero-area-team, &.mospace-hero-area-network{
+            .hero-slot-5-public{ display:none; }
+            .hero-slot-7-public{ display:none; }
+        }
+
+    }
+    // Only in mobile:
+    @media #{$global-var_mediaquery-xs}{
+
+        .hero-slot-1, .hero-slot-4{
+            width:100%;
+        }
+        .hero-slot-5, .hero-slot-7{
+            display:none;
+        }
+
+    }
+
+}

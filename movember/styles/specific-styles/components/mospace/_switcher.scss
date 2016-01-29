@@ -1,0 +1,87 @@
+/*==========================================================================
+   MOSPACE SWITCHER
+ ~ Style for the switch in mospace
+==========================================================================*/
+
+/*------------------------------------------------------------
+   Config vars:
+------------------------------------------------------------*/
+
+$mospace-switcher-link_color-1: $global-var_featured-color-16;
+$mospace-switcher-link_color-2: $global-var_featured-color-7;
+$mospace-switcher-link_height: 26px;
+$mospace-switcher-link_width: 54px;
+$mospace-switcher-link_handle-size: 20px;
+$mospace-switcher-link_border-width: 3px;
+$mospace-switcher-link_color-transition-duration: .3s;
+
+/*------------------------------------------------------------
+   Switcher style
+------------------------------------------------------------*/
+
+#mospace-switcher-container{
+
+    // --------- Demo stuff, To be removed in the future --------- //
+    font-family: Arial !important;
+    text-transform: none;
+
+    // --------- Style of the outer container & outer text --------- //
+    margin:6px;
+
+    // --------- Style of the outer text --------- //
+    .mospace-switcher-link-text-wrapper{
+        float: left;
+        min-width: 70px;
+        max-width: 120px;
+        margin: 0 14px 0 0;
+        text-align: right;
+        margin-top: -4px;
+        position: relative;
+        @include rem(line-height, 16px);
+    }
+        
+    a{
+
+        // --------- Switch structure --------- //
+        float:left;
+        width:$mospace-switcher-link_width;
+        height:$mospace-switcher-link_height;
+        margin:0;
+        float:right;
+        display:block;
+        padding:$mospace-switcher-link_border-width;
+        border-radius:$mospace-switcher-link_height;
+        @include transition(background-color $mospace-switcher-link_color-transition-duration ease, border-color $mospace-switcher-link_color-transition-duration ease);
+
+        // --------- Switch handle structure --------- //
+        #mospace-switcher-handle{
+            border:0;
+            display:block;
+            position:relative;
+            border-radius:50%;
+            height:$mospace-switcher-link_handle-size;
+            width:$mospace-switcher-link_handle-size;
+            @include transition(background-color $mospace-switcher-link_color-transition-duration ease, left $mospace-switcher-link_color-transition-duration ease);
+        }
+
+        // --------- Switch on/off colors --------- //
+        &.handle-left {
+            background:$mospace-switcher-link_color-2;
+        }
+        &.handle-left #mospace-switcher-handle {
+            background:$mospace-switcher-link_color-1;
+            left:0;
+        }
+        &.handle-right{
+            background:$mospace-switcher-link_color-1;
+        }
+        &.handle-right #mospace-switcher-handle {
+            background:$mospace-switcher-link_color-2;
+            left:$mospace-switcher-link_width - $mospace-switcher-link_handle-size - ($mospace-switcher-link_border-width * 2);
+        }
+
+        #mospace-switcher-handle-text{
+            @include visually-hidden();
+        }
+    }
+}

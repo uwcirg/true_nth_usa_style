@@ -1,0 +1,56 @@
+/*==========================================================================
+   ICONS OVERRIDE
+==========================================================================*/
+// The 2013 version of the website used a PNG sprite for the icons
+// The legacy class that referred to this sprite is "chiclet"
+// However this class wasn't removed and now it is linked to the fa icons
+// In the future the old legacy classes should be replaced by the actual fa library classes. Only then this file can be deleted
+
+.chiclet_twitter a,
+.chiclet_linkedin a,
+.chiclet_fb a,
+.chiclet_facebook a,
+.chiclet_email a,
+.chiclet_google a{
+    font-size:0;
+    overflow:hidden;
+    color:$global-var_primary-font-color;
+    text-decoration:none;
+    cursor:pointer;
+    display: block;
+}
+
+.chiclet_twitter a:before,
+.chiclet_linkedin a:before,
+.chiclet_fb a:before,
+.chiclet_facebook a:before,
+.chiclet_email a:before,
+.chiclet_google a:before{
+    font-family: FontAwesome;
+    font-weight: normal;
+    @include rem(font-size, 24px);
+    //margin:0 -2px 0 2px; // This is a very dirty hack to hide the pixel from the text that has font-size:0
+    display: block;
+}
+
+.chiclet_twitter a:before {
+    @extend .fa-twitter-square:before;
+}
+.chiclet_linkedin a:before {
+    @extend .fa-linkedin-square:before;
+}
+.chiclet_fb a:before,
+.chiclet_facebook a:before {
+    @extend .fa-facebook-square:before;
+}
+.chiclet_email a:before {
+    @extend .fa-envelope-square:before;
+}
+.chiclet_google a:before {
+    @extend .fa-google-plus-square:before;
+}
+
+.chiclets .chiclet{
+    float:left;
+    margin:0 5px 0 0;
+}

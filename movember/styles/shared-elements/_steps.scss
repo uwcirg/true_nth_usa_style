@@ -1,0 +1,128 @@
+/*==========================================================================
+   STEPS
+   An example of this component can be found in the registration page
+==========================================================================*/
+
+.step-container {
+
+    height: 37px;
+
+    ol {
+
+        list-style:none;
+        margin:0px;padding:0px;
+
+        li {
+
+            float: left;
+            display: block;
+            width: 30%;
+            border-top: 1px solid $global-var_featured-color-7;
+            margin: 10px 0px 20px 0;
+            position: relative;
+            top: 10px;
+
+            a,
+            a:hover {
+                text-decoration: none;
+            }
+
+            span {
+                display: block;
+                height: 36px;
+                width: 36px;
+                line-height:35px;
+                text-align: center;
+                margin-top: -20px;
+                background:white;
+                position: relative;
+                text-transform: uppercase;
+                border-radius: 50%;
+                font-weight: bold;
+                @include rem(font-size, 16px);
+            }
+        }
+
+        // --------- General style (step not completed yet) --------- //
+
+        li.step {
+            cursor:default;
+
+            span {
+                background:$global-var_featured-color-4;
+                border: 1px solid #000;
+                @include transition(background-color .25s ease-out, color .3s ease-out, border-color .25s ease-out);
+            }
+
+            p {
+                @include rem(font-size, 11px);
+            }
+        }
+
+        // --------- Active state --------- //
+
+        li.active{
+
+            span {
+                color:white;
+                background:$global-var_featured-color-10;
+                border:1px solid $global-var_featured-color-10;
+            }
+
+
+        }
+
+        // --------- Hover state --------- //
+
+        li.complete{
+
+            a:hover span {
+                color:white;
+                background:$global-var_featured-color-1;
+                border:1px solid $global-var_featured-color-1;
+            }
+
+        }
+
+        // --------- Step completed state --------- //
+
+        li.complete{
+
+            border-top-color:#000;
+
+            span {
+                color:white;
+                background:#000;
+                border:1px solid #000;
+            }
+        }
+
+        // --------- Done label --------- //
+
+        li.done {
+
+            background: white;
+            border:none;
+            width: 39px;
+
+            span {
+                background: #fff;
+                color: $global-var_featured-color-7;
+                border:none;
+                margin-top: -17px;
+                padding-top: 0px;
+                font-weight: bold;
+                padding: 0 10px;
+                @include rem(font-size, 16px);
+                text-transform: uppercase;
+            }
+
+            &.active span {
+                color: $global-var_featured-color-1;
+            }
+
+        }
+
+    }
+
+}

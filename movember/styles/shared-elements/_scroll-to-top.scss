@@ -1,0 +1,28 @@
+// --------- Scroll To Top --------- //
+
+.goto-top-wrapper {
+    border-top: 1px solid $global-var_featured-color-3;
+    margin-top: 25px;
+
+    .goto-top {
+        display: inline-block;
+        padding-right: 21px;
+        position: relative;
+        margin-top: 15px;
+        text-transform: uppercase;
+        @include rem('font-size', 12px);
+        @include rem('line-height', 30px);
+
+        span {
+            position: absolute;
+            top: 1px;
+            right: 0;
+            @include rem('font-size', 17px);
+            line-height: 1;
+
+            &.last {
+                top: 8px;
+            }
+        }
+    }
+}

@@ -1,0 +1,38 @@
+.donations-list {
+    position: relative;
+    .donation {
+        .leaderboard{
+            color: green;
+        }
+        .state{
+            color: green;
+        }
+        .donor {
+            color: #000;
+            box-sizing: border-box;
+            text-transform: capitalize;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+        .amount {
+          text-align: right;
+        }
+
+        /* UK Users get small giftaid summary in the top of their donation accordion */
+        h6.giftaid {
+            margin-bottom: 0px;
+        }
+    }
+}
+// For pagination within the accordian panels
+.panel {
+    .donations-list {
+        .donations {
+            .paginationControl {
+                @include rem(font-size, 12px);
+            }
+        }   
+    }
+}
+

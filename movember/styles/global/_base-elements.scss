@@ -1,0 +1,1707 @@
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   BASE ELEMENTS
+ > This file sets the global style for the generic html elements (headings, paragraphs etc...) and other common elements
+ > Note: some of these styles are also set as an override of the default values of the bootstrap library
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+/*==========================================================================
+   GLOBAL
+==========================================================================*/
+
+*{
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html{
+    font-size: 62.5%;
+    height:100%;
+    -webkit-font-smoothing:antialiased;
+    -ms-overflow-style:scrollbar; // IE10/11 fix: stop scroll bar from appearing over content and disappearing
+}
+
+body{
+    min-height:100%;
+    position:relative;
+    font-family:$global-var_primary-font-family;
+    color:$global-var_primary-font-color;
+    background:white;
+    overflow:auto; // This is needed in order to avoid a "resize jump" of the page layout when a modal is fired
+
+    // sm & md
+    @include rem(font-size, $global-var_base-font-size);
+    @include rem(line-height, $global-var_base-line-height);
+    // xs
+    @media #{$global-var_mediaquery-xs}{
+        @include rem(font-size, 14px);
+        @include rem(line-height, 22px);
+    }
+    // lg
+    @media #{$global-var_mediaquery-lg}{
+        @include rem(font-size, 17px);
+        @include rem(line-height, 28px);
+    }
+}
+
+// Force hidden outline for non-focusable/block elements
+// Usually Chrome and Firefox add it for accessibility reasons, however not in all cases is needed
+div, span, article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, section, summary{
+    &:focus{ outline: none; }
+}
+
+/*==========================================================================
+   TYPOGRAPHY
+==========================================================================*/
+
+// --------- Paragraphs --------- //
+
+p, %p {
+    padding:0;
+    @include rem(margin, 0 0 10px 0);
+}
+
+// --------- Imgs --------- //
+
+img {
+    max-width:100%;
+    @media #{$global-var_mediaquery-combo-xs-sm}{
+        height:auto;
+    }
+}
+picture{
+    display:inline-block;
+    img{
+        display: block;
+        width: 100%;
+    }
+}
+
+// --------- Headings --------- //
+
+h1, h2, h3, h4, h5, h6,
+%h1, %h2, %h3, %h4, %h5, %h6 {
+    text-transform: none;
+    margin:0;padding:0;
+    color: $global-var_primary-font-color;
+    letter-spacing:.5px;
+    p + & {
+        @include rem(padding-top, 10px);
+    }
+}
+
+h1, %h1 {
+
+    font-weight: bold;
+    @include rem(margin-bottom, 21px);
+
+    // xs
+    @include rem(font-size, 27px);
+    @include rem(line-height, 30px);
+    // sm
+    @media #{$global-var_mediaquery-sm}{
+        @include rem(font-size, 32px);
+        @include rem(line-height, 36px);
+    }
+    // md
+    @media #{$global-var_mediaquery-md}{
+        @include rem(font-size, 47px);
+        @include rem(line-height, 49px);
+    }
+    // lg
+    @media #{$global-var_mediaquery-lg}{
+        @include rem(font-size, 46px);
+        @include rem(line-height, 47px);
+    }
+
+}
+
+h2, %h2 {
+
+    font-weight: bold;
+    @include rem(margin-bottom, 15px);
+
+    // xs
+    @include rem(font-size, 25px);
+    @include rem(line-height, 32px);
+    // sm
+    @media #{$global-var_mediaquery-sm}{
+        @include rem(font-size, 28px);
+        @include rem(line-height, 36px);
+    }
+    // md
+    @media #{$global-var_mediaquery-md}{
+        @include rem(font-size, 32px);
+        @include rem(line-height, 38px);
+    }
+    // lg
+    @media #{$global-var_mediaquery-lg}{
+        @include rem(font-size, 34px);
+        @include rem(line-height, 42px);
+    }
+
+}
+
+h3, %h3 {
+
+    font-weight: normal;
+    @include rem(margin-bottom, 10px);
+
+    // xs
+    @include rem(font-size, 21px);
+    @include rem(line-height, 25px);
+    // sm
+    @media #{$global-var_mediaquery-sm}{
+        @include rem(font-size, 26px);
+        @include rem(line-height, 29px);
+    }
+    // md + lg
+    @media #{$global-var_mediaquery-combo-md-lg}{
+        @include rem(font-size, 28px);
+        @include rem(line-height, 30px);
+    }
+
+}
+
+h4, %h4 {
+
+    font-weight: normal;
+    @include rem(margin-bottom, 10px);
+
+    // xs
+    @include rem(font-size, 17px);
+    @include rem(line-height, 21px);
+    // sm
+    @media #{$global-var_mediaquery-sm}{
+        @include rem(font-size, 22px);
+        @include rem(line-height, 25px);
+    }
+    // md + lg
+    @media #{$global-var_mediaquery-combo-md-lg}{
+        @include rem(font-size, 24px);
+        @include rem(line-height, 28px);
+    }
+
+}
+
+h5, %h5 {
+
+    font-weight: normal;
+    @include rem(margin-bottom, 10px);
+
+    // xs
+    @include rem(font-size, 17px);
+    @include rem(line-height, 21px);
+    // sm
+    @media #{$global-var_mediaquery-sm}{
+        @include rem(font-size, 20px);
+        @include rem(line-height, 25px);
+    }
+    // md
+    @media #{$global-var_mediaquery-md}{
+        @include rem(font-size, 18px);
+        @include rem(line-height, 22px);
+    }
+    // lg
+    @media #{$global-var_mediaquery-lg}{
+        @include rem(font-size, 20px);
+        @include rem(line-height, 25px);
+    }
+
+}
+
+h6, %h6 {
+
+    font-weight: bold;
+    @include rem(margin-bottom, 10px);
+
+    @include rem(font-size, 14px);
+    @include rem(line-height, 21px);
+
+}
+
+// --------- Links --------- //
+
+a, a:hover, a:focus, a:active {
+
+    color: #000;
+    font-weight: bold;
+    text-decoration: underline;
+
+}
+a:hover, a:focus, a:active {
+    text-decoration: none;
+}
+
+// --------- Lists --------- //
+
+ul, ol {
+
+    list-style-position: outside;
+    list-style-image: none;
+    @include rem(margin, 10px 0);
+    padding: 0 8.5%;
+
+    ul, ol {
+        margin: 0;
+        @include rem(padding, 0 0 0 22px);
+    }
+
+}
+ul{ list-style-type: disc; }
+ol{ list-style-type: decimal; }
+
+// Alternative style
+ul.alternate, ul.alternate ul{
+    list-style-type: none;
+    li:before{
+        content:'-';
+        margin-left: -1.5%;
+        margin-right: 1%;
+    }
+}
+
+// --------- Media --------- //
+
+object, embed,
+.youtube-container iframe, .cms-video iframe, .widget-media-container iframe, .media-container iframe {
+  max-width:100%;
+}
+
+// --------- Blockquotes --------- //
+
+blockquote{
+
+    font-style: italic;
+
+    // xs & sm
+    @include rem(font-size, 19px);
+    @include rem(line-height, 29px);
+    // md
+    @media #{$global-var_mediaquery-md}{
+        @include rem(font-size, 26px);
+        @include rem(line-height, 36px);
+    }
+    // lg
+    @media #{$global-var_mediaquery-lg}{
+        @include rem(font-size, 29px);
+        @include rem(line-height, 41px);
+    }
+
+    margin-top: 21px;
+    margin-bottom: 26px;
+    border:0;
+    border-bottom:1px solid #000;
+    padding:5px 17% 5px 8.5%;
+    @media #{$global-var_mediaquery-xs}{
+        padding-right:8.5%;
+    }
+
+    @extend .col-md-10;
+    @extend .col-md-offset-1;
+    float:none;
+    html.ie8 &{ float:none; } // IE8 needs this to correctly apply the float:none
+
+    @include bordered-css-triangle('bottom', #FFF, #000, 8px, 100%, 86%);
+
+    p{ margin:0; padding:0; }
+
+    footer{
+ 
+        // xs + sm
+        @include rem(font-size, 10px);
+        @include rem(line-height, 14px);
+        // md
+        @media #{$global-var_mediaquery-md}{
+            @include rem(font-size, 11px);
+            @include rem(line-height, 16px);
+        }
+        // lg
+        @media #{$global-var_mediaquery-lg}{
+            @include rem(font-size, 12px);
+            @include rem(line-height, 18px);
+        }
+
+        padding: 10px 8.5% 10px 0;
+        font-family: $global-var_primary-font-family;
+        font-weight:bold;
+        color: $global-var_primary-font-color;
+        text-transform: none;
+
+        &:before{
+            content: '- ';
+        }
+
+    }
+
+    &.blockquote-reverse{
+
+        border-right:0;
+        padding-right:8.5%;
+        padding-left:17%;
+        @media #{$global-var_mediaquery-xs}{
+            padding-left:8.5%;
+        }
+        
+        footer{
+            padding: 10px 0 10px 8.5%;
+            &:before{ content: '- '; }
+            &:after{ content: ''; }
+        }
+
+    }
+
+    &.blockquote-negative{
+        
+        color:#FFF;
+        background:#000;
+
+        @include bordered-css-triangle('bottom', #000, $global-var_featured-color-12, 8px, 100%, 86%);
+        border-bottom:1px solid $global-var_featured-color-12;
+
+        footer{
+            color:#FFF;
+        }
+
+    }
+
+}
+
+// --------- Hr --------- //
+
+hr{
+    width:100%;
+    clear:both;
+    border:0;
+    border-top:3px solid #000;
+    @include rem(margin, 25px 0);
+}
+
+// --------- Lead (or highlighted-intro) --------- //
+
+.lead, .highlighted-intro{
+
+    font-family: Helvetica Neue Thin, Helvetica Neue, Helvetica, Arial;
+    @include rem(margin, 21px 0 21px 0);
+    letter-spacing:.5px;
+
+    // xs
+    @include rem(font-size, 18px);
+    @include rem(line-height, 30px);
+    // sm
+    @media #{$global-var_mediaquery-sm}{
+        @include rem(font-size, 19px);
+        @include rem(line-height, 30px);
+    }
+    // md
+    @media #{$global-var_mediaquery-md}{
+        @include rem(font-size, 21px);
+        @include rem(line-height, 40px);
+    }
+    // lg
+    @media #{$global-var_mediaquery-lg}{
+        @include rem(font-size, 25px);
+        @include rem(line-height, 48px);
+    }
+
+}
+
+// --------- Text caption + <small> --------- //
+
+figcaption, .text-caption, %text-caption{
+    @include rem(font-size, 12px);
+    color:#000;
+    text-transform:none;
+    font-weight:bold;
+}
+figcaption{
+    @include rem(margin-bottom, 21px);
+    @include rem(line-height, 20px);
+}
+
+/*==========================================================================
+   BUTTONS
+ ~ Some of these classes overrides the default bootstrap buttons
+==========================================================================*/
+
+/*------------------------------------------------------------
+   Global buttons style (applied to ALL buttons)
+------------------------------------------------------------*/
+
+button, input[type="button"], input[type="reset"], input[type="submit"], // Native HTML tags
+.button, .btn, .btn-default, // Anf "button" class
+.btn-base, .btn-fancy, .btn-fancy-alternate, .btn-alternate, .btn-negative,
+%btn-base, %btn-fancy, %btn-fancy-alternate, %btn-alternate, %btn-negative{ // Pseudo-SASS classes
+
+    display:inline-block;
+    @include rem(padding, 0 15px);
+    @include rem(height, 35px);
+    @include rem(font-size, 13px);
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: normal;
+    border-radius: 9px;
+    transition: background-color .1s ease, color .1s ease, border-color .1s ease;
+    cursor: pointer;
+    @include rem(line-height, 34px); // height - border-width*2 + 1
+
+    &.disabled, &.disabled:hover, &.disabled:focus, &.disabled:active{
+        background:#C7C8C9;
+        color:#FFF;
+        border:1px solid transparent;
+        @include text-shadow(0 -1px 0px rgba(#000, .1));
+        &:hover{ cursor: not-allowed; }
+    }
+
+    &.loading{
+        border:1px solid $global-var_featured-color-3;
+        background:#FFF;
+        color:transparent;
+        @include text-shadow(none);
+        background-position:center center;
+        background-repeat:no-repeat;
+        &:hover{ cursor: wait; }
+    }
+    &.loading, &.loading:hover, &.loading:focus, &.loading:active{
+        color:transparent;
+        @include text-shadow(none);
+    }
+
+    &, &:hover, &:focus, &:active, &.active, &.disabled{
+        text-decoration:none;
+    }
+
+    &, &:hover, &:active, &.active, &.disabled{
+        outline:none !important;
+    }
+
+    @media #{$global-var_mediaquery-xs}{
+        //display:block;
+        margin-top:5px;
+        margin-bottom:5px;
+    }
+
+}
+
+/*------------------------------------------------------------
+   DEFAULT and "BASE" btn
+------------------------------------------------------------*/
+
+// Base buttons
+.btn-default, .btn-base,
+.button, // Those are legacy classes
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"],
+%btn-base,
+// Fancy buttons - Alternate (on 2015 it was asked to make them equal to base-buttons)
+.btn-fancy-alternate,
+button.btn-fancy-alternate,
+input[type="button"].btn-fancy-alternate,
+input[type="reset"].btn-fancy-alternate,
+input[type="submit"].btn-fancy-alternate,
+%btn-fancy-alternate{
+
+    color: #FFF;
+    background-color: $global-var_featured-color-2;
+    border:1px solid $global-var_featured-color-2;
+    font-weight:normal;
+
+    &:hover, &:focus, &:active, &.active{
+        color: #FFF;
+        background-color: #000;
+        border-color: #000;
+        background-position:center center;
+        background-repeat:no-repeat;
+        font-weight:normal;
+    }
+
+    &.loading{
+        border:1px solid $global-var_featured-color-3;
+        background-color:#FFF;
+        background-position:center center;
+        background-repeat:no-repeat;
+        background-image:inline-image("icons/loader-animation-blackonwhite.gif");
+        background-size:auto; // This is needed because the linear-gradient from compass forces it to be 100% (see "&:hover, &:focus")
+        &:hover{ cursor: wait; }
+    }
+    &.loading, &.loading:hover, &.loading:focus, &.loading:active{
+        color:transparent;
+        @include text-shadow(none);
+    }
+    
+}
+
+/*------------------------------------------------------------
+   NEGATIVE btn
+------------------------------------------------------------*/
+
+.btn-negative,
+button.btn-negative,
+input[type="button"].btn-negative,
+input[type="reset"].btn-negative,
+input[type="submit"].btn-negative,
+%btn-negative{
+    
+    color:#FFF;
+    background: transparent;
+    border:2px solid #FFF;
+    @include rem(line-height, 32px); // height - border-width*2 + 1
+
+    &:hover, &:focus, &:active, &.active{
+        background:#FFF;
+        color:#000;
+        font-weight:normal;
+    }
+
+    &.loading, &.loading:hover, &.loading:focus, &.loading:active{
+        background-color:#FFF;
+        background-position:center center;
+        background-repeat:no-repeat;
+        background-image:inline-image("icons/loader-animation-blackonwhite.gif");
+        &:hover{ cursor: wait; }
+    }
+    &.loading, &.loading:hover, &.loading:focus, &.loading:active{
+        color:transparent;
+        @include text-shadow(none);
+        border:2px solid #FFF;
+    }
+
+    &.disabled, &.disabled:hover, &.disabled:focus, &.disabled:active{
+        border:2px solid #FFF;
+    }
+
+}
+
+/*------------------------------------------------------------
+   ALTERNATE btn
+------------------------------------------------------------*/
+
+.btn-alternate,
+button.btn-alternate,
+input[type="button"].btn-alternate,
+input[type="reset"].btn-alternate,
+input[type="submit"].btn-alternate,
+%btn-alternate{
+
+    color:#000;
+    background: transparent;
+    border:2px solid #000;
+    @include rem(line-height, 32px); // height - border-width*2 + 1
+
+    &:hover, &:focus, &:active, &.active{
+        background:#000;
+        color:#FFF;
+        font-weight:normal;
+    }
+
+    &.loading, &.loading:hover, &.loading:focus, &.loading:active{
+        background-color: transparent;
+        background-position:center center;
+        background-repeat:no-repeat;
+        background-image:inline-image("icons/loader-animation-blackonwhite.gif");
+        &:hover{ cursor: wait; }
+    }
+    &.loading, &.loading:hover, &.loading:focus, &.loading:active{
+        color:transparent;
+        background-color: #FFF;
+        @include text-shadow(none);
+        border:2px solid #FFF;
+    }
+
+    &.disabled, &.disabled:hover, &.disabled:focus, &.disabled:active{
+        border:2px solid transparent;
+    }
+
+}
+
+/*------------------------------------------------------------
+   FANCY BUTTONS
+------------------------------------------------------------*/
+
+.btn-fancy,
+button.btn-fancy,
+input[type="button"].btn-fancy,
+input[type="reset"].btn-fancy,
+input[type="submit"].btn-fancy,
+%btn-fancy{
+
+    color:#000;
+    font-weight:normal;
+    background:#FFF;
+    border:2px solid #FFF;
+    @include rem(line-height, 32px); // height - border-width*2 + 1
+
+    &:hover, &:focus, &:active, &.active{
+        background:#FFF;
+        border:2px solid #000;
+        background-position:center center;
+        background-repeat:no-repeat;
+        color:#000;
+        font-weight:normal;
+    }
+
+    &.loading{
+        border:2px solid #000;
+        background-color:#FFF;
+        background-position:center center;
+        background-repeat:no-repeat;
+        background-image:inline-image("icons/loader-animation-blackonwhite.gif");
+        &:hover{ cursor: wait; }
+    }
+    &.loading, &.loading:hover, &.loading:focus, &.loading:active{
+        color:transparent;
+        @include text-shadow(none);
+    }
+
+    &.disabled, &.disabled:hover, &.disabled:focus, &.disabled:active{
+        border:2px solid #FFF;
+    }
+
+}
+
+/*------------------------------------------------------------
+   LINE-HEIGHT FIX
+   Old stuff, probably it's not needed anymore ~ Franco 04-08-2015 / to be removed in 2016
+------------------------------------------------------------*/
+
+// Only for <button>s and <input>s. These elements do not count the border-width within the line-height.
+// button, input[type="button"], input[type="reset"], input[type="submit"]{
+
+//     &.btn-base, &%btn-base, &.btn-default, &.button,
+//     &.btn-fancy, &%btn-fancy,
+//     &.btn-fancy-alternate, &%btn-fancy-alternate{
+//         @include rem(line-height, 34px); // 34 because the border is set as 1px
+//     }
+
+//     &.btn-negative, &%btn-negative,
+//     &.btn-alternate, &%btn-alternate{
+//         @include rem(line-height, 32px); // 32 because the border is set as 2px
+//     }
+
+// }
+// Line-height fix, only for <a> with 1px border
+// a.button, a.btn-default, a.btn-base, a%btn-base,
+// a.btn-fancy, a%btn-fancy, a.btn-fancy-alternate, a%btn-fancy-alternate // on 2015 it was asked to make them equal to base-buttons
+// {
+//     @include rem(line-height, 34px);
+// }
+
+/*==========================================================================
+   FORM ELEMENTS
+==========================================================================*/
+
+// --------- Form and form text elements --------- //
+
+form, fieldset{
+    margin:0;padding:0;
+    border:0;
+}
+
+legend{
+    @extend %h3;
+    border:0;
+}
+
+label, %label{
+    margin:0;padding:0;
+    @include rem(line-height, 21px);
+    font-weight:bold;
+    text-transform:none;
+}
+input[type=checkbox]+label, input[type=radio]+label{
+    font-weight:normal;
+    text-transform:none;
+}
+
+// --------- Inputs and selects --------- //
+
+input[type=text], input[type=email], input[type=tel], input[type=password], input[type=file],
+select, select[multiple], select[size],
+%select{
+    width:100%;
+    height:35px;
+    padding:6px 4px 6px 10px;
+    margin:0 0 10px 0;
+    border:1px solid $global-var_featured-color-3;
+    background:#fff;
+    border-radius:0;
+
+    // --------- Validation style for inputs --------- //
+
+    // Note: The validation classes can be applied to either the parent container or the element itself
+    &.valid, .valid & { 
+        border-color: $global-var_featured-color-ok;
+        color: $global-var_featured-color-ok;
+        background:inline-image("icons/valid.png") scroll no-repeat 99% 50% #fff;
+    }
+    &.error, .error & {
+        border-color: $global-var_featured-color-error;
+        color: $global-var_featured-color-error;
+        background:inline-image("icons/error.png") scroll no-repeat 99% 50% #fff;
+    }
+    &.loading, .loading & {
+        background:inline-image("icons/loader-animation-blackonwhite.gif") scroll no-repeat 99% 50% #fff;
+    }
+    &.readonly, .readonly &, &.disabled, .disabled &, &[disabled] {
+        border-color:#CDCDCF;
+        color:#fff;
+        cursor: not-allowed;
+        background:inline-image("icons/disabled.png") scroll no-repeat 99% 50%;
+        background-color:#CDCDCF;
+    }
+
+}
+
+// Note: We decided to remove the background image on selects as the
+// image interferes with the control elements i.e. triangle
+select, select[multiple], select[size]{
+    &.valid, .valid &,
+    &.error, .error &,
+    &.loading, .loading &,
+    &.readonly, .readonly &,
+    &.disabled, .disabled & {
+        background-image:none;
+    }
+
+    &:focus.valid {
+        border-color: $global-var_featured-color-ok;
+    }
+
+    &:focus.error {
+        border-color: $global-var_featured-color-error;
+    }
+}
+
+select[multiple], input[type=file]{
+    height: auto;
+}
+
+::-webkit-input-placeholder{ color: $global-var_featured-color-8; }
+:-moz-placeholder{ color: $global-var_featured-color-8; }
+::-moz-placeholder{ color: $global-var_featured-color-8; }
+:-ms-input-placeholder{ color: $global-var_featured-color-8; }
+.placeholder{
+    margin-top:6px;
+    margin-left:10px;
+    color: $global-var_featured-color-8;
+}
+
+input[type=file]{ cursor:pointer; }
+::-ms-browse{ cursor:pointer; }
+::-webkit-file-upload-button{ cursor: pointer; }
+
+select option[selected]{
+    background:#000;    
+    color:#FFF;
+}
+
+// --------- Error messages --------- //
+
+.error-message, .ff-errors, .form_element_errors{
+    color:$global-var_featured-color-error;
+    position:relative;
+    top:-10px;
+    font-size: 90%;
+}
+.ff-errors label{
+    text-transform:none;
+    font-weight:normal;
+}
+.error-message ul, .ff-errors ul, .error_box ul, .form_element_errors ul, ul.errors {
+    padding:0;margin:0;
+    li{
+        text-align: left;
+        list-style: none;
+        margin: 4px 0;
+    }
+}
+.error-message ul, .ff-errors ul, .form_element_errors ul{
+    margin-top:10px; // Needed to compensate the "top:-10px"
+}
+
+// --------- Textareas --------- //
+
+textarea, %textarea{
+    width:100%;
+    height:auto;
+    padding:6px 10px;
+    margin:0 0 10px 0;
+    overflow:auto;
+    vertical-align:top;
+    border-radius:0;
+    border:1px solid $global-var_featured-color-3;
+    background:#FFF;
+    &.error, &.error.focus {
+        border-color: $global-var_featured-color-error;
+        color: $global-var_featured-color-error;
+        background:inline-image("icons/error.png") scroll no-repeat 99% 5% #FFF;
+    }
+}
+
+// --------- Checkboxes, radio buttons --------- //
+
+input[type=checkbox], input[type=radio]{
+    display:inline-block;
+    margin:0 .2em 3px .2em;
+    padding:0;
+    vertical-align:middle;
+    @include rem(height, 21px);
+    @include rem(line-height, 21px);
+}
+
+// --------- Focused elements --------- //
+
+textarea:focus, input:focus, select:focus{
+    border-color:#000;
+    outline:0;
+}
+
+/*==========================================================================
+   TABLES
+==========================================================================*/
+
+table{
+    
+    width:100%;
+    border:0;
+
+    // --------- General table elements --------- //
+
+    tr{
+        border:0;
+    }
+    td, th{
+        @include rem(height, 31px);
+        vertical-align:middle;
+        padding:0 0 0 10px;
+        border:0;
+    }
+    td{
+        border-style:solid;
+        border-color:#B8B8B8;
+        border-width:0 0 1px 0;
+    }
+    th{
+        font-weight:bold;
+        border-bottom:3px solid #000;
+    }
+
+    // --------- Sort links --------- //
+
+    th a{
+        color: inherit;
+        &:after{
+            @include css-triangle('bottom', 4px, #AAA);
+        }
+        &.active:after{
+            @include css-triangle('bottom', 4px, #000);
+        }
+        &.active:after, &:after{
+            position: relative;
+            display:inline-block;
+            vertical-align: middle;
+            margin-top:3px;
+            margin-left:4px;
+        }
+    }
+    th a:hover, th a:focus, th a:active{
+        color:inherit;
+    }
+
+    // --------- Specific styles --------- //
+
+    thead{
+        td{
+            font-weight:bold;
+        }
+    }
+
+    tbody, tfoot{
+        tr:hover{
+            background:#F4F4F4;
+        }
+    }
+
+    tfoot td, tr.highlight td{
+        border-width:2px 0;
+        font-weight:bold;
+    }
+
+    caption{
+        caption-side: bottom;
+        text-align: left;
+        padding-left:10px;
+        @include rem(height, 20px);
+        font-size: small;
+        font-style: italic;
+    }
+}
+
+/*==========================================================================
+   TOOLTIPS & POPOVERS
+ ~ This is an override of the default bootstrap style
+==========================================================================*/
+
+// --------- Firstly, reset the native style from bootstrap --------- //
+
+.popover, .tooltip{
+    font-size:inherit;
+}
+.popover.in, .tooltip.in{
+    @include opacity(1);
+}
+.tooltip .tooltip-arrow{
+    display: none;
+}
+
+// --------- Secondly: set the common style --------- //
+
+.show-popover{
+    cursor:pointer;
+}
+
+.popover, .tooltip .tooltip-inner{
+    background:#FFF;
+    border:1px solid #E8E8E8;
+    border-radius:0;
+    @include box-shadow(0 2px 8px rgba(0,0,0,.3));
+    color:#000;
+    .arrow{ display:none; }
+}
+
+// Here set the style for the lateral arrows:
+.popover.bottom, .tooltip.bottom .tooltip-inner{
+    @include bordered-css-triangle('top', #FFF, #E8E8E8, 8px, 0%, 50%);
+}
+.popover.top, .tooltip.top .tooltip-inner{
+    @include bordered-css-triangle('bottom', #FFF, #E8E8E8, 8px, 100%, 50%);
+}
+.popover.left, .tooltip.left .tooltip-inner{
+    @include bordered-css-triangle('right', #FFF, #E8E8E8, 8px, 50%, 100%);
+}
+.popover.right, .tooltip.right .tooltip-inner{
+    @include bordered-css-triangle('left', #FFF, #E8E8E8, 8px, 50%, 0%);
+}
+
+// --------- Thirdly, set the element-specific style --------- //
+
+.popover{
+
+    max-width:435px;
+    min-width:none;
+
+    .popover-content{
+        padding:15px;
+    }
+
+    .popover-title{
+        background:#F6F6F6;
+        text-transform:none;
+    }
+
+}
+
+.tooltip .tooltip-inner{
+    position:relative; // Needed for the arrow
+    max-width:435px;
+    white-space:normal;
+    text-align:left;
+    @include rem(min-height, 31px);
+    @include rem(padding, 4px 15px);
+    @include rem(line-height, 23px);
+}
+
+/*==========================================================================
+   ICONS
+==========================================================================*/
+
+// Since 2014 we are using font-awesome. By default, the style of the icons is reset:
+.fa{
+
+    &, &:hover, &:active, &:focus, &:before, &:after{
+        display:inline-block;
+        font-weight: normal;
+        text-decoration:none;
+    }
+    &:focus{
+        text-decoration: underline; // This is for accessibility reasons
+    }
+    &, &:hover, &:active, &:focus{
+        color:$global-var_primary-font-color;
+    }
+    &:before, &:after{
+        color: inherit; // This hack will make firefox inherit the color from the parent
+    }
+    
+}
+
+/*==========================================================================
+   BOOTSTRAP'S COMPONENTS OVERRIDE
+==========================================================================*/
+
+/*------------------------------------------------------------
+   ALERT PANELS
+------------------------------------------------------------*/
+
+.alert {
+    position: relative;
+    padding: 7px 11px 7px 35px;
+    border: none;
+    border-radius: 0;
+
+    a {
+        color: inherit;
+    }
+
+    ul {
+        padding: 0;
+        li {
+            text-align: left;
+            list-style: none;
+            margin: 4px 0;
+        }
+    }
+
+    &:before {
+        display: inline-block;
+        font-family: FontAwesome;
+        font-style: normal;
+        font-weight: normal;
+        line-height: 1;
+        position: absolute;
+        top: 9px;
+        left: 11px;
+        color: inherit;
+        @include rem('font-size', 18px);
+    }
+
+    // --------- Hide Icon (useful when space is a concern) --------- //
+
+    &.alert-hide-icon {
+        padding: 7px 11px 7px;
+
+        &:before {
+            display: none !important;
+        }
+    }
+
+    // -- For the special occasions when we can't hide the alerts that are empty -- //
+    &:empty {
+        display: none;
+    }
+
+    // --------- Success (green) --------- //
+
+    &.alert-success {
+        &:before {
+            content: $fa-var-check;
+        }
+    }
+
+    // --------- Info (blue) --------- //
+
+    &.alert-info {
+        background: #E6E6E7;
+        color: #1F2440;
+
+        &:before {
+            content: $fa-var-info-circle;
+        }
+    }
+
+    // --------- Warning (yellow) --------- //
+
+    &.alert-warning {
+        background: #FCF8E3;
+        color: #7F451D;
+
+        &:before {
+            top: 7px;
+            left: 9px;
+            @include rem('font-size', 21px);
+            @extend .mo-icon:before;
+            @extend .mo-icon-error:before;
+        }
+    }
+
+    // --------- Danger (red) --------- //
+
+    &.alert-danger {
+        background: #F7EBEB;
+        color: #B13B38;
+
+        &:before {
+            content: $fa-var-times;
+        }
+    }
+}
+
+/*------------------------------------------------------------
+   LIST GROUP
+------------------------------------------------------------*/
+
+.list-group{
+
+    margin:0;padding:0;
+
+    .list-group-item{
+
+        padding:0;
+        margin:0 0 10px 0;
+        border:0;
+
+        &, & a{
+            background:#FFF;
+            color:#000;
+            border:2px solid #000000;
+            @include transition(color .3s ease-out, background-color .3s ease-out, border-color .3s ease-out);
+            text-transform: uppercase;
+            @include rem(line-height, 20px);
+            border-radius:0;
+            font-weight:normal;
+            @media #{$global-var_mediaquery-combo-xs-sm}{
+                display: inline-block;
+                margin-right:5px;
+                @include rem(font-size, 13px);
+            }
+            @media #{$global-var_mediaquery-xs}{
+                margin-right:2px;
+                @include rem(font-size, 11px);
+            }
+        }
+        &:hover, &:hover a,
+        a:active, a:focus,
+        &.active, &.active a, & a.active{
+            background:#000;
+            color:#FFF;
+            border-color:#000000;
+        }
+
+        // Side triangle:
+        &:before{
+            @include css-triangle('right', 6px, transparent);
+            top:50%;margin-top:-6px;right:-6px;
+            @include transition(border-color .3s ease-out, right .3s ease-out, margin-top .3s ease-out);
+            @media #{$global-var_mediaquery-combo-xs-sm}{ // In mobile, the arrow is below
+                top:100%;margin-top:-6px;right:50%;margin-right:-6px;
+            }
+        }
+        &.active:before{
+            border-left-color:#000;
+            right:-12px;
+            @media #{$global-var_mediaquery-combo-xs-sm}{
+                margin-top:0;right:50%;
+                border-left-color:transparent;
+                border-top-color:#000;
+                border-top-style:solid;
+            }
+        }
+
+    }
+    a.list-group-item, .list-group-item a{ // This is applied only to links
+        display:block;
+        margin:0;
+        text-decoration: none;
+        border:0;
+        padding:8px 12px 8px 16px;
+        @media #{$global-var_mediaquery-combo-xs-sm}{
+            padding:3px 5px;
+        }
+    }
+
+}
+
+/*------------------------------------------------------------
+   DROPDOWN, PANEL & MENU
+------------------------------------------------------------*/
+
+.dropdown-panel{
+
+    position:absolute;
+    top:100%;left:0;
+    min-width:200px;
+    padding:15px;
+    background:$global-var_featured-color-4;
+    @include box-shadow(1px 3px 6px rgba(0, 0, 0, .3));
+    border:1px solid #CCC;
+    border:1px solid rgba(0,0,0,.1);
+    border-radius:0;
+
+    &.active, .open>&{ // Visible state
+        display:block;
+        opacity:1;
+        visibility:visible;
+    }
+
+}
+
+.dropdown-menu{
+
+    @extend .dropdown-panel;
+    padding:10px 0;
+
+    // Inner list style
+    &, ul, li{ list-style:none; margin:0; }
+    ul, li{ padding:0; }
+
+    // Sub-level links style (under a list)
+    li a{
+        @include transition(color .2s ease-out, background-color .2s linear);
+        color:#000;
+        font-weight:bold;
+        white-space:nowrap;
+        padding:6px 20px;
+        text-decoration:none;
+        width:100%;
+        display:block;
+        &:hover, &:focus, &:active{
+            color:$global-var_featured-color-4;
+            background:$global-var_featured-color-1;
+        }
+    }
+
+}
+
+/*------------------------------------------------------------
+   TAB PILLS (see Past Mos)
+------------------------------------------------------------*/
+
+.nav-pills > li {
+    color: black;
+
+    a {
+        color: black;
+        text-decoration: none;
+        padding: 10px 15px;
+    }
+
+    a:hover, a:focus {
+        background-color: #EBEBEB;
+    }
+
+    a:active, &.active > a, &.active a:hover, &.active a:focus {
+        background-color: black;
+        color: white;
+    }
+}
+
+/*==========================================================================
+   MOVEMBER CUSTOM GRID
+==========================================================================*/
+
+.mo-grid{
+
+    // Mo Grid should now be 100% width
+    @extend .col-md-12;
+    @extend %clearfix;
+
+    float:none;
+    padding:0;
+
+    // Client editable content can be done in tables. Hover styles are used on tr's for tabular data
+    // We need to remove the background hover state for regular Joe content. All editable content is wrapped in .mo-grid
+    table{
+        tbody, tfoot{
+            tr:hover{
+                background:none;
+            }
+        }
+    }
+
+    html.ie8 &{ float:none !important; } // Not sure why but IE8 doesn't get it
+
+}
+
+.mo-row{
+
+    margin:10px auto 30px auto;
+    @extend %clearfix;
+    clear:both;
+
+    &.no-margin{
+        margin:0 auto;
+    }
+
+}
+
+.mo-col-half, .mo-col-1third, .mo-col-2third{
+    float: left;
+    margin-left:auto;
+    margin-right:auto;
+}
+.mo-col-half{ width: 45.83%; }
+.mo-col-1third{ width: 27.78%; }
+.mo-col-2third{ width: 63.89%; }
+@media #{$global-var_mediaquery-combo-xs-sm}{
+    .mo-col-half,
+    .mo-col-1third,
+    .mo-col-2third{ width: 100%; }
+}
+
+.mo-gutter-right{
+    margin-right: 8.33%;
+}
+.mo-gutter-left{
+    margin-left: 8.33%;
+}
+@media #{$global-var_mediaquery-combo-xs-sm}{
+    .mo-gutter-right{ margin-right:0; }
+    .mo-gutter-left{ margin-left:0; }
+}
+
+$local-var_mo-inner-gutter:2%;
+.mo-inner-gutter{
+    padding-left: $local-var_mo-inner-gutter;
+    padding-right: $local-var_mo-inner-gutter;
+}
+.mo-inner-gutter-right{
+    padding-right: $local-var_mo-inner-gutter;
+}
+.mo-inner-gutter-left{
+    padding-left: $local-var_mo-inner-gutter;
+}
+
+/*==========================================================================
+   OTHER / MISC
+==========================================================================*/
+
+// --------- Labels --------- //
+//Some of these classes override the default bootstrap labels
+
+.label-fancy, .label-base{
+    @extend .label;
+    padding:6px 8px;
+    color:#000;
+    font-weight:normal;
+    @include rem(font-size, 11px);
+    @include box-shadow(inset 2px 3px 3px #000);
+    border-radius:0;
+}
+.label-fancy{
+    background:$global-var_featured-color-12;
+}
+.label-base{
+    background:#FFF;
+}
+
+// --------- Tags --------- //
+
+.tag-primary {
+    border: 2px solid #000000;
+    background: transparent;
+    margin-bottom: 5px;
+    display: inline-block;
+    text-decoration: none;
+    letter-spacing:-.1px;
+    font-weight:normal;
+    text-transform: uppercase;
+    color: #000;
+    @include rem(font-size, 10px);
+    @include rem(line-height, 21px);
+    padding:0 8px;
+    @media #{$global-var_mediaquery-lg}{
+        @include rem(line-height, 33px);
+        letter-spacing:.4px;
+        padding:0 12px;
+    }
+
+    transition: color .15s ease, background-color .15s ease, border-color .15s ease;
+    &:hover, &.active, &:focus, &:active{
+        text-decoration: none;
+        background: #000000;
+        color: #FFFFFF;
+        font-weight:normal;
+    }
+    &.disabled{
+        background: #FFF;
+        border-color: #C4C6C7;
+        color: #C4C6C7;
+        text-decoration: none;
+        cursor: not-allowed;
+        font-weight:normal;
+    }
+
+}
+
+// --------- Notes --------- //
+
+.note{
+    color:#808080;
+    @include rem(font-size, 11px);
+    @include rem(line-height, 18px);
+    @media #{$global-var_mediaquery-combo-md-lg}{
+        @include rem(font-size, 13px);
+        @include rem(line-height, 21px);
+    }
+}
+
+// --------- Feature Headings --------- //
+
+.feature-heading-1,
+%feature-heading-1 {
+    border-bottom: 1px solid $global-var_featured-color-3;
+    padding: 0 0 4px;
+    margin: 0 0 10px;
+}
+
+// --------- Negative block --------- //
+
+.negative, %negative {
+    @extend %clearfix;
+    width:100%;
+    padding:1em 1.5%;
+    margin-right:0;
+    color:#FFF;
+    background:#000;
+}
+
+// --------- Callout blocks --------- //
+
+// Common
+.callout-block, .callout-block-2,
+%callout-block, %callout-block-2{
+    @extend %clearfix;
+    clear:both;
+    padding:1em 1.5%;
+    position:relative;
+}
+
+// Featured 1
+.callout-block, %callout-block{
+    background:$global-var_featured-color-1;
+    &,h1,h2,h3,h4,h5,h6,p,ul,li{ color:#FFF; }
+    input,textarea,select{ color:$global-var_primary-font-color; }
+}
+
+// Featured 2
+.callout-block-2, %callout-block-2{
+    background:$global-var_featured-color-12;
+}
+
+.dropdown-panel{
+
+    position:absolute;
+    top:100%;left:0;
+    min-width:200px;
+    padding:15px;
+    background:$global-var_featured-color-4;
+    @include box-shadow(1px 3px 6px rgba(0, 0, 0, .3));
+    border:1px solid #CCC;
+    border:1px solid rgba(0,0,0,.1);
+    border-radius:0;
+
+    &.active, .open>&{ // Visible state
+        display:block;
+        opacity:1;
+        visibility:visible;
+    }
+
+}
+
+.dropdown-menu{
+
+    @extend .dropdown-panel;
+    padding:10px 0;
+
+    // Inner list style
+    &, ul, li{ list-style:none; margin:0; }
+    ul, li{ padding:0; }
+
+    // Sub-level links style (under a list)
+    li a{
+        @include transition(color .2s ease-out, background-color .2s linear);
+        color:#000;
+        font-weight:bold;
+        white-space:nowrap;
+        padding:6px 20px;
+        text-decoration:none;
+        width:100%;
+        display:block;
+        &:hover, &:focus, &:active{
+            color:$global-var_featured-color-4;
+            background:$global-var_featured-color-1;
+        }
+    }
+
+}
+
+// --------- Text Seperators (horizontal & vertical) --------- //
+
+.mo-text-seperator-horizontal, .mo-text-seperator-vertical {
+
+    position:relative;
+    text-transform:uppercase;
+    text-align:center;
+    color:#000;
+    font-weight:bold;
+    display:block;
+    padding:0;
+
+    &:before{
+        content:'';
+        display:block;
+        position:absolute;
+        border-style:solid;
+        border-color:$global-var_featured-color-7;
+    }
+
+    >span{
+        background:#FFF;
+        display:inline-block;
+    }
+
+}
+
+.mo-text-seperator-horizontal {
+
+    margin:2em 0;
+
+    &:before{
+        top:50%;
+        margin-top:-1px;
+        width:100%;
+        border-width:1px 0 0 0;
+    }
+
+    >span{
+        padding:0 1em;
+        position:relative;
+    }
+
+}
+
+.mo-text-seperator-vertical {
+
+    height:100%;
+    margin:0 2em;
+
+    &:before{
+        left:50%;
+        margin-left:-1px;
+        height:100%;
+        border-width:0 0 0 1px;
+    }
+
+    >span{
+        height:3em;line-height:3em;
+        width:4em;
+        position:absolute;
+        top:50%;left:50%;
+        margin-top:-1.5em;
+        margin-left:-2em;
+    }
+
+}
+
+// --------- Email like button --------- //
+
+.emailthis-button{
+
+    background:$global-var_featured-color-1;
+    color:#FFF;
+    line-height:20px;
+    @include rem(font-size, 11px);
+    padding:0 8px 0 22px;
+    text-decoration:none;
+    display:inline-block;
+    border-radius:5px;
+    position:relative;
+    font-weight:normal;
+
+    &:before{
+        @extend .mo-icon:before;
+        @extend .mo-icon-email:before;
+        color:#FFF;
+        position:absolute;
+        line-height:20px;
+        left:4px;top:0;
+        @include rem(font-size, 16px); 
+    }
+    &:active, &:focus{
+        text-decoration:underline;
+    }
+    &:hover {
+        color: #fff;
+        font-weight: normal;
+
+    }
+}
+
+// --------- Tab Pills - see Past Mos --------- //
+
+.nav-pills > li {
+    color: black;
+
+    a {
+        color: black;
+        text-decoration: none;
+        padding: 10px 15px;
+    }
+
+    a:hover, a:focus {
+        background-color: #EBEBEB;
+    }
+
+    a:active, &.active > a, &.active a:hover, &.active a:focus {
+        background-color: black;
+        color: white;
+    }
+}
+
+// --------- Overflowing outer container --------- //
+// This "helper" class is used to force the width of the container to overflow and adapt to a ".container" parent div
+// Please keep this section at the end, it gives more priority to the CSS rule
+.overflows-container, %overflows-container{
+    width:auto;
+    // lg (default)
+    padding-left:$global-var_site-layout-padding_lg/2;
+    padding-right:$global-var_site-layout-padding_lg/2;
+    margin-left:-$global-var_site-layout-padding_lg/2;
+    margin-right:-$global-var_site-layout-padding_lg/2;
+    // md
+    @media #{$global-var_mediaquery-md}{
+    padding-left:$global-var_site-layout-padding_md/2;
+    padding-right:$global-var_site-layout-padding_md/2;
+    margin-left:-$global-var_site-layout-padding_md/2;
+    margin-right:-$global-var_site-layout-padding_md/2;
+    }
+    // sm
+    @media #{$global-var_mediaquery-sm}{
+    padding-left:$global-var_site-layout-padding_sm/2;
+    padding-right:$global-var_site-layout-padding_sm/2;
+    margin-left:-$global-var_site-layout-padding_sm/2;
+    margin-right:-$global-var_site-layout-padding_sm/2;
+    }
+    // xs
+    @media #{$global-var_mediaquery-xs}{
+    padding-left:$global-var_site-layout-padding_xs/2;
+    padding-right:$global-var_site-layout-padding_xs/2;
+    margin-left:-$global-var_site-layout-padding_xs/2;
+    margin-right:-$global-var_site-layout-padding_xs/2;
+    }
+}
+// This variant overflows only when reaching xs/sm:
+.overflows-container_xs-sm, %overflows-container_xs-sm{
+    width:auto;
+    // sm
+    @media #{$global-var_mediaquery-sm}{
+    padding-left:$global-var_site-layout-padding_sm/2;
+    padding-right:$global-var_site-layout-padding_sm/2;
+    margin-left:-$global-var_site-layout-padding_sm/2;
+    margin-right:-$global-var_site-layout-padding_sm/2;
+    }
+    // xs
+    @media #{$global-var_mediaquery-xs}{
+    padding-left:$global-var_site-layout-padding_xs/2;
+    padding-right:$global-var_site-layout-padding_xs/2;
+    margin-left:-$global-var_site-layout-padding_xs/2;
+    margin-right:-$global-var_site-layout-padding_xs/2;
+    }
+}
+// Relates to full-width layouts @MODEV-829
+.full-width-wrapper {
+    padding-top: 5%;
+    padding-bottom: 5%;
+}

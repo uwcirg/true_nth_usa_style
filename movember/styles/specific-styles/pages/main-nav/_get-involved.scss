@@ -1,0 +1,40 @@
+/* GET INVOLVED SCSS */
+/*  -------------------
+    GET INVOLVED STYLES
+    /get-involved/
+    ------------------- */
+
+    .get-involved-landing-partial .cta-container {
+        *zoom: 1;
+        position: relative; /* Intent: sizing context for children */
+        margin: 0 auto;
+        margin-top: 30px;
+        padding-bottom: 20px;
+        margin-bottom: 15px;
+        z-index: 0; /* setup z-index context */
+    }
+    .get-involved-landing-partial .cta-container:after {
+        content:".";display:block;height:0;font-size:0;visibility:hidden;clear:both;
+    }
+    .get-involved-landing-partial .cta-container .cta-or {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: -1;
+        font-size: 85%;
+        text-align: center;
+        font-weight: bold;
+        line-height: 3;
+        text-transform: uppercase;
+    }
+    .get-involved-landing-partial .cta-container .cta {
+        padding: 0 8.3%;
+        float: left;
+        text-align: center;
+        width: 33%;
+    }
+    .get-involved-landing-partial .cta-container .cta .button {
+        min-width: 101px; /* measured from Movember_dot_com_V3-Urchin.pdf (assumes 13px horiz padding) */
+        margin-bottom: 10px; /* includes bevel */
+    }

@@ -1,0 +1,27 @@
+/* Specific Styles: Network and Team Memberships - only visible for exclusive teams and networks as captain / admin */
+
+.pending-requests {
+
+    .js-membership-requests-members a {
+        text-transform: uppercase;
+    }
+
+    .request-row .decision a {
+        @include rem(font-size, 16px);
+
+        &.disabled {
+            color: #CCCCCC;
+        }
+    }
+
+    // We need to pad the top of this a little...
+    h5.network-join-requests-team {
+        padding-top: 10px;
+    }
+
+    // Hide the pagination 'showing' summary as it is non-contextual (there is a filter, it's wierd)
+    .paginationShowing {
+        display: none;
+    }
+
+}

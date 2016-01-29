@@ -1,0 +1,364 @@
+/*------------------------------------------------------------
+   PARTNERS
+------------------------------------------------------------*/
+
+#footer-partners {
+
+    background: #F8F8F5;
+    border-top: 1px solid #E6E6E6;
+    padding: 15px;
+
+    display: none;
+    visibility: hidden; // Normally it is hidden ...
+    body.ads-enabled & {
+        display: block;
+        visibility: visible;
+    }
+    // ... unless any partner is actually visible
+    body.ads-enabled-0 & {
+        display: none;
+        visibility: hidden;
+    }
+    // If zero partners are active, do not show the container
+
+    h3 {
+        color: #000;
+        @include rem('font-size', 11px);
+        text-transform: uppercase;
+        line-height: 16px;
+        padding-bottom: 10px;
+    }
+
+    .logo {
+        height: 70px;
+        width: 100px;
+        background: transparent;
+        margin: 0 10px 10px 0;
+    }
+
+    #footer-partners-major {
+        @media #{$global-var_mediaquery-xs} {
+            text-align: center;
+        }
+    }
+
+    #footer-partners-funding {
+        text-align: right;
+        .logo {
+            width: 100%;
+        }
+    }
+}
+
+
+/*------------------------------------------------------------
+   FOOTER ELEMENTS
+------------------------------------------------------------*/
+
+#ft {
+
+    background: #000;
+    padding:15px;
+
+}
+
+#ft_languages,
+#ft_nav,
+#ft_notes {
+
+    color: #FFF;
+    line-height:1;
+    margin-bottom:17px;
+
+    @media #{$global-var_mediaquery-xs}{
+        padding:0;
+        margin-bottom:0;
+    }
+
+}
+// Margins are a bit tricky here, so let's define them separately:
+#ft_languages{
+    margin-top:4px;
+    @media #{$global-var_mediaquery-xs}{
+        margin-top:13px;
+    }
+}
+#ft_nav{
+    margin-top:3px;
+    @media #{$global-var_mediaquery-xs}{
+        margin-top:15px;
+    }
+}
+#ft_languages+#ft_nav{ // This is the case when languages are present
+    margin-top:1px;
+    @media #{$global-var_mediaquery-xs}{
+        margin-top:2px;
+    }
+}
+#ft_notes{
+    margin-top:3px;
+    @media #{$global-var_mediaquery-xs}{
+        margin-top:14px;
+    }
+}
+
+#ft_nav, #ft_languages {
+
+    @include rem('font-size', 14px);
+
+    ul,li{padding:0;margin:0;}
+    ul{
+        list-style:none;
+        float:right;
+    }
+    li{
+        float:left;
+        border-left: 1px solid #FFF;
+        margin-left:10px;
+        padding-left:10px;
+        &:first-child{
+            border:none;
+            margin-left:0;
+            padding-left:0;
+        }
+    }
+    @media #{$global-var_mediaquery-xs}{
+        li{margin-top:5px;margin-bottom:5px;}
+        ul{float:left;}
+    }
+
+    a {
+        display:block;
+        font-weight: normal;
+        text-decoration: none;
+        color:#FFF;
+
+        &:hover, &:focus, &:active {
+            text-decoration: underline;
+        }
+    }
+
+}
+
+#ft_notes{
+    text-align:right;
+    @include rem('font-size', 11px);
+    @media #{$global-var_mediaquery-xs}{
+        text-align:left;
+    }
+}
+
+#ft_joinus {
+
+    line-height:1;
+    padding:0;
+
+    a {
+        display: block;
+        height: 20px;
+        width: 20px;
+        overflow: hidden;
+        text-indent: -9999px;
+        transition: background .2s ease;
+    }
+
+    .campaign-footer-icon{
+
+        float: left;
+        margin-right: 14px;
+
+    }
+
+    // Important: keep the following forced size, cause otherwise the FB iframe will overflow out and it will create an annoying horizontal scroll
+    .campaign-footer-icon_like{
+        max-width:85px; // (note: usually the size of the FB like button is ~77px, however keep this one cause it may vary depending on the rendering engine)
+        overflow:hidden;
+        margin-right: 0px; // Prevent double line on 340px screens
+    }
+    
+    // Twitter
+    #campaign-footer-icon-tt a {
+        background-image: inline-image("/icons/icon-footer-tw-00.png");
+
+        &:hover { background-image: inline-image("/icons/icon-footer-tw-01.png"); }
+    }
+
+    // Linked In
+    #campaign-footer-icon-li a {
+        background-image: inline-image("/icons/icon-footer-in-00.png");
+
+        &:hover { background-image: inline-image("/icons/icon-footer-in-01.png"); }
+    }
+
+    // You Tube
+    #campaign-footer-icon-yt a {
+        background-image: inline-image("/icons/icon-footer-yt-00.png");
+
+        &:hover { background-image: inline-image("/icons/icon-footer-yt-01.png"); }
+    }
+
+    // Facebook
+    #campaign-footer-icon-fb a {
+        background-image: inline-image("/icons/icon-footer-fb-00.png");
+
+        &:hover { background-image: inline-image("/icons/icon-footer-fb-01.png"); }
+    }
+
+    // Instagram
+    #campaign-footer-icon-ig a {
+        background-image: inline-image("/icons/icon-footer-ig-00.png");
+
+        &:hover { background-image: inline-image("/icons/icon-footer-ig-01.png"); }
+    }
+
+    // Flikr
+    #campaign-footer-icon-fr a {
+        background-image: inline-image("/icons/icon-footer-fl-00.png");
+
+        &:hover { background-image: inline-image("/icons/icon-footer-fl-01.png"); }
+    }
+
+    // Google Plus
+    #campaign-footer-icon-gp a {
+        background-image: inline-image("/icons/icon-footer-gp-00.png");
+
+        &:hover { background-image: inline-image("/icons/icon-footer-gp-01.png"); }
+    }
+
+}
+
+/*------------------------------------------------------------
+   FAT-FOOTER
+------------------------------------------------------------*/
+
+.site-footer-handle {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    margin-left: -18px;
+
+    a {
+        margin: 0 auto;
+        display: block;
+        width: 25px;
+        height: 25px;
+        line-height: 25px;
+        text-align: center;
+        background: #FFF;
+        position: relative;
+
+        span {
+            color: #000;
+        }
+    }
+}
+
+#site-fat-footer-container {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 0;
+    left: 0;
+    overflow: hidden;
+    @media #{$global-var_mediaquery-xs}{
+        position: relative;
+    }
+
+    &.open .site-footer-handle a {
+        background: #000;
+
+        span.fa-plus { display: none; }
+        span.fa-minus { display: inline-block; }
+        span {
+            color: #FFF;
+        }
+    }
+
+    .site-footer-handle {
+        position: static;
+
+        a {
+            background: #FFF;
+            height: 25px;
+            width: 25px;
+            line-height: 25px;
+            display: block;
+            margin: 0 auto;
+            overflow: hidden;
+            text-align: center;
+
+            span {
+                color: white;
+
+                &.fa-minus { display: none; }
+                &.fa-plus { display: inline-block; }
+            }
+        }
+    }
+
+    .site-fat-footer {
+        background: $global-var_featured-color-13;
+
+        .container {
+            padding-top: 30px;
+            padding-bottom: 30px;
+
+            .footer-ornament-column {
+                position: static;
+
+                .cms-element-type-image {
+                    position: absolute;
+                    top: 50%;
+                    margin-top: -72px;
+                    margin-left: 30px;
+                    @media #{$global-var_mediaquery-sm}{
+                        margin-left: 0;
+                    }
+                    @media #{$global-var_mediaquery-xs}{
+                        right:10px;
+                        top:60px;
+                        margin:0;
+                    }
+                }
+            }
+
+            h3,
+            a {
+                text-decoration: none;
+                text-transform: uppercase;
+                font-weight: normal;
+                @include rem('font-size', 12px);
+                @include rem('line-height', 12px);
+                color: #FFF;
+            }
+
+            h3,
+            h3 a {
+                margin: 10px 0 0;
+                padding: 0;
+                letter-spacing: 0;
+                font-weight:bold;
+            }
+
+            ul {
+                padding: 0;
+                margin: 0;
+                list-style: none;
+
+                li,
+                li a {
+                    margin: 0;
+                    padding: 0;
+                    color: white;
+                    @include rem('line-height', 12px);
+                }
+            }
+
+            h3 a, li a{
+                &:hover, &:active, &:focus {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,167 @@
+/*------------------------------------------------------------
+   MERCHANDISE ITEM GRID - GLOBAL
+------------------------------------------------------------*/
+
+.merchandise-item-grid {    
+
+    @extend %clearfix;
+    margin:25px 0;
+
+    .merchandise-item-container {
+        margin-bottom: 10px;
+    }
+
+    .merchandise-item-container-inner {
+        text-align: center;
+    }
+
+    .merchandise-item_title {
+        h3 { 
+            a { 
+                display: block;
+                font-weight: normal;
+                word-wrap: break-word;
+            }
+        }        
+    }
+    
+    .merchandise-item_image {
+        width: 209px;
+        height: 188px;
+        margin: 10px auto;
+        overflow: hidden;
+
+        img {
+            height: 100%;
+            width: auto;
+
+        }
+    }
+}
+
+/*------------------------------------------------------------
+   MERCHANDISE - INDEX PAGE
+------------------------------------------------------------*/
+
+body.merchandise-index{
+
+    .section_merchandise-items {
+        margin:25px 0;
+        .section-header{
+            margin-bottom:25px;
+        }
+    }
+
+    .merchandise-index {
+        #crumb-header { display: none; }
+        h1 { margin: 0 0 20px 0; }
+    }
+
+    .merchandise {
+        .partial_home {
+            #bd_home-splash { height: 395px; }
+        }
+    }
+}
+
+/*------------------------------------------------------------
+   MERCHANDISE VIEW - PAGE
+------------------------------------------------------------*/
+
+body.merchandise-view {
+
+    .merchandise-form{
+        .button{
+            margin-top:25px;
+        }
+    }
+}
+
+/*------------------------------------------------------------
+   MERCHANDISE ORDER (GENERAL) - PAGE
+------------------------------------------------------------*/
+
+body.merchandise-order {
+
+    #merchandise-order-promo-instructions{
+        margin-bottom:10px;
+    }
+
+    .merchandise-items{
+
+        margin-bottom:25px;
+
+        .merchandise-item-image{
+            text-align:center;
+        }
+
+        .merchandise-item-quantity{
+            margin-bottom:25px;
+        }
+
+    }
+
+    .this-or-that-container{
+        .item, .or{
+            float:left;
+            margin-right:8px;
+            line-height:35px;
+        }
+    }
+
+    .merchandise-item-cant-order {
+        margin-top: 15px;
+    }
+
+}
+
+/*------------------------------------------------------------
+   MERCHANDISE ORDER (HEALTHPACK) - PAGE
+------------------------------------------------------------*/
+
+body.merchandise-order-healthpack {
+
+    #merchandise-order-healthpack-instructions{
+        margin-bottom:10px;
+    }
+
+    .merchandise-items{
+
+        margin-bottom:25px;
+
+        .merchandise-item-image{
+            text-align:center;
+        }
+
+        .merchandise-item-quantity{
+            margin-bottom:25px;
+        }
+
+    }
+
+    .this-or-that-container{
+        .item, .or{
+            float:left;
+            margin-right:8px;
+            line-height:35px;
+        }
+    }
+
+}
+
+/*------------------------------------------------------------
+   MERCHANDISE ORDER COMPLETED - PAGE
+------------------------------------------------------------*/
+
+#merchandise-order-healthpack-completed,
+#merchandise-order-promo-completed{
+    margin-bottom:25px;
+}
+
+#merchandise-order-table{
+    margin-bottom:25px;
+}
+
+#merchandise-delivery-to{
+    margin-bottom:25px;
+}

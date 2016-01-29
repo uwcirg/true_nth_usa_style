@@ -1,0 +1,210 @@
+/*==========================================================================
+   MOSPACE NETWORKS PAGE
+==========================================================================*/
+
+.mospace-networks {
+    // Find a network
+    .mospace-networks_find-a-network {
+        padding-top: 20px;
+        margin-top: 40px;
+        border-top: 1px solid black;
+        input[type=text] {
+            width: 100%;
+        }
+        .mospace-networks_search-info-wrapper {
+            text-align: right;
+            padding-top: 3px;
+            @media #{$global-var_mediaquery-xs}{ 
+                padding-top: 9px;
+            }
+        }
+    }
+    // Your Networks
+    .mospace-networks_your-networks {
+        border-bottom: 1px solid black;
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+        // If member has no networks
+        &.mospace-networks_your-networks_no-networks-joined .mospace-networks_find-a-network {
+            border: none;
+            padding-top: 0;
+            margin-top: 0;
+        }
+    }
+    //------- SEARCH RESULTS --------//
+    &.mospace-networks_search-page .mospace-networks_find-a-network {
+        border: none;
+        padding-top: 0;
+        margin-top: 0;
+    }
+    .mospace-networks_search_showing-for {
+        margin-bottom: 20px;
+        border-bottom: 1px solid black;
+        text-align: center;
+        padding-bottom: 20px;
+        padding-top: 14px;
+        @include rem('font-size', 20px);
+        span {
+            font-weight: bold;
+        }
+    }
+    // Search result block
+    .mospace-networks_search-result {
+        @extend .row;
+        margin-bottom: 20px;
+        
+        // Image
+        .mospace-networks_search-result_image {
+            margin-bottom: 10px;
+            text-align: center;
+
+            a {
+                display: block;
+                width: 100%;
+                height: 182px;
+                position: relative;
+                img {
+                    width: 182px;
+                    height: 182px;
+                }
+            }
+            .mospace-networks_search-result_image-overlay {
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                width: 100%;
+                padding: 10px;
+                margin: 0;
+                text-align: center;
+                @include rem('line-height', 1.4rem);
+                &.mospace-networks_search-result_image-overlay-admin {
+                    background: $global-var_featured-color-2;
+                    background: rgba($global-var_featured-color-2, 0.8);
+                    color: $global-var_featured-color-4;
+                }
+                &.mospace-networks_search-result_image-overlay-pending {
+                    background: $global-var_featured-color-4;
+                    background: rgba($global-var_featured-color-4, 0.85);
+                    color: #606062;
+                }
+                &.mospace-networks_search-result_image-overlay-member {
+                    background: $global-var_featured-color-1;
+                    background: rgba($global-var_featured-color-1, 0.9);
+                    color: white;
+                }
+            }
+        }
+        // Description & Actions
+        .mospace-networks_search-result_content {
+            overflow: hidden;
+            // Text Wrapper
+            
+            // Share/Edit
+            .mospace-networks_search-result_share-edit {
+                padding: 20px 0 20px 0;
+                @include clearfix;
+                & > a {
+                    margin-right: 10px;
+                    text-decoration: none;
+                    span {
+                        text-decoration: underline;
+                    }
+                    &:hover span {
+                        text-decoration: none;
+                    }
+                }
+
+                // Share
+                .mospace-networks_search-result_share-edit_share {
+                    position: relative;
+                    padding-left: 30px;
+                    &:before {
+                        position: absolute;
+                        top: -1px;
+                        left: -2px;
+                        color: black;
+                        text-decoration: none !important;
+                        @include rem('font-size', 32px);
+                        @extend .mo-icon:before;
+                        @extend .mo-icon-email:before;
+                    }
+
+                }
+                // Leave
+                .mospace-networks_search-result_share-edit_leave,
+                .mospace-networks_search-result_share-edit_leave:hover {
+                    position: relative;
+                    padding-left: 30px;
+                    &:before {
+                        position: absolute;
+                        top: -5px;
+                        left: 1px;
+                        color: rgba(50,50,50,1);
+                        text-decoration: none !important;
+                        @include rem('font-size', 2.6rem);
+                        @extend .fa;
+                        @extend .fa-eject:before;
+                    }
+                }
+                // Edit
+                .mospace-networks_search-result_share-edit_edit {
+                    position: relative;
+                    padding-left: 30px;
+                    &:before {
+                        position: absolute;
+                        top: -3px;
+                        left: 0px;
+                        color: black;
+                        text-decoration: none !important;
+                        @include rem('font-size', 2.8rem);
+                        @extend .fa;
+                        @extend .fa-edit:before;
+                    }
+                }
+
+            }
+
+            @media #{$global-var_mediaquery-combo-xs-sm}{ 
+
+                .mospace-networks_search-result_share-edit {
+                    text-align: center;
+                }
+
+                .add-margin{
+                    margin-bottom: 15px;
+                }
+            }
+
+
+
+            // Footer
+            .mospace-networks_search-result_footer {
+                text-align: center;
+                // Amount Raised, Funds Raised
+                .mospace-networks_search-result_footer_raised-amount,
+                .mospace-networks_search-result_footer_ranking {
+                    color: $global-var_featured-color-3;
+                    font-weight: 100;
+                    line-height: 1;
+                    @include rem('font-size', 3.6rem);
+                }
+                // Label
+                .mospace-networks_search-result_footer_raised-label,
+                .mospace-networks_search-result_footer_ranking-label {
+                    text-transform: uppercase;
+                    font-weight: bold;
+                    @include rem('font-size', 12px);
+                }
+            }
+        }
+    }
+}
+
+// Mospace team page, doesn't need a new file
+.team-index {
+    .join-team {
+        .mo-text-seperator-horizontal {
+            @include rem('margin-top', 1rem);
+        }
+    }
+}

@@ -1,0 +1,139 @@
+// BOOTSTRAP IMPORT & OVERRIDES
+// This file imports the bootstrap library. It also overrides some of the default vars of the library (grid system, media-queries, global elements)
+// IMPORTANT: Note that some of the default values for the overrides are set in "global-vars"
+
+/*==========================================================================
+   LIBRARY VARS OVERRIDES
+==========================================================================*/
+
+// --------- Responsive grid paddings --------- //
+
+// This is needed because we are using a gutter which is in "%"
+$container-tablet: 100%;
+$container-sm: 100%;
+$container-desktop: 100%;
+$container-md: 100%;
+$container-large-desktop: 100%;
+$container-lg: 100%;
+// Override the bootstrap's variable:
+$grid-gutter-width: $global-var_site-grid-padding;
+
+// --------- Override the bootstrap's responsive breakpoints --------- //
+
+$screen-xs: $global-var_site-layout-min-width;
+$screen-xs-min: $global-var_site-layout-min-width;
+$screen-phone: $global-var_site-layout-min-width;
+
+$screen-sm: $global-var_xs-sm-breakpoint;
+$screen-sm-min: $global-var_xs-sm-breakpoint;
+$screen-tablet: $global-var_xs-sm-breakpoint;
+
+$screen-md: $global-var_sm-md-breakpoint;
+$screen-md-min: $global-var_sm-md-breakpoint;
+$screen-desktop: $global-var_sm-md-breakpoint;
+
+$screen-lg: $global-var_md-lg-breakpoint;
+$screen-lg-min: $global-var_md-lg-breakpoint;
+$screen-lg-desktop: $global-var_md-lg-breakpoint;
+
+/*==========================================================================
+   LIBRARY IMPORT
+   The following code was copied from the file "../bower/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.scss"
+   Be careful, for future updates you will need to re-copy the code from that file
+==========================================================================*/
+
+// Core variables and mixins
+@import "../vendor/bower/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap/variables";
+@import "../vendor/bower/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap/mixins";
+
+// Reset and dependencies
+@import "../vendor/bower/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap/normalize";
+@import "../vendor/bower/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap/print";
+// @import "../vendor/bower/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap/glyphicons"; // glyphicons are replaced by font-awesome
+
+// Core CSS
+@import "../vendor/bower/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap/scaffolding";
+@import "../vendor/bower/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap/type";
+@import "../vendor/bower/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap/code";
+@import "../vendor/bower/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap/grid";
+@import "../vendor/bower/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap/tables";
+@import "../vendor/bower/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap/forms";
+@import "../vendor/bower/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap/buttons";
+
+// Components
+@import "../vendor/bower/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap/component-animations";
+@import "../vendor/bower/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap/dropdowns";
+@import "../vendor/bower/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap/button-groups";
+@import "../vendor/bower/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap/input-groups";
+@import "../vendor/bower/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap/navs";
+@import "../vendor/bower/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap/navbar";
+//@import "../vendor/bower/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap/breadcrumbs"; // not used
+//@import "../vendor/bower/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap/pagination"; // not used
+//@import "../vendor/bower/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap/pager"; // not used
+@import "../vendor/bower/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap/labels";
+//@import "../vendor/bower/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap/badges"; // not used
+//@import "../vendor/bower/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap/jumbotron"; // not used
+//@import "../vendor/bower/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap/thumbnails"; // not used
+@import "../vendor/bower/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap/alerts";
+@import "../vendor/bower/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap/progress-bars"; // not used
+@import "../vendor/bower/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap/media";
+@import "../vendor/bower/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap/list-group";
+@import "../vendor/bower/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap/panels";
+//@import "../vendor/bower/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap/responsive-embed"; // not used
+//@import "../vendor/bower/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap/wells"; // not used
+@import "../vendor/bower/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap/close";
+
+// Components w/ JavaScript
+@import "../vendor/bower/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap/modals";
+@import "../vendor/bower/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap/tooltip";
+@import "../vendor/bower/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap/popovers";
+@import "../vendor/bower/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap/carousel";
+
+// Utility classes
+@import "../vendor/bower/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap/utilities";
+@import "../vendor/bower/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap/responsive-utilities";
+
+/*==========================================================================
+   BOOTSTRAP ELEMENTS OVERRIDES
+==========================================================================*/
+
+.container{
+
+    // --------- Container's width --------- //
+
+    // Set min/max widh for the fluid container:
+    min-width: $global-var_site-layout-min-width;
+    max-width: $global-var_site-layout-max-width;
+
+    // The width in between is always fluid:
+    width: 100%;
+
+    // --------- Container's padding --------- //
+
+    // Lateral layout paddings - lg (default)
+    padding-left: $global-var_site-layout-padding_lg / 2;
+    padding-right: $global-var_site-layout-padding_lg / 2;
+    // Lateral layout paddings - md
+    @media #{$global-var_mediaquery-md}{
+        padding-left: $global-var_site-layout-padding_md / 2;
+        padding-right: $global-var_site-layout-padding_md / 2;
+    }
+    // Lateral layout paddings - sm
+    @media #{$global-var_mediaquery-sm}{
+        padding-left: $global-var_site-layout-padding_sm / 2;
+        padding-right: $global-var_site-layout-padding_sm / 2;
+    }
+    // Lateral layout paddings - xs
+    @media #{$global-var_mediaquery-xs}{
+        padding-left: $global-var_site-layout-padding_xs / 2;
+        padding-right: $global-var_site-layout-padding_xs / 2;
+    }
+
+}
+
+.modal {
+    will-change: transform, translate, opacity;
+    // Reduce the slide-in animation-offset. It was -25% and such a big animation is kinda annoying
+    &.fade .modal-dialog { @include translate(0, -5%); }
+    &.in .modal-dialog { @include translate(0, 0); }
+}

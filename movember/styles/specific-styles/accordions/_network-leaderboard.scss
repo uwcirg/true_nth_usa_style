@@ -1,0 +1,20 @@
+/*==========================================================================
+   MOSPACE > ACCORDION > LEADERBOARD (individual & team)
+==========================================================================*/
+
+.partial_network-leaderboard {
+
+    .individual-wrapper,
+    .team-wrapper {
+
+        .name {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .amountRaised {
+            text-align: right;
+        }
+    }
+}

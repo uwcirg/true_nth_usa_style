@@ -1,0 +1,70 @@
+/* PAGES > MOSPACE > PAST-MOS */
+
+#mospace-page-past-campaigns {
+
+    h2.participation {
+        margin-bottom: 20px;
+    }
+
+    .summary-badge {
+        color:$global-var_featured-color-4; // Cream
+        background: $global-var_featured-color-1;
+        border-radius:50%;
+        display: block;
+        margin:0 auto;
+        width:175px;
+        height:175px;
+        line-height:175px;
+        font-weight:bold;
+        text-align:center;
+        @include rem(font-size, 144px);
+        @include clearfix;
+        font-family: $global-var_featured-font-family-1; // Imported from Google-fonts
+    }
+
+    .summary-details {
+        padding-top: 35px;
+    }
+
+    .donation-summary {
+        padding-top: 10px;
+        @include rem(font-size, 18px);
+
+        .number {
+            color: $global-var_featured-color-8;
+        }
+    }
+
+    .past-campaign-logo {
+        padding: 20px 0px;
+    }
+
+    // Additional styling for pills
+    .nav-pills {
+        padding-top: 20px;
+    }
+
+    .nav-pills > li {
+        a {
+            margin: 0px 1px;
+            padding: 5px 25px;
+        }
+    }
+
+    table#individual, table#team-members {
+        margin-top: 30px;
+    }
+
+    .panel-heading a {
+        text-decoration: none;
+    }
+
+    .your-donations {
+        margin-top: 10px; // We need to counter the -10 top of mospace-accordion
+    }
+
+    .your-donations, .team-donations {
+        border-top: 1px solid black;
+    }
+}
+

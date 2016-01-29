@@ -1,0 +1,20 @@
+// --------- Typehead CSS --------- //
+
+.tt-dataset{
+    background: #F8F8F5;
+    @include box-shadow(1px 3px 6px rgba(0, 0, 0, .3));
+    min-width:180px;
+    position: relative;
+    top: -10px;
+}
+.tt-selectable{
+    padding:10px 15px 10px 15px;
+    margin: 0;
+}
+
+.tt-selectable:hover{
+    cursor: pointer;
+    background: #626E7A;
+    color: #fff;
+    @include transition(color .2s ease-out, background-color .2s linear);
+}

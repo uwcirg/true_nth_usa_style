@@ -1,0 +1,9 @@
+/*==========================================================================
+   FONT AWESOME IMPORT & OVERRIDES
+==========================================================================*/
+
+// Override the relative path to the fonts
+$fa-font-path : "../../vendor/bower/font-awesome/fonts";
+
+// Now, import the library!
+@import "../vendor/bower/font-awesome/scss/font-awesome.scss";

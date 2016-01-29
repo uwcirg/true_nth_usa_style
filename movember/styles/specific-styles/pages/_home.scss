@@ -1,0 +1,526 @@
+/*==========================================================================
+   CAROUSEL
+==========================================================================*/
+
+.partial_home {
+    position: relative;
+    background: #FFFFFF; // background white for better transistion
+    overflow: hidden; // prevent overflow in the banner
+
+    #bd_home-splash {
+        position: relative;
+        overflow: hidden;
+        width:100%;
+        z-index:9;
+
+        // --------- Define fixed-heights for each breakpoint --------- //
+        transition:height .6s ease;
+        height:264px; // xs
+        @media #{$global-var_mediaquery-sm}{
+            height:462px; // sm
+        }
+        @media #{$global-var_mediaquery-md}{
+            height:454px; // md
+        }
+        @media #{$global-var_mediaquery-lg}{
+            height:470px; // lg
+        }
+        &.youtube-video-launched{
+            height:180px; // xs
+            @media #{$global-var_mediaquery-sm}{
+                height:432px; // sm
+            }
+            @media #{$global-var_mediaquery-md}{
+                height:576px; // md
+            }
+            @media #{$global-var_mediaquery-lg}{
+                height:658px; // lg
+            }
+        }
+
+
+        .splash-tile {
+            width: 100%;
+
+            .sm-js-cmsitem {
+                width: 100%; // samurai makes its spans relative as you hover -- but img.splash relies on a parent of this to get its sizing
+                height: 100%;
+            }
+
+            .hero-tile-container {
+                a{ display:block; }
+                picture, img.splash {
+                    width: 100%; height: auto; // seems redundant to setting opposite edges coords, but it's actually needed for IMG :|
+                }
+            
+                .mo-txt-on-img--text{
+                    
+                    .btn-base{
+                        margin-bottom: 10px;
+                    }
+
+                    h2, p{
+                        padding: 0 7px 0 7px;
+                    }
+
+                    ul{
+                        padding-right: 0;
+                        margin-left: 0;
+                    }
+                }
+
+            }
+
+            // Hidden tile style:
+            visibility:hidden;
+            opacity:0;
+            position:absolute;
+            top:0;bottom:0;left:0;right:0;
+            transition: visibility .6s ease-out, opacity .6s ease-out;
+
+            // Visible tile style:
+            &.active{
+                visibility:visible;
+                opacity:1;
+                position:relative;
+            }
+        }
+
+        // --------- Special slide animation --------- //
+        // This CSS3 animation is used only when there is a touch-swipe event
+        &.slide-effect{
+            .splash-tile{
+                transition: visibility 1s ease-out, opacity 1s ease-out, left .6s ease-out, right .6s ease-out;
+            }
+            &.left-to-right .splash-tile{
+                left:-100%;
+                &.active{
+                    left:0;
+                }
+            }
+            &.right-to-left .splash-tile{
+                right:-100%;left:auto;
+                &.active{
+                    right:0;
+                }
+            }
+        }
+
+        /*------------------------------------------------------------
+           FIRST SLIDE
+        ------------------------------------------------------------*/
+        
+        #firsttime-slide {
+
+            // background hack way to center
+            background-size: cover;
+
+            // Title and text
+            .firsttime-slide_left-text {
+                position: absolute;
+                top: 90px;
+                left: 15%;
+                color: #000000;
+                text-align: center;
+                text-transform: uppercase;
+                width: 325px;
+
+                .firsttime-slide_title {
+                    @include rem('font-size', 55px);
+                    @include rem('line-height', 50px);
+                    font-weight: bold;
+                }
+
+                .firsttime-slide_text {
+                    @include rem('font-size', 11px);
+                    @include rem('line-height', 11px);
+                    font-weight: bold;
+                    padding: 10px 25px;
+                }
+            }
+
+            // Actions on right
+            .firsttime-slide_actions {
+                position: absolute;
+                left: 55%;
+                top: 0;
+
+                .firsttime-slide_map {
+                    width: 420px;
+                    height: 367px;
+                    background-image: url('../../images/home-carousel/home-page_carousel_firsttime-slide.png');
+                    background-position: 0 0;
+                    overflow: hidden;
+                    position: relative;
+                    
+                    .firsttime-slide_text-container {
+                        display: table;
+                        table-layout: fixed;
+                        position: absolute;
+                        overflow: hidden;
+                        
+                        &#firsttime-slide_register-text {
+                            height: 150px;
+                            width: 150px;
+                            top: 46px;
+                            left: 5px;
+                        }
+
+                        &#firsttime-slide_donate-text {
+                            height: 180px;
+                            width: 180px;
+                            top: 43px;
+                            left: 229px;
+                        }
+
+                        &#firsttime-slide_find-text {
+                            height: 100px;
+                            width: 190px;
+                            top: 227px;
+                            left: 86px;
+                        }
+
+                        span {
+                            display: table-cell;
+                            max-width: 100%;
+                            vertical-align: middle;
+                            color: #000;
+                            text-transform: uppercase;
+                            text-align: center;
+                            font-weight: normal;
+                            letter-spacing: 1px;
+                            text-overflow: ellipsis;
+                            font-weight: bold;
+                            @include rem('font-size', 14px);
+                            @include rem('line-height', 14px);
+                            @include transition(all .15s);
+                        }
+
+                        &.active span {
+                            color: #d2d1d9;
+                        }
+                    }
+
+                    img {
+                        position: relative;
+                        z-index: 1;
+                        height: 100%;
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+
+    /*------------------------------------------------------------
+       SPLASH CONTROLS
+    ------------------------------------------------------------*/
+    
+    // To use on all the buttons
+    @mixin carousel-button {
+        background: black;
+        color: white;
+        text-decoration: none;
+        margin-right: 5px;
+        height: 25px;
+        padding: 0;
+        width: 25px;
+        display: block;
+        float: left;
+        text-align: center;
+        @include rem('font-size', 12px);
+        @include rem('line-height', 25px);
+
+        span {
+            color: white;
+        }
+
+        &:hover {
+            background: rgb(100, 100, 100);
+        }
+
+        &.active {
+            background: #FFFFFF;
+            color: #000000;
+            outline: 0;
+        }
+
+        &.disabled,
+        &.disabled span {
+            color: rgb(100, 100, 100);
+
+            &:hover {
+                cursor: default;
+                background: black
+            }
+        }
+    }
+
+    #splash-controls-wrapper {
+        position: absolute;
+        width: 100%;
+        bottom: 10px;
+        left: 10px;
+        @media #{$global-var_mediaquery-combo-xs-sm}{
+            position:relative;
+            bottom:0;
+            left:0;
+            display:table;
+            margin:10px auto;
+        }
+
+        #splash-controls {
+            @include clearfix;
+            //position: relative;
+            //padding-left: 30px;
+            display: table;
+            width: auto;
+            margin-right: auto;
+            margin-left: auto;
+            #splash-control-buttons,
+            #splash-control-links {
+                float: left;
+            }
+
+            // Youtube Buttons
+            #splash-control-buttons a {
+                @include carousel-button;
+
+                &#splash-control-buttons-play {
+
+                    .fa-pause { display: none; }
+
+                    &.launched {
+                        .fa-play { display: none; }
+                        .fa-pause { display: inline; }
+                    }
+
+                    &.paused {
+                        .fa-play { display: inline; }
+                        .fa-pause { display: none; }
+                    }
+                }
+
+                &#splash-control-buttons-mute {
+
+                    .fa-volume-off { display: none; }
+
+                    &.muted {
+                        .fa-volume-up { display: none; }
+                        .fa-volume-off { display: inline; }
+                    }
+                }
+            }
+
+            // Links
+            #splash-control-links {
+                margin: 0;
+                padding: 0;
+                list-style: none;
+
+                li {
+                    //float: left;
+                    display: inline-block;
+
+                    a {
+                        display: block;
+                        float: left;
+                        height: 26px;
+                        width: 26px;
+                        text-align: center;
+                        outline: 0;
+                        
+                        span{
+                            background: #fff;
+                            margin: 8px 0 0 0;
+                            height: 10px;
+                            padding: 0;
+                            width: 10px;
+                            border-radius: 100%;
+                            border: 1px solid #000;
+                            display: inline-block;
+                            text-align: center;
+                            text-indent: 9999px;
+                            overflow:hidden;
+                            transition: background .3s ease-out, border .3s ease-out;
+                        }
+
+                        html.ie8 &{
+                            span{
+                                padding-left: 7px;
+                            }
+                        }
+
+                    }
+
+                    a.active, a:hover, a:focus{
+                        span{
+                            background:#000;
+                            border-color:#FFF;
+                        }
+                    }
+
+                    &.info {
+                        position: relative;
+                        
+                        a{
+                            
+                            span{
+                                background: #000;
+                                color: #fff;
+                                border-radius: 100px;
+                                border: none;
+                                text-indent: 0px; //show the icon only for info button
+                                height: 18px;
+                                width: 18px;
+                                line-height: 19px;
+                                margin-top: 4px;
+                                
+                                @extend .fa;
+                                &:before{
+                                    @extend .fa-info:before;
+                                    color: #FFF !important;
+                                    display: block;
+                                    width:18px;
+                                }
+
+                            }
+
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+
+    /*------------------------------------------------------------
+       YOUTUBE PLAY BUTTON
+    ------------------------------------------------------------*/
+
+    #tile-ytplayer-overlay {
+        display: none;
+        position: absolute;
+        z-index: 2;
+        width: 100%;
+        height: 100%;
+
+        a {
+            display: block;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            height: 100px;
+            width: 100px;
+            margin-top: -50px;
+            margin-left: -50px;
+            text-align: center;
+            overflow: hidden;
+
+            &:before {
+                content: "";
+                display: block;
+                height: 100%;
+                width: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: 1;
+            }
+
+            &:hover .youtube-play {
+                color: $global-var_featured-color-1;
+            }
+
+            &:active {
+                .youtube-play {
+                    display: none;
+                }
+
+            }
+
+            .youtube-play,
+            .youtube-mo-logo {
+                position: relative;
+                top: 0;
+                left: 0;
+                height: 100%;
+                width: 100%;
+                color: white;
+                
+                // Change to REM
+                @include rem('font-size', 100px);
+                @include rem('line-height', 100px);
+            }
+
+            // IE bug fix
+            .youtube-play { 
+                &:active {
+                    display: none;
+                }
+            }
+
+            .youtube-mo-logo { 
+                position: relative;
+
+                span {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    height: 100%;
+                    width: 100%;
+
+                    &.mo-icon {
+                        @include rem('font-size', 70px);
+                        color: $global-var_featured-color-3;
+                    }
+
+                    &.fa {
+                        color: white;
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+
+//Widget tiles
+.index{
+    
+    @media #{$global-var_mediaquery-combo-xs-sm}{ 
+        .widget{
+            text-align: center;
+        }
+    }
+
+    //This is just for the widgets in homepage.
+    .media:first-child{
+        margin-top: 15px;
+    }
+}
+
+//For empty div so it hits the widget width total of 12 or higher.
+.widget-clear{
+    width: 100%;
+    float: left;
+}
+
+
+
+
+
+.ie8 .partial_home #tile-ytplayer-overlay a .youtube-wrapper .youtube-click-wrapper {
+    display: none;
+}
+
+/*------------------------------------------------------------
+   VIDEO PLAYER
+------------------------------------------------------------*/
+
+#tile-ytplayer{
+    width:100%;
+    height:100%;
+}
+

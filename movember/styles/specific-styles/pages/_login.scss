@@ -1,0 +1,26 @@
+.auth-login, .auth-do-login{
+    
+    .ff-submit_button_control{
+        margin:15px 0;
+    }
+
+    .ff-checkbox_field{
+        padding-top:5px;
+    }
+
+    .register-form, .image-container-inner{
+        margin:0 5% 0 0;
+        @media #{$global-var_mediaquery-combo-xs-sm}{
+            margin:0;
+        }
+    }
+
+    ul.errors{
+        list-style:none;
+        &, li{
+            padding-left:0;
+            margin-left:0;
+        }
+    }
+
+}

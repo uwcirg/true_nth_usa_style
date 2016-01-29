@@ -1,0 +1,433 @@
+
+$color-loader-overlay: rgba(#FFFFFF, 0.75);
+$color-fancybox-overlay-gallery: $color-loader-overlay;
+$image-loader: url(/images/loading.gif);
+
+
+/*
+ * ===================================
+ *
+ * createFancyboxGalleryWithAjaxPaging
+ *
+ * ===================================
+ */
+
+/*
+ * ================
+ * Fancybox overlay
+ * ================
+ */
+#fancybox-overlay.fancybox-overlay-gallery {
+  background: $color-loader-overlay;
+}
+
+/*
+ * ============================
+ * Whole-gallery loader overlay
+ * ============================
+ */
+// n.b. this loader is not noJS-proofed (yet)
+.gallery-loader-container {
+  position: relative; // positioning context for gallery loader
+  padding-left: 5px;
+  .row{
+    .col-md-2:nth-child(6){
+      max-width:91px;
+    }
+    .col-md-2{
+      padding: 0px 5px 0px 0px;
+      img{
+        width: 91px;
+        height: 91px;
+      }
+    }
+  }
+}
+
+// new styles for team profiles on new mospace
+// NOTE: This can possibly be moved to appropriate section later on. Placing it in existing section as per earlier styles
+// Comment by AK on 11/08/2015
+
+.team-gallery-container {
+    .team-gallery-thumbnail {
+        margin-bottom: 5px;
+        &--url {
+            display: block;
+        }
+    }
+}
+
+.gallery-loader-container .gallery-loader,
+.gallery-loader-container .gallery-item-loading-inside-overlay {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.gallery-loader {
+  background: $color-loader-overlay $image-loader center 60px no-repeat; // little spinner
+}
+.gallery-item-loading-inside-overlay {
+  background: transparentize($color-loader-overlay, 0.25); // no spinner
+}
+
+/*
+ * ===========================
+ * Gallery item loader overlay
+ * ===========================
+ */
+.gallery-item-loader-container { // typically a link carrying an img
+  position: relative; // positioning context for gallery loader
+  @include inline-block;
+}
+.gallery-item-loader-container .gallery-item-loader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+.gallery-item-loader {
+  background: transparentize($color-loader-overlay, 0.25) $image-loader center center no-repeat; // little spinner
+}
+
+#galleria {
+  //width: 620px; // 600px typical photo width + 10px padding all round
+  //height: 519px; // 449px typical photo height + 10px padding all round + 50px of thumbnails/padding below it
+  width: 800px; // 600px typical photo width
+  height: 598px; // 449px typical photo height
+}
+.galleria-errors { // these are wholly unnecessary to the end-user
+  display: none !important;
+}
+.galleria-loader { // loader is currently buggy due to onloadfinish event being used by us (the template tries to use it as well but gets overridden)
+  display: none !important;
+}
+
+// don't scale images larger, only smaller
+.galleria-images {
+  .galleria-image {
+    text-align: center;
+    img {
+      width: auto !important;
+      height: auto !important;
+      max-width: 100% !important;
+      max-height: 100% !important;
+      display: inline-block !important;
+      vertical-align: middle;
+      *display: inline !important; *zoom: 1;
+      position: relative !important;
+      left: 0 !important;
+      top: 0 !important;
+    }
+    position: relative;
+    .vcenter-helper {
+      content: '';
+      @include inline-block(middle);
+      height: 100%;
+      width: 1px;
+      margin-right: -1px;
+      overflow: hidden;
+    }
+  }
+}
+
+// no fullscreen / popout options (this is already popped out in a lightbox AND images are as large as they're gonna get already)
+.galleria-fullscreen,
+.galleria-popout,
+.galleria-s3,
+.galleria-s4 {
+  display: none !important;
+}
+
+/*
+ * =====================
+ *
+ * Galleria twelve theme
+ *
+ * =====================
+ */
+
+/* Galleria Twelve Theme 2012-04-04 | http://galleria.io/license/ | (c) Aino */
+
+.galleria-container {
+  position: relative;
+  overflow: hidden;
+  font: 11px/1.4 arial,sans-serif;
+  color: #fff;
+}
+.galleria-container img {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -o-user-select: none;
+}
+.galleria-stage {
+  overflow: hidden;
+  background: #000;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 30px;
+  .galleria-container.fullscreen & { bottom: 0 }
+}
+.galleria-bar {
+  height: 31px;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  //background: image-url("/assets/images/galleria/twelve-bar.png") repeat-x;
+  background: #000;
+  border-top: 1px solid #333;
+  z-index: 3;
+}
+.galleria-s1,
+.galleria-s2,
+.galleria-s3,
+.galleria-s4 {
+  //background: image-url("/assets/images/galleria/twelve-separator.png");
+  background: #333;
+  height: 29px;
+  width: 1px;
+  position: absolute;
+  left: 28px;
+  bottom: 1px;
+}
+.galleria-s2 { left: 58px }
+.galleria-s3 {
+  right: 29px;
+  left: auto;
+}
+.galleria-s4 {
+  right: 58px;
+  left: auto;
+}
+.galleria-progress {
+  height: 2px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  background: #aaa;
+  opacity: .5;
+  z-index: 3;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+  filter: alpha(opacity=50);
+}
+.galleria-thumblink,
+.galleria-fullscreen,
+.galleria-play,
+.galleria-popout {
+  width: 29px;
+  height: 29px;
+  position: absolute;
+  left: 0;
+  bottom: 1px;
+  background: image-url("/assets/images/galleria/twelve-thumbs.png") no-repeat 50% 50%;
+  cursor: pointer;
+}
+.galleria-fullscreen,
+.galleria-popout {
+  left: auto;
+  right: 0;
+  background-image: image-url("/assets/images/galleria/twelve-fullscreen.png");
+  background-position: 8px 7px;
+}
+.galleria-popout {
+  background-image: image-url("/assets/images/galleria/twelve-popout.png");
+  right: 30px;
+  background-position: 50% 50%;
+}
+.galleria-fullscreen {
+  &.open { background-position: 8px -93px }
+}
+.galleria-play {
+  left: 30px;
+  background-image: image-url("/assets/images/galleria/twelve-playpause.png");
+  background-position: 10px 9px;
+  &.playing { background-position: 10px -91px }
+}
+
+.galleria-thumblink.open,
+.galleria-container.notouch .galleria-thumblink:hover,
+.galleria-container.touch .galleria-thumblink:active,
+.galleria-container.notouch .galleria-fullscreen:hover,
+.galleria-container.touch .galleria-fullscreen:active,
+.galleria-container.notouch .galleria-play:hover,
+.galleria-container.touch .galleria-play:active,
+.galleria-container.notouch .galleria-popout:hover,
+.galleria-container.touch .galleria-popout:active {
+  background-color: #000
+}
+.galleria-thumbnails-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  background: image-url("/assets/images/galleria/twelve-bg.png");
+  z-index: 2;
+}
+.galleria-thumbnails-list {
+  position: absolute!important;
+  top: 10px;
+  right: 10px;
+  left: 10px;
+  bottom: 41px;
+  overflow: auto!important;
+}
+.galleria-thumbnails .galleria-image {
+  width: 80px;
+  height: 80px;
+  float: left;
+  margin: 0 7px 7px 0;
+  border: 3px solid #fff;
+  cursor: pointer;
+
+  .galleria-container.notouch &:hover,
+  .galleria-container.touch &:active {
+    opacity: .9;
+    box-shadow: 0 0 3px rgba(0,0,0,.4);
+    -moz-box-shadow: 0 0 3px rgba(0,0,0,.4);
+    -webkit-box-shadow: 0 0 3px rgba(0,0,0,.4);
+  }
+}
+.galleria-info {
+  position: absolute;
+  overflow: hidden;
+  height: 29px;
+  line-height: 29px;
+  left: 70px;
+  right: 70px;
+  bottom: 1px;
+  color: #bbb;
+}
+.galleria-info-text {
+  padding-left: 10px;
+}
+.galleria-info > *,
+.galleria-info-text > * { display: inline }
+.galleria-info-title {
+  color: #fff;
+  font-weight: bold;
+  padding: 0 10px;
+}
+.galleria-counter,
+.galleria-counter-override {
+  background: image-url("/assets/images/galleria/twelve-separator.png") no-repeat 100% 0;
+  display: inline-block;
+  *display: inline;
+  padding-right: 10px;
+  _height: 29px;
+  zoom: 1;
+}
+//.galleria-counter {
+//    display: none !important;
+//}
+.galleria-loader {
+  width: 48px;
+  height: 48px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -24px 0 0 -24px;
+  z-index: 2;
+  display: none;
+  background: #000 image-url("/assets/images/galleria/twelve-loader.gif") no-repeat 50% 50%;
+  opacity: .8;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+  filter: alpha(opacity=80);
+  border-radius: 6px;
+}
+.galleria-image-nav {
+  position: absolute;
+  top: 50%;
+  margin-top: -18px;
+  width: 100%;
+  height: 36px;
+  left: 0;
+}
+.galleria-image-nav-left,
+.galleria-image-nav-right,
+.galleria-image-nav-left-override,
+.galleria-image-nav-right-override {
+  cursor: pointer;
+  width: 36px;
+  height: 36px;
+  position: absolute;
+  left: 20px;
+  z-index: 2;
+  background: image-url("/assets/images/galleria/twelve-nav.png");
+}
+.galleria-image-nav-right,
+.galleria-image-nav-right-override {
+  left: auto;
+  right: 20px;
+  background-position: -36px 0;
+  z-index: 2;
+}
+.galleria-image-nav-left,
+.galleria-image-nav-right {
+  display: none !important;
+}
+
+.galleria-thumbnails-container {
+  .disabled {
+    &, &:hover, &:active {
+      opacity: .2;
+      cursor: default;
+    }
+  }
+}
+.galleria-carousel {
+  .galleria-thumb-nav-left,
+  .galleria-thumb-nav-right {
+    display: block
+  }
+}
+.galleria-thumb-nav-left,
+.galleria-thumb-nav-right {
+  cursor: pointer;
+  display: none;
+  background-position: -495px 5px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 40px;
+  width: 23px;
+  z-index: 3;
+  opacity: .8;
+}
+.galleria-thumb-nav-left {
+  background-position: -578px 5px;
+  border-right: none;
+  right: 0;
+  left: auto;
+  .galleria-container.notouch &:hover,
+  .galleria-container.touch   &:active {
+    background-position: 0 -36px
+  }
+}
+.galleria-thumb-nav-right {
+  .galleria-container.notouch &:hover,
+  .galleria-container.touch   &:active {
+    background-position: -36px -36px
+  }
+}
+
+.galleria-thumb-nav-left,
+.galleria-thumb-nav-right {
+  .galleria-container.notouch &:hover,
+  .galleria-container.touch   &:active {
+    opacity: 1;
+    background-color: #111;
+  }
+}
+
+.galleria-lightbox-content {
+  background: image-url("/assets/images/galleria/twelve-loader_pos.gif") no-repeat 50% 50%;
+}

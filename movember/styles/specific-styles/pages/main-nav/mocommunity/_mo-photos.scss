@@ -1,0 +1,159 @@
+.mophotos-grid-items {
+    width: 846px;
+    float: left;
+
+    .mophotos-grid-item {
+        cursor: pointer;
+        width: 141px;
+        height: 141px;
+        float: left;
+
+        &.mophotos-grid-item_first {
+            width: 423px;
+            height: 423px;
+        }
+
+        &.mophotos-grid-item_last {
+            float: right;
+            width: 423px;
+            height: 423px;
+        }
+    }
+
+    .mophotos-grid-item-inner {
+        height: 141px;
+
+        &.mophotos-grid-item-inner_first, &.mophotos-grid-item-inner_last {
+            height: 423px;
+        }
+    }
+    .mophotos-grid-item-image {
+        height: 138px;
+        width: 138px;
+
+        &.mophotos-grid-item-image_first, &.mophotos-grid-item-image_last {
+            height: 420px;
+            width: 420px;
+        }
+    }
+}
+
+.mophotos-grid {
+    padding-left: 0px; /* override default gallery maring */
+}
+
+body.mo-community-mo-photo-submitted {
+    .mocommunity {
+        div {
+            padding-bottom: 10px;
+        }
+    }
+}
+
+/** Samurai File Uploader styles copied from per-page.css from 2013 **/
+
+#mophoto_form {
+
+    padding-top: 10px;
+
+    .form_element_samurai-fileuploader {
+        .description {
+            float: left;
+            margin: 7px 0 0 10px;
+        }
+    }
+
+    .samurai-fileuploader {
+        display: inline-block;
+        *display: inline;
+        *zoom: 1;
+        position: relative;
+        vertical-align: middle; /* remove line-height-based spacing below .samurai-fileuploader */
+
+        .qq-uploader {
+
+            .description {
+                float: none;
+                margin: 0;
+                padding: 0;
+                display: inline-block;
+                *display: inline;
+                *zoom: 1;
+                vertical-align: middle;
+            }
+            .qq-upload-button {
+                vertical-align: middle;
+                margin-right: 10px;
+            }
+            .qq-upload-spinner {
+                background-image:inline-image("icons/loading-transparent-16x16.gif");
+            }
+        }
+
+        .delete_action {
+            margin-top: 14px;
+        }
+
+        .upload-preview {
+            width: 50px;
+            /*display: inline-block;
+            border: 1px solid red;*/
+            float: left;
+            position: static;
+            display: none;
+            .loading {
+                /*    border: 10px solid yellow; */
+            }
+        }
+        .upload-preview-done {
+            display: inline-block;
+            *display: inline;
+            *zoom: 1;
+        }
+        .upload-button {
+            float: left;
+            display: inline-block;
+            *display: inline;
+            *zoom: 1;
+            p.description {
+                display: none;
+            }
+        }
+        .upload-button-done {
+            .qq-upload-button {
+                display: none !important; /* Specificity war spurred by fileuploader.css */
+            }
+        }
+
+        ul.qq-upload-list {
+            list-style-type: none;
+            li {
+                list-style: none;
+            }
+            .qq-upload-file {
+                display: none;
+            }
+        }
+    }
+
+    #form_element_filename {
+
+        clear: both;
+
+        .form_element_label {
+            float: left;
+        }
+
+        .form_element_input {
+            margin-left: 20px;
+            float: left;
+        }
+    }
+
+    #form_element_caption {
+        clear: both;
+        textarea {
+            width: 600px;
+        }
+    }
+}

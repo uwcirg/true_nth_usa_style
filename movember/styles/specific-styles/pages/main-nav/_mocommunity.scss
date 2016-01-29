@@ -1,0 +1,41 @@
+/* MOCOMMUNITY SCSS */
+
+body.mo-community {
+    .mocommunity-index { 
+        text-align: left;
+    }
+}
+
+.leaderboards {
+    // Push the "Display Top" label to the right hand side and nudge the numbers down a little so they line up better with the select boxes
+    .momoney-top-bar {
+        .display-top {
+            text-align: right;
+            .ff-label {
+                margin-bottom: 7px;
+            }
+        }
+    }
+    .col-md-9 {
+        h2 {
+            @include rem(margin-top, 15px);
+        }
+    }
+    .momoney-prize {
+        @include rem(margin-top, 15px);
+        img {
+            margin-bottom: 10px;
+        }
+    }
+    .blurb{
+        @include rem(margin-top, 20px);
+        font-style: italic;
+    }
+    &.leaderboards-index {
+        .content-centre {
+            h2 {
+                @include rem(margin-top, 20px);
+            }
+        }
+    }
+}

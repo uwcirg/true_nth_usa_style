@@ -1,0 +1,17 @@
+/*
+*
+* Host Event Page Specific styles
+*
+*/
+
+.event-host {
+  .event-host--host-event-item {
+    text-align: center;
+
+    .event-host--host-event-item--description {
+      @include rem(margin-bottom, 10px);
+    }
+  }
+}
+
+

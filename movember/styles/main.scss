@@ -1,0 +1,192 @@
+/*==========================================================================
+   SASS LIBRARIES
+==========================================================================*/
+@import "compass";
+
+
+/*==========================================================================
+   GLOBAL VARS
+ ~ This is a collection of standard values available globally (ie: site colors, grid width, site font-families, site font-colors ...)
+ ~ These vars can be changed over different site editions, however please do not override them in other scss files
+==========================================================================*/
+@import "global/global-vars";
+
+
+/*==========================================================================
+   GLOBAL HELPERS
+ ~ This is a collection of useful mixins and functions available globally
+==========================================================================*/
+@import "global/sass-helpers";
+
+
+/*==========================================================================
+   GLOBAL STYLE
+ ~ Fonts, typography, grid system, front-end frameworks import, usefull CSS classes etc...
+==========================================================================*/
+@import "global/bootstrap-import"; // Import of the library + override of the library's standard variables
+@import "global/font-awesome-import"; // Import of the library + override of the library's standard variables
+@import "global/animate-css-import"; // Import the animate library (only the animations we need)
+@import "global/movember-icon-font-import"; // Import of the mo's icons
+@import "global/jcrop-style-import"; // Import of the jcrop library's style (used in mospace)
+@import "global/base-elements"; // Headings, paragraphs, buttons, labels, bootstrap elements' style overrides ...
+@import "global/helper-classes"; // Useful and reusable classes available globally
+
+
+/*==========================================================================
+   SHARED ELEMENTS
+ ~ This section defines the styles for "global components" which are SHARED among multiple pages and can be REUSED (such as the tab navigation, accordion panels, etc...)
+==========================================================================*/
+@import "shared-elements/overlays";
+@import "shared-elements/tab-navigation";
+@import "shared-elements/ellipsis";
+@import "shared-elements/galleria";
+@import "shared-elements/accordions";
+@import "shared-elements/modals";
+@import "shared-elements/ellipsis";
+@import "shared-elements/alert-boxes";
+@import "shared-elements/chiclet-icons";
+@import "shared-elements/pagination-controls";
+@import "shared-elements/facebook-login-button";
+@import "shared-elements/facebook-friends";
+@import "shared-elements/mo-block";
+@import "shared-elements/scroll-to-top";
+@import "shared-elements/emailthis-button";
+@import "shared-elements/mo-text-separators";
+@import "shared-elements/mo-txt-on-img";
+@import "shared-elements/mo-question-icons";
+@import "shared-elements/text-overlay";
+@import "shared-elements/steps";
+@import "shared-elements/datetime-picker";
+@import "shared-elements/jquery-ui"; // Overrides to ui-autocomplete
+@import "shared-elements/loader-overlay_DEPRECATING";
+@import "shared-elements/typeahead";
+@import "shared-elements/template-widgets";
+@import "shared-elements/simple-image-slider";
+
+
+/*==========================================================================
+   LAYOUT PARTIALS
+ ~ This section defines the style of the site layout elements (such as header, footer etc...)
+==========================================================================*/
+@import "layout-partials/body-random-backgrounds";
+@import "layout-partials/site-header";
+@import "layout-partials/content-container"; 
+@import "layout-partials/site-footer";
+@import "layout-partials/site-footer-positioning";
+
+
+/*==========================================================================
+   SPECIFIC STYLES
+ ~ This section defines the style of UNIQUE pages or components (such as the homepage, a specific modal, a specific accordion panel, etc...)
+==========================================================================*/
+// --------- Components --------- //
+// Mospace (not to be confused with the mospace-pages)
+@import "specific-styles/components/mospace/switcher";
+@import "specific-styles/components/mospace/hero-area";
+@import "specific-styles/components/mospace/newsfeed-post";
+@import "specific-styles/components/mospace/newsfeed-share";
+@import "specific-styles/components/mospace/newsfeed-filter";
+@import "specific-styles/components/mospace/key-statistics";
+@import "specific-styles/components/mospace/mogress";
+@import "specific-styles/components/mospace/share-url";
+// --------- Modals --------- //
+@import "specific-styles/modals/social-dialog";
+@import "specific-styles/modals/your-motivation";
+@import "specific-styles/modals/gallery";
+@import "specific-styles/modals/facebook-gallery";
+@import "specific-styles/modals/mogress-dialogs";
+@import "specific-styles/modals/donate-single";
+@import "specific-styles/modals/donate-team";
+@import "specific-styles/modals/donate-review";
+@import "specific-styles/modals/donate-receipt";
+@import "specific-styles/modals/forgot-your-password";
+@import "specific-styles/modals/_will-you-move";
+@import "specific-styles/modals/_register-join-team";
+
+// --------- Accordions --------- //
+@import "specific-styles/accordions/donate-button";
+@import "specific-styles/accordions/network-and-team-memberships";
+@import "specific-styles/accordions/my-networks";
+@import "specific-styles/accordions/donation-list";
+@import "specific-styles/accordions/summary-info";
+@import "specific-styles/accordions/support-my-team";
+@import "specific-styles/accordions/my-stats";
+@import "specific-styles/accordions/network-summary";
+@import "specific-styles/accordions/network-leaderboard";
+@import "specific-styles/accordions/individual-leaderboard";
+@import "specific-styles/accordions/team-page-collage";
+@import "specific-styles/accordions/team-donate-now";
+@import "specific-styles/accordions/team-members";
+@import "specific-styles/accordions/badges";
+// --------- Pages --------- //
+// Generic
+@import "specific-styles/pages/home";
+@import "specific-styles/pages/register";
+@import "specific-styles/pages/login";
+@import "specific-styles/pages/mospace";
+@import "specific-styles/pages/post-donation";
+@import "specific-styles/pages/prizes";
+@import "specific-styles/pages/index-search";
+@import "specific-styles/pages/global-splash";
+@import "specific-styles/pages/events";
+// Mospace pages
+@import "specific-styles/pages/mospace/edit-my-details"; 
+@import "specific-styles/pages/mospace/networks";
+@import "specific-styles/pages/mospace/rewards";
+@import "specific-styles/pages/mospace/rewards-claim-platinum-prize";
+@import "specific-styles/pages/mospace/badges";
+@import "specific-styles/pages/mospace/tips";
+@import "specific-styles/pages/mospace/facebook-mos";
+@import "specific-styles/pages/mospace/downloads";
+@import "specific-styles/pages/mospace/past-mos";
+@import "specific-styles/pages/mospace/search-results";
+@import "specific-styles/pages/mospace/events-ticketing";
+@import "specific-styles/pages/mospace/donate-cash";
+@import "specific-styles/pages/mospace/team-contacts";
+@import "specific-styles/pages/mospace/team-email";
+
+// MOVE Grow pages
+@import "specific-styles/pages/move-grow/move-grow";
+
+// Donation pages
+@import "specific-styles/pages/donate/donate";
+@import "specific-styles/pages/donate/find-results";
+// Main navigation pages
+@import "specific-styles/pages/main-nav/events";
+@import "specific-styles/pages/main-nav/get-involved";
+@import "specific-styles/pages/main-nav/prizes-and-comps";
+@import "specific-styles/pages/main-nav/events/event-layout";
+@import "specific-styles/pages/main-nav/events/event-list";
+@import "specific-styles/pages/main-nav/events/event-register";
+@import "specific-styles/pages/main-nav/events/event-search";
+//@import "specific-styles/pages/main-nav/events/event-view";
+@import "specific-styles/pages/main-nav/events/event-featured";
+@import "specific-styles/pages/main-nav/events/event-host";
+@import "specific-styles/pages/main-nav/events/search-location-autocomplete";
+@import "specific-styles/pages/main-nav/news";
+@import "specific-styles/pages/main-nav/news-single";
+@import "specific-styles/pages/main-nav/mocommunity";
+@import "specific-styles/pages/main-nav/mens-health";
+@import "specific-styles/pages/main-nav/programs";
+@import "specific-styles/pages/main-nav/merchandise";
+@import "specific-styles/pages/main-nav/about";
+@import "specific-styles/pages/main-nav/leaderboards";
+@import "specific-styles/pages/main-nav/friends";
+@import "specific-styles/pages/main-nav/report-cards";
+@import "specific-styles/pages/main-nav/faq";
+@import "specific-styles/pages/main-nav/mocommunity/mo-photos";
+@import "specific-styles/pages/main-nav/mocommunity/top-mospace";
+@import "specific-styles/pages/main-nav/mocommunity/leaderboards/individual-leaderboard";
+@import "specific-styles/pages/main-nav/mocommunity/leaderboards/network-leaderboard";
+@import "specific-styles/pages/main-nav/mocommunity/leaderboards/platinum-club-leaderboard";
+@import "specific-styles/pages/main-nav/mocommunity/leaderboards/team-leaderboard";
+// Footer pages
+@import "specific-styles/pages/media-room";
+
+/*==========================================================================
+   CUSTOM OVERRIDES
+==========================================================================*/
+@import "overrides/legacy"; // Legacy styles from split4
+@import "overrides/z-index"; // Please define here (and not anywhere else) the z-index of any element on the site
+@import "overrides/ie8"; // Note: The IE7 override is not included here but in a separate CSS file so it is downloaded only from IE7 browsers
+@import "overrides/hacks"; // Weird browser compatibility hacks for CSS

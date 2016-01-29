@@ -1,0 +1,12 @@
+.team-contacts{
+    .select-and-copy-container{
+
+        @include rem(margin-bottom, 15px);
+
+        .team-contacts-list{
+            word-wrap: break-word;
+            @include rem(margin-bottom, 15px);
+        }
+
+    }
+}

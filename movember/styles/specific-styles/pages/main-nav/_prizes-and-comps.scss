@@ -1,0 +1,31 @@
+/* PRIZES AND COMPS SCSS */
+.partial_prizes-index {
+
+    .prize-image {
+        display: block;
+
+        img {
+        	width: 100%;
+        }
+    }
+
+    .list-group {
+    	padding-right: 20px;
+    }
+
+
+
+}
+
+
+.prizes {
+
+    h4 {
+        color: $global-var_featured-color-8;
+        border-bottom: 1px solid $global-var_featured-color-8;
+        width: 215px;
+        line-height: 2.8rem;
+    }
+}
+	
+

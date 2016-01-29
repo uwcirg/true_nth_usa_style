@@ -1,0 +1,102 @@
+/*==========================================================================
+   PAGINATOR, GENERAL STYLE
+ ~ This is the common style for the paginator component, some overrides may exist (see section below)
+==========================================================================*/
+
+$local-var_paginator-height : 32px;
+$local-var_paginator-lineheight : 32px;
+$local-var_paginator-links-lateral-padding : 3px;
+$local-var_paginator-links-lateral-padding-arrows : 4px;
+
+.paginationControl{
+
+    // --------- General style and sub-containers --------- //
+
+    margin-top: 10px;
+    overflow: hidden;
+    height: $local-var_paginator-height;
+    line-height: $local-var_paginator-lineheight;
+    @include rem('font-size', 12px);
+    width:100%;
+
+    .paginationShowing{
+        float:left;
+        position: relative;
+        .first-word {
+            font-weight: bold;
+        }
+    }
+
+    .paginationPages{
+
+        float:right;
+
+        a{
+            // Empty
+        }
+
+        .activePage{
+            font-weight:bold;
+        }
+
+        a, .activePage{
+            display:inline-block;
+            padding:0 $local-var_paginator-links-lateral-padding;
+        }
+
+        // --------- Next/Prev pages links --------- //
+
+        $local-var_paginator-next-prev-page-triangle-width : 6px;
+        $local-var_paginator-next-prev-page-triangle-height : 8px;
+
+        .pagination-link-previous,
+        .pagination-link-next{
+            margin:0;
+            display:inline-block;
+            width:($local-var_paginator-next-prev-page-triangle-width * 2) + ($local-var_paginator-links-lateral-padding-arrows * 2);
+            height:$local-var_paginator-height;
+            color:#FFF !important; // Hide the "<" and ">" symbols
+            position:relative;
+        }
+
+        // Next/Prev triangles style
+        .pagination-link-previous:before,
+        .pagination-link-next:before{
+            top:50%;
+            margin-top:-$local-var_paginator-next-prev-page-triangle-height;
+        }
+
+        .pagination-link-previous:before{ // Triangle left
+            @include css-triangle('left', $local-var_paginator-next-prev-page-triangle-height, #000);
+            border-right-width:$local-var_paginator-next-prev-page-triangle-width * 2;
+            left:0;
+        }
+
+        .pagination-link-next:before{ // Triangle right
+            @include css-triangle('right', $local-var_paginator-next-prev-page-triangle-height, #000);
+            border-left-width:$local-var_paginator-next-prev-page-triangle-width * 2;
+            right:0;
+        }
+
+    }
+
+/*==========================================================================
+   PAGINATOR, INNER TO AN ACCORDION PANEL
+ ~ Style override only for the paginators that are included inside an accordion
+==========================================================================*/
+
+    .mospace-visibility-private .panel &, .mospace-visibility-private .panel &{
+        
+        .paginationPages{
+
+            a, .activePage{
+                color:inherit;
+                font-weight:normal;
+                padding:0;
+            }
+
+        }
+
+    }
+
+}

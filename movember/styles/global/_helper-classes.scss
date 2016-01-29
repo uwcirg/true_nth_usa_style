@@ -1,0 +1,215 @@
+//==========================================================================
+// HELPER CLASSES
+// This is a collection of useful CSS classes available globally
+// This file also defines some "sass placeholders" that you can use with the "@extend" function
+//==========================================================================
+
+// --------- Table style Bootstrap grid --------- //
+
+// Those classes are useful for aligning content vertically, and they are built ON TOP OF THE BOOTSTRAP GRID!
+// Note, we use the [class*=""] selector to give more priority to it (because of a bug in IE8), however we're not using !important, so it's good! :)
+
+// Usage example:
+// <div class="row table-row-sm">
+//     <div class="col-sm-6 table-col-sm">
+//         // This content will be also aligned vertically
+//     </div>
+//     <div class="col-sm-6 table-col-sm">
+//         // This content will be also aligned vertically
+//     </div>
+// </div>
+
+.table-row, .table-row-xs {
+    display:table;
+    width:100% + $global-var_site-grid-padding;
+    table-layout:fixed;
+}
+@media #{$global-var_mediaquery-combo-sm-md-lg}{
+    .table-row-sm{
+        display:table;
+        width:100% + $global-var_site-grid-padding;
+        table-layout:fixed;
+    }
+}
+@media #{$global-var_mediaquery-combo-md-lg}{
+    .table-row-md{
+        display:table;
+        width:100% + $global-var_site-grid-padding;
+        table-layout:fixed;
+    }
+}
+@media #{$global-var_mediaquery-lg}{
+    .table-row-lg{
+        display:table;
+        width:100% + $global-var_site-grid-padding;
+        table-layout:fixed;
+    }
+}
+.table-col, .table-col-xs, [class*="col-"].table-col-xs{
+    display:table-cell;
+    vertical-align:middle;
+    float:none;
+}
+@media #{$global-var_mediaquery-combo-sm-md-lg}{
+    .table-col-sm, [class*="col-"].table-col-sm{
+        display:table-cell;
+        vertical-align:middle;
+        float:none;
+    }
+}
+@media #{$global-var_mediaquery-combo-md-lg}{
+    .table-col-md, [class*="col-"].table-col-md{
+        display:table-cell;
+        vertical-align:middle;
+        float:none;
+    }
+}
+@media #{$global-var_mediaquery-lg}{
+    .table-col-lg, [class*="col-"].table-col-lg{
+        display:table-cell;
+        vertical-align:middle;
+        float:none;
+    }
+}
+
+// --------- Quick vertical paddings --------- //
+
+// This snippet applies the same exact padding applied by the bootstrap grid, but they're applied on top/bottom
+.apply-top-bottom-grid-padding{
+    padding-top:$global-var_site-grid-padding / 2;
+    padding-bottom:$global-var_site-grid-padding / 2;
+}
+
+// --------- Image alignment --------- //
+
+//Add this class to a container and it will center the image both both vertically and horizontally within that container.   +
+.set-child-img-flex-center, %set-child-img-flex-center{
+    margin: 0 auto;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+        justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+        align-items: center;
+    overflow: hidden;
+
+    picture, img{
+        min-width: 100%;
+    }
+
+    /* Just for FireFox */
+    @-moz-document url-prefix() {
+        picture, img{
+            width: 100%;
+        }
+    }
+
+    /* For IE10+ */
+    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {  
+        picture, img{
+            width: 100%;
+        }
+    }
+
+}
+
+// --------- Aspect ratios --------- //
+
+// This class is useful for wrapping, for example, youtube videos. It will force the ratio 16:9, and it's responsive
+// Usage example:
+// <div class="force-child-aspect-ratio_16-9">
+//    <iframe ... /> // youtube video
+// </div>
+.force-child-aspect-ratio_16-9,
+.force-child-aspect-ratio_1-1{
+    position:relative;
+    width:100%;
+    &>*{
+        position:absolute;
+        width:100%;
+        height:100%;
+        top: 0;
+        left: 0;
+    }
+}
+.force-child-aspect-ratio_16-9{ padding-bottom:56.25%; }
+.force-child-aspect-ratio_1-1{ padding-bottom:100%; }
+
+// --------- Force simple CSS --------- //
+
+.width-100-pct{ width:100% !important; }
+.width-90-pct{ width:90% !important; }
+.width-80-pct{ width:80% !important; }
+.width-70-pct{ width:70% !important; }
+.width-60-pct{ width:60% !important; }
+.width-50-pct{ width:50% !important; }
+.width-40-pct{ width:40% !important; }
+.width-30-pct{ width:30% !important; }
+.width-20-pct{ width:20% !important; }
+.width-10-pct{ width:10% !important; }
+
+.no-padding{ padding:0 !important; }
+.no-side-padding{ padding-left:0 !important; padding-right:0 !important; }
+.no-left-padding{ padding-left:0 !important; }
+.no-right-padding{ padding-right:0 !important; }
+.no-top-padding{ padding-top:0 !important; }
+.no-bottom-padding{ padding-bottom:0 !important; }
+
+.no-margin{ margin:0 !important; }
+.no-side-margin{ margin-left:0 !important; margin-right:0 !important; }
+.no-left-margin{ margin-left:0 !important; }
+.no-right-margin{ margin-right:0 !important; }
+.no-top-margin{ margin-top:0 !important; }
+.no-bottom-margin{ margin-bottom:0 !important; }
+.auto-side-margin{ margin-left:auto !important; margin-right:auto !important; }
+
+.clear-left{ clear:left !important; }
+.clear-right{ clear:right !important; }
+.clear-both{ clear:both !important; }
+
+.text-align-center{ text-align:center !important; }
+.text-align-left{ text-align:left !important; }
+.text-align-right{ text-align:right !important; }
+
+.float-left{ float:left !important; }
+.float-right{ float:right !important; }
+
+.overflow-hidden{ overflow:hidden !important; }
+.overflow-visible{ overflow:visible !important; }
+.overflow-scroll{ overflow:scroll !important; }
+
+.position-absolute{ position:absolute !important; }
+.position-relative{ position:relative !important; }
+.position-fixed{ position:fixed !important; }
+
+.display-table{ display:table !important; }
+.display-table-cell{ display:table-cell !important; }
+
+.vertical-align-middle{ vertical-align:middle !important; }
+.vertical-align-top{ vertical-align:top !important; }
+.vertical-align-bottom{ vertical-align:bottom !important; }
+
+.word-break-break-all{ word-break: break-all !important; }
+
+// --------- Other --------- //
+
+// This class is useful to hide content, but still readable by screen readers
+.visually-hidden, %visually-hidden{
+    @include visually-hidden();
+}
+
+// This class is useful if you need to hide the text from an element and apply a background image
+.hidden-text, %hidden-text{
+    @include hidden-text();
+}
+
+// Clearfix class taken from the mixin defined by bootstrap
+%clearfix{
+    @include clearfix();
+}

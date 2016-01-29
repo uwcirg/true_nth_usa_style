@@ -1,0 +1,67 @@
+/*==========================================================================
+SOCIAL DIALOG
+~ This page appears inside a lightbox when a social icon is clicked
+NOTE: This stuff seems to be duplicated inside _your-motivation.scss
+==========================================================================*/
+.social-dialog {
+    // --------- Container size --------- //
+    display: inline-block; // We use a spinner overlay so we want it to cover the content within
+    overflow-y: hidden;
+
+    // --------- Side tabs --------- //
+    .section-body{
+
+        .textbox-container-social{
+            position:relative;
+        }
+
+        textarea{
+            height:230px;
+            @media #{$global-var_mediaquery-combo-xs-sm}{
+                height:122px;
+            }
+        }
+    }
+
+    // This ensures that when logged into Samurai in FF, the box does not collapse its width
+    .textbox-container span.sm-js-cmsitem {
+        width: 100%;
+    }
+
+    .section-footer--left{ float:left; }
+    .section-footer--right{ float:right; }
+    .section-footer--left,
+    .section-footer--right{
+        @media #{$global-var_mediaquery-xs}{
+            float:none;
+        }
+    }
+
+    .chiclets-label{
+        float: left;
+        line-height: 35px;
+        margin: 0 8px 0 0;
+    }
+    .chiclets{
+        float: left;
+        .chiclet{
+            margin:0 2px;
+            line-height:35px;height:35px;
+            a{
+                &:before{ @include rem(font-size, 30px); }
+                opacity:.6;
+                &.active{ opacity:1; }
+            }
+        }
+    }
+    .chiclets-label,
+    .chiclets{
+        @media #{$global-var_mediaquery-xs}{
+            float:none;
+        }
+    }
+
+}
+.social-error {
+    padding: 40px;
+}

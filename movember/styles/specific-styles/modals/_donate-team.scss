@@ -1,0 +1,52 @@
+.partial_list-team-members {
+
+	.header-block {
+		padding: 10px 0;
+			
+			.btn-base {
+				padding: 0 50px;
+			}
+
+			.donate-btn {
+				text-align: center;
+			}
+	}
+
+    .team-member-tile {
+
+	   	height: 165px;
+
+    	img {
+    		width: 100%;
+    		height: 100%;
+    	}
+    	
+    	.name-container {
+    		padding: 5px 0 10px 0;
+    		
+    	}
+
+    	.name, .is-captain {
+    		text-transform: uppercase;
+    		line-height: 1.5rem;
+    	}
+
+    	.name {
+    		color: $global-var_featured-color-8;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            width: inherit;
+            white-space: nowrap;
+    	}
+
+    	.is-captain {
+    		font-weight: bold;
+    		color: $global-var_primary-font-color;
+    	}
+
+    	.team-member-tile-inner {
+    	
+    	}	
+
+    }
+}
