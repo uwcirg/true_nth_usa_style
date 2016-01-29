@@ -1,0 +1,174 @@
+/*==========================================================================
+   COMMON ELEMENTS
+==========================================================================*/
+
+.events {
+    // --------- Actions --------- //
+    .events-actions {
+        @include rem(margin-bottom, 40px);
+        text-align: center;
+    }
+
+    // --------- Upcoming Events --------- //
+
+    // variables
+    $event-list-height: 150px;
+
+    .event-list-container {
+        // overflow: hidden;
+        background: $global-var_featured-color-1;
+        margin-bottom: 20px;
+        height: $event-list-height; // Note: The correct syntax is min-height but Firefox does not render min-height. It still works as more content is added the table size increases
+        &.community-event {
+            background: $global-var_featured-color-1;
+        }
+        &.featured-community-event {
+            background: $global-var_featured-color-10;
+        }
+        &.official-event {
+        }
+        // This is used on the event detail page
+        &.single {
+            margin-bottom: 15px;
+        }
+        h2, h3, h4, h5 {
+            font-weight: normal;
+        }
+
+        &--date {
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+            h1, h2, h3, h4, h5, h6, p {
+                color: inherit;
+                margin: 0;
+                @media #{$global-var_mediaquery-xs} {
+                    display: inline;
+                    margin-left: 5px;
+                }
+            }
+        }
+
+        &--details {
+            color: #fff;
+            h1, h2, h3, h4, h5, h6, p {
+                color: inherit;
+                margin: 0;
+            }
+            @media #{$global-var_mediaquery-combo-xs-sm} {
+                padding-top: 20px;
+                p {
+                    @include rem(font-size, 14px);
+                }
+            }
+        }
+
+        &--actions {
+            text-align: right;
+            &--tagline {
+                p {
+                    color: $global-var_featured-color-4;
+                    text-transform: uppercase;
+                    @include rem(font-size, 12px);
+                    .mo-icon-movember-logo {
+                        @media #{$global-var_mediaquery-combo-sm-md-lg} {
+                            vertical-align: middle;
+                            @include rem(font-size, 40px);
+                            @include rem(line-height, 25px);
+                        }
+                    }
+                }
+            }
+            &--buttons a {
+                margin-bottom: 10px;
+                display: block;
+            }
+        }
+        @media #{$global-var_mediaquery-xs} {
+            height: auto;
+        }
+    }
+}
+
+/*==========================================================================
+   MAIN INDEX PAGE
+==========================================================================*/
+
+.events-index {
+
+    // --------- Carousel --------- //
+    .events-carousel {
+        @include rem('margin-bottom', 40px);
+    }
+
+    // --------- Event Types --------- //
+    .event-types {
+
+        & > div {
+            text-align: center;
+            @include rem('margin-bottom', 30px);
+
+            .event-type-image {
+                @include rem('margin-bottom', 10px);
+                display: block;
+            }
+
+            a {
+                h4 {
+                    text-decoration: none;
+                    color: $global-var_primary-font-color;
+                }
+            }
+        }
+    }
+
+    // -------- Event Search Panel in Landing page ------------- //
+
+    .event-search-box {
+        margin-top: 25px;
+
+        #startDate input {
+            border-right: 0;
+            box-shadow: none;
+            &:focus {
+                border-color: #9F9F9F;
+            }
+        }
+
+        .icon-event-date {
+            background-color: transparent;
+            border: 1px solid #9F9F9F;
+            border-radius: 0;
+            border-left: 0;
+            span {
+                @include rem('font-size', 18px);
+            }
+        }
+
+    }
+}
+
+/*==========================================================================
+   EVENT TYPE PAGE
+==========================================================================*/
+
+/*
+* Event confirmation page
+*/
+.event-confirm{
+    .chiclets {
+        overflow: hidden;
+    }
+    .chooseEmailClient {
+        display: none;
+    }
+}
+div.events-index {
+    #event-search-header {
+        font-size: 2.25em;
+    }
+    .event-search-btn {
+        margin-top: 15px;
+        text-align: center;
+    }
+}

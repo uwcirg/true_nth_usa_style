@@ -1,0 +1,74 @@
+/*==========================================================================
+   MODAL GENERAL STYLE (This style is shared for all modals)
+ ~ Here are also defined overrides to the default style of the bootstrap modals
+==========================================================================*/
+
+// --------- Modal's structure and global style --------- //
+
+.modal-dialog {
+    height:100%;
+    margin:0 auto;
+
+    // Center the modal vertically:
+    display: table;
+    &>div {
+        display: table-cell; 
+        vertical-align:middle;
+    }
+
+    width:auto; // The container which decides the width is .modal-content, not .modal-dialog
+    padding:60px 20px; // Add some lateral padding so when the modal gets responsive (or too high) it doesn't hit the edge of the window
+
+}
+
+.modal-content {
+    border:0;
+
+    width:760px; // Set the standard width of the modal
+    // However, from tablet-mode to below, keep a fluid width
+    @media #{$global-var_mediaquery-combo-xs-sm}{
+        width:100%;
+    }
+}
+
+// --------- Modal's header & inner elements--------- //
+
+.modal-header{
+    padding: 0;
+    border: 0;
+    min-height: 0;
+}
+
+.modal-header button.close{
+    position: absolute;
+    top: -16px;
+    right: -16px;
+    left: auto;
+    color: #FFF;
+    text-shadow: none;
+    @include opacity(1); // Bootstrap applies a weird opacity to the buttons. Gotta add this also for IE8
+    background: #000;
+    height: 32px;
+    width: 32px;
+    border-radius: 99em;
+    border: 2px solid #FFF;
+    font-weight:bold;
+    font-family:sans-serif;
+    z-index: 1;
+}
+#mo-default-modal--close-icon{
+    position: absolute;
+    top: 2px;
+    left: 7px;
+    &:before{
+        color:#FFF;
+        font-size: 18px;
+    }
+}
+
+.modal-title{
+    display:none; // Note: by default, if no "title" is passed to the modal's options, the title is hidden
+    @include rem(font-size, 20px);
+    padding: 10px;
+    border-bottom: 1px solid #e5e5e5;
+}

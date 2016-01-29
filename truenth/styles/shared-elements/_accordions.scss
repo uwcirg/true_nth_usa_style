@@ -1,0 +1,82 @@
+.mospace-accordion {
+
+    .row:last-child .panel-default {
+        border-bottom: none;
+    }
+
+    .panel {
+        margin-bottom: 0px;
+        background-color: white;
+        border-radius: 0;
+        @include box-shadow(none);
+    }
+    .panel-default {
+        border: none;
+        border-bottom: 1px solid grey;
+        border-radius: 0;
+
+        .panel-heading {
+            position: relative;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding:0;
+            margin:0;
+            h3 {
+                display:block;
+                color:#000;
+                letter-spacing:0;
+                margin:0;
+                line-height: 35px;
+                height: 35px;
+                @include rem(font-size,18px);
+                a, a:hover, a:focus, a:active {
+                    color:inherit;
+                    display:block;
+                    text-decoration:none;
+                    padding:0 6% 0 0;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    text-transform: uppercase;
+
+                    // Open/closed icons:
+                    &:after {
+                        display:block;
+                        position: absolute;
+                        top:0;right:0;
+                        color:#000;
+                        line-height: 35px;
+                        height: 35px;
+                        font-size:100%;
+                        @extend .fa;
+                        @extend .fa-minus-circle:before;
+                    }
+                    &.collapsed:after{
+                        @extend .fa-plus-circle:before;
+                    }
+                }
+            }
+        }
+        .panel-body {
+            padding:10px 0 15px 0;
+            .chiclets {
+                float: left;
+            }
+            .accordion-link {
+                @include rem(font-size, 11px);
+                text-transform: uppercase;
+            }
+            .mospace-rhs-cash-donations-links,
+            .mospace-rhs-facebook-mos-links {
+                float: right;
+                clear: both;
+            }
+            .mospace-ask-for-donations-snippet,
+            .mospace-build-team-snippet{
+                clear:both;
+                padding:10px 0 0 0;
+            }
+        }
+    }
+}

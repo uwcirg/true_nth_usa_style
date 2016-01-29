@@ -1,0 +1,102 @@
+// --------- Facebook login button --------- //
+
+.fb_button{
+
+    display:block;
+    position:relative;
+    width: 100%;
+    cursor: pointer;
+    line-height:35px;height:35px;
+    @include rem(font-size, 13px);
+    text-decoration:none;
+    text-transform:none;
+    color: #FFF;
+    text-decoration: none;
+    text-align:left;
+    background:#3b5998;
+    padding-left: 45px;
+    @include transition(background-color .2s ease-out);
+    
+
+    &:hover, &:focus, &:active{
+        background:#4C6FAA;
+        color: #FFF;
+        text-decoration: none;
+    }
+
+    &:before {
+        display: block;
+        content: "\f082";
+        position:absolute;
+        top:0;left:0;
+        @extend .fa;
+        width:35px;
+        height:35px;line-height:38px;
+        @include rem(font-size, 28px);
+        text-align:center;
+        color: #FFF !important; // Nedded for overriding the hover color
+    }
+    
+}
+
+.mov_fb_container {
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  line-height: 14px;
+  height: 14px;
+  padding-top: 2px;
+  padding-bottom: 6px;
+}
+
+.mov_fb_img {
+  display: inline-block;
+  float: left;
+  vertical-align: top;
+  background-image: url("#{$global-var_path-to-imgs}/icons/fbcdn_squareLogoSprint.png");
+  background-position: 0px -132px;
+  background-repeat: no-repeat;
+  color: rgb(255, 255, 255);
+  direction: ltr;
+  width: 22px;
+  height: 22px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.mov_fb_wrapper {
+  float: left;
+  text-align: left;
+  vertical-align: top;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  direction: ltr;
+  display: inline-block;
+  font-family: 'lucida grande', tahoma, verdana, arial, sans-serif;
+  font-size: 11px;
+  height: 22px;
+  line-height: 22px;
+  text-align: left;
+  width: auto;
+}
+
+.mov_fb-login-button {
+  display: inline-block;
+  float: left;
+  vertical-align: top;
+  -moz-box-shadow:    inset 0px 0px 1px rgb(33, 60, 119);
+  -webkit-box-shadow:  inset 0px 0px 1px rgb(33, 60, 119);
+  box-shadow:          inset 0px 0px 1px rgb(33, 60, 119);
+  border-left: 1px solid rgb(125, 154, 192);
+  background-color: rgb(95, 120, 171);
+  white-space: nowrap;
+  font-weight: bold;
+  font-size: 11px;
+  text-transform: uppercase;
+  height: 22px;
+  line-height: 22px;
+  padding: 0px 6px 0px 6px;
+  font-family: 'lucadia grande', 'tahoma', verdana, arial, sans-serif;
+  direction: ltr;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+}

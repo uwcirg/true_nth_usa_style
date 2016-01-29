@@ -1,0 +1,256 @@
+/*==========================================================================
+   MOSPACE TAB NAVIGATION
+==========================================================================*/
+
+// --------- Config vars --------- //
+// These values are used with the more button enabled (eg, in mospace)
+$mospace-tab-navigation_tabs-height: 40px;
+$mospace-tab-navigation_active-tab-height: 50px;
+// These values are used when the more button is disabled
+$mospace-tab-navigation_tabs-height-2: 50px;
+$mospace-tab-navigation_active-tab-height-2: 55px;
+
+// --------- Tab navigation style --------- //
+#mospace-tab-navigation{
+
+    /*------------------------------------------------------------
+       Outer container style
+    ------------------------------------------------------------*/
+    width:100%;
+    float:none;
+    height:$mospace-tab-navigation_tabs-height;
+    margin:0 0 10px 0;
+
+    /*------------------------------------------------------------
+       Initial state transition
+    ------------------------------------------------------------*/
+    // The tab navigation will be initially hidden,
+    // Only after the javascript modifications the menu will appear (the js script will add the class "visible")
+    @include transition(opacity 1s ease, visibility 1s ease);
+    opacity:0;
+    visibility:hidden;
+    &.visible{
+        visibility: visible;
+        opacity:1;
+    }
+
+    /*------------------------------------------------------------
+       1st level tabs style GENERIC TYPE
+    ------------------------------------------------------------*/
+    ul.nav{
+        width:100%;
+        position:relative;
+        background:#000;
+        padding:0;
+
+        li{
+            position:relative;
+            min-width:140px;
+        }
+
+        >li{
+            height:$mospace-tab-navigation_tabs-height;
+        }
+
+        a{ // Menu links, general (inherited by the 2nd level links)
+            text-align:left;
+            white-space:nowrap;
+            height:$mospace-tab-navigation_tabs-height;
+            line-height:$mospace-tab-navigation_tabs-height;
+            @include rem(font-size, 13px);
+            font-weight:bold;
+            text-decoration: none;
+            text-transform: uppercase;
+            border:0;
+            @include transition(color .3s ease-out, background-color .2s ease-out); // multiple: comma-delimited
+        }
+
+        >li>a{
+            width:100%;
+            left:-20px;
+            padding:0 0 0 20px;
+            text-indent:10px;
+            @include box-sizing(content-box);
+            height:$mospace-tab-navigation_tabs-height;
+            line-height:$mospace-tab-navigation_tabs-height;
+            color:#000;
+            @include rem(font-size, 14px);
+            font-weight:bold;
+            background:#EBEBEB;
+            border-radius: 0 12px 0 0;
+            // Note: this box-shadow use a white rectangular shadow to hide the bottom overflow
+            @include box-shadow(28px 23px 0px -17px #FFF, -12px 23px 0px -17px #FFF, 6px 3px 10px -4px rgba(0, 0, 0, 0.3));
+
+            @media #{$global-var_mediaquery-xs}{ 
+                text-indent: 0;
+            }
+            
+            &.active, &:hover, &:focus, &:active{ // Hover + active style
+                color:#FFF;
+                background-color:#000;
+            }
+
+            &.active{ // Current item style
+                height:$mospace-tab-navigation_active-tab-height;
+                line-height:$mospace-tab-navigation_active-tab-height;
+                margin-top:-10px;
+                @include box-shadow(28px 28px 0px -22px #FFF, -12px 23px 0px -17px #FFF, 6px 3px 10px -4px rgba(0, 0, 0, 0.3));
+            }
+
+            &.first{ // Reset the special style only for the first element
+                width: 100%;
+                padding:0 20px;
+                @include box-sizing(border-box);
+                left: 0;
+                text-indent:0;
+                @include background-image(none);
+            }
+        }
+        
+        li:last-child a, // This is the last visible tab in the 1st navigation level
+        li.tab-without-shadow a{ // This is the previous element before the "More" button
+            @include box-shadow(none);
+        }
+
+        // z-index priority hack. Needed for the shadow effect
+        @for $i from 1 through 10 {
+            li:nth-of-type(#{$i}) {
+                z-index: 10-$i;
+            }
+        }
+
+    }
+
+    // --------- "More" button style --------- //
+    ul.nav #mospace-tab-navigation--more-item{
+
+        position:absolute;
+        right:0;top:0;
+        min-width:0;
+        max-width:100%;
+
+        >a{
+            color:#FFF;
+            background:#000;
+            width:100%;
+            left:0;
+            @include box-sizing(border-box);
+            padding:0 0 0 36px;
+            html.ie8 &{ padding-left:36px !important } // For some reason ie8 doesn't get the priority right
+            text-indent:0;
+            border-radius:0;
+            @include box-shadow(none);
+
+            &:before{
+                @extend .mo-icon:before;
+                @extend .mo-icon-menu:before;
+                color:#FFF;
+                @include rem(font-size, 22px);
+                position: absolute;
+                left:10px;top:-1px;
+                text-decoration:none !important; // IE shows the underline on focus
+            }
+
+            &:focus{ text-decoration:underline; } // For accessibility reason
+
+        }
+
+    }
+
+    // --------- 2nd level - sub-items style --------- //
+    ul.nav ul{
+
+        display:none; //Hidden at first
+        position:absolute;
+        right:0;
+        background:#000;
+        z-index:9999;
+        min-width:0;
+        padding:5px 0;
+        border-radius: 0 0 5px 5px;
+
+        a{
+            color:#FFF;
+            background:#000;
+            padding:8px 5% 8px 10%;
+            width:100%;
+            left:0;
+            white-space:normal;
+            line-height:26px;
+            height:auto;
+        }
+
+        a.active, a:hover, a:focus, a:active{
+            background:#333;
+        }
+
+        li{
+            min-width:100%;
+            list-style:none;
+        }
+
+    }
+
+    /*------------------------------------------------------------
+       OTHER FIXES
+    ------------------------------------------------------------*/
+    // IE8 fixes
+    html.ie8 &{
+    	//IE8 prints underlined links, wrong!
+        a{ text-decoration:none !important; }
+        //IE8 doesn't print box-shadow, so use normal tabs:
+        ul.nav a{ 
+        	width:100%;left:0;
+            @include box-sizing(border-box);
+        	padding:0 20px !important;
+            text-indent:0 !important;
+        	border-right:1px solid #CCC;
+            &.active, &:hover, &:focus, &:active{ border-color:#000; }
+        }
+        #mospace-tab-navigation--more-item a{ border:0; }
+    	//IE8 shows a weird border around the sub-menu, wrong!
+        ul.nav ul{
+            border:0;
+            a{
+                padding:8px 5% 8px 10% !important;
+            }
+        }
+    }
+
+    /*------------------------------------------------------------
+       OVERRIDES
+    ------------------------------------------------------------*/
+
+    // The select and hover status must be black (text) on white (bg)
+    ul.nav>li>a{
+        &.active, &:hover, &:focus, &:active{
+            color:#000;
+            background-color:#FFF;
+        }
+    }
+
+    // However keep the black bg only for the "more" button
+    ul.nav #mospace-tab-navigation--more-item>a{
+        &.active, &:hover, &:focus, &:active{
+            color:#FFF;
+            background-color:#000;
+        }
+    }
+
+}
+
+/*------------------------------------------------------------
+   MOBILE VIEW
+------------------------------------------------------------*/
+
+#mospace-tab-navigation_mobile-view{
+
+    margin-top:20px;
+    margin-bottom:20px;
+
+    label{
+        white-space:nowrap;
+        display: block;
+    }
+
+}

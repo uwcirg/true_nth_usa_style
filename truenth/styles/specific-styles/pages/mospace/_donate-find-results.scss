@@ -1,0 +1,61 @@
+/* PAGES > MOSPACE > DONATE-FIND-RESULTS */
+.donate-find-results {
+    #crumb-header h1 {
+        padding-bottom: 5px;
+    }   
+}
+
+.partial_donate-find {
+    .donation-search-form-container {
+        position:relative;
+        width:565px;
+        margin-bottom: 15px;
+    }
+
+    .highlight-name {
+        /*
+        color: $accent-1-color;
+        */
+    }
+
+    .ff-fieldset {
+        .ff-search_textbox_field {
+            width: 405px;
+            vertical-align: top;
+        }
+
+        .ff-checkbox_field {
+            width: 80px;
+        }
+
+        .ff-submit_button_control {
+            float:right;
+        }
+    }
+
+    .ff-line-break {
+        height: 10px;
+    }
+
+    .filters {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+    }
+
+    .noResults {
+        margin-top: 40px;
+        /*
+        font-family: $base-theme-font;
+        text-transform: $base-theme-text-transform;
+        */
+    }
+
+    .entity-details-container {
+        .entity-details {
+            .entity-detail  {
+                width:auto;
+            }
+        }
+    }
+}

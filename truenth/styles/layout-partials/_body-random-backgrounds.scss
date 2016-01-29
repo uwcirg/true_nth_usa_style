@@ -1,0 +1,47 @@
+
+$local-var_body-random-1-background: $global-var_featured-color-13 !default; /* We want to reserve color-13 for the expanded footer bg for now */
+$local-var_body-random-2-background: $global-var_featured-color-14 !default;
+$local-var_body-random-3-background: $global-var_featured-color-15 !default;
+$local-var_body-random-4-background: $global-var_featured-color-16 !default;
+$local-var_body-random-5-background: $global-var_featured-color-3 !default;
+$local-var_body-random-6-background: $global-var_featured-color-18 !default;
+
+$local-var_body-mospace-random-1-background: #F2623D image-url('/assets/images/backgrounds/MG842_Background_FA_450x450_5.jpg') top center !default;
+$local-var_body-mospace-random-2-background: $global-var_featured-color-16 image-url('/assets/images/backgrounds/MG842_Background_FA_450x450_3.jpg') top center !default;
+$local-var_body-mospace-random-3-background: #FFFFFF image-url('/assets/images/backgrounds/MG842_Background_FA_450x450_7.jpg') top center !default;
+$local-var_body-mospace-random-4-background: $global-var_featured-color-15 image-url('/assets/images/backgrounds/MG842_Background_FA_450x450_6.jpg') top center !default;
+
+$local-var_body-donate-background: $global-var_featured-color-3;
+$local-var_body-register-background: $global-var_featured-color-14;
+//$local-var_body-merchandise-background: #F7F7F7 image-url('/assets/images/backgrounds/MG842_Background_FA_450x450_10.jpg') top center !default;
+//$local-var_body-mocommunity-background: #F4F5F7 image-url('/assets/images/backgrounds/MG842_Background_FA_450x450_4.jpg') top center !default;
+
+body {
+
+    // All pages
+    &.random-1 { background: $local-var_body-random-1-background; }
+    &.random-2 { background: $local-var_body-random-2-background; }
+    &.random-3 { background: $local-var_body-random-3-background; }
+    &.random-4 { background: $local-var_body-random-4-background; }
+    &.random-5 { background: $local-var_body-random-5-background; }
+    &.random-6 { background: $local-var_body-random-6-background; }
+
+    // Only for mospace
+    &.mospace.random-1 { background: $local-var_body-random-1-background; }
+    &.mospace.random-2 { background: $local-var_body-random-2-background; }
+    &.mospace.random-3 { background: $local-var_body-random-3-background; }
+    &.mospace.random-4 { background: $local-var_body-random-4-background; }
+    &.mospace.random-5 { background: $local-var_body-random-5-background; }
+    &.mospace.random-6 { background: $local-var_body-random-6-background; }
+
+    &.mospace-bg-orange-mos { background: $local-var_body-mospace-random-1-background }
+    &.mospace-bg-pins { background: $local-var_body-mospace-random-2-background }
+    &.mospace-bg-stickers { background: $local-var_body-mospace-random-3-background }
+    &.mospace-bg-blue-mos { background: $local-var_body-mospace-random-4-background }
+    &.mospace-bg-blue-plain { background: #4C5066; }
+
+    //&.bg-mocommunity { background: $local-var_body-mocommunity-background }
+    &.bg-donate { background: $local-var_body-donate-background }
+    &.bg-register { background: $local-var_body-register-background }
+    //&.bg-merchandise { background: $local-var_body-merchandise-background }
+}

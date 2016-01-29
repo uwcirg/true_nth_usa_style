@@ -1,0 +1,165 @@
+/*==========================================================================
+   SEARCH INDEX PAGE
+==========================================================================*/
+
+body.index-search{
+
+    // --------- Page header --------- //
+    
+    #crumb-header{
+        
+        h1{
+            float:none;
+            margin: 0 0 20px;
+        }
+
+    }
+
+    /*------------------------------------------------------------
+       INNER PAGE CONTENT
+    ------------------------------------------------------------*/
+
+    #core-content{
+
+        // --------- Search input & button --------- //
+
+        .ff-horizontal_fieldset {
+            background: $global-var_featured-color-15;
+            padding:10px 0;
+            text-align:center;
+
+            .ff-search_textbox_field,
+            .ff-search_button_field {
+                display:inline-block;
+            }
+            .ff-search_textbox_field {
+                //max-width:322px;
+                //width:75%;
+                //@extend .col-sm-6;
+            }
+            .ff-search_button_field {
+                //max-width:172px;
+                //width:24%;
+                //margin-left:1%;
+                //@extend .col-sm-6;
+                //@extend .btn-negative;
+            }
+
+            input {
+                width:100%;
+                margin:0;
+            }
+            input.fa-icon-search {
+                //background-color: transparent;
+                //border: 2px solid #fff;
+                @extend .fa;
+                @include rem(font-size, 20px);
+                color: #fff;
+            }
+            @media #{$global-var_mediaquery-combo-sm-md-lg} {
+                border-radius: 4px;
+            }
+            &:after {
+                @include css-triangle('bottom', 6px,  $global-var_featured-color-15);
+                position: absolute;
+                left: 50%;
+                margin-left: -6px;
+                margin-top: 10px;
+            }
+        }
+
+        // --------- Search results desription --------- //
+
+        .search-results-keyword-description {
+            @extend %h3;
+            text-transform:none;
+            margin:0;padding:20px 0;
+            @include rem(line-height, 22px);
+            @include rem(height, 62px);
+            .search-term{
+                font-weight:normal;
+            }
+            @media #{$global-var_mediaquery-combo-xs-sm} {
+                display: none;
+            }
+        }
+
+        // --------- Search filters --------- //
+
+        .ff-filters_fieldset {
+            float:left;
+            width:100%;
+            margin:0;
+            padding:20px 0 10px;
+            border-top:1px solid $global-var_featured-color-7;
+        }
+
+        .ff-checkbuttons_field {
+            .btn-base {
+                margin-bottom: 5px;
+                display: inline-block;
+            }
+        }
+
+        .country-filter {
+            text-align:right;
+            padding-left:0;
+            margin-top:10px;
+            padding:0;
+
+            .ff-control {
+
+                overflow:hidden;
+
+                .option-list {
+
+                    float:right;
+
+                    .option {
+                        padding:0 0 0 6px;
+                        margin:0 0 0 6px;
+                        border-left:1px solid $global-var_featured-color-7;
+                        &:first-child{ border:0; margin:0; padding:0; }
+                    }
+                    @media #{$global-var_mediaquery-combo-xs-sm} {
+                        float: none;
+                        text-align: center;
+                    }
+                }
+
+            }
+            @media #{$global-var_mediaquery-combo-xs-sm} {
+                text-align: center;
+            }
+        }
+        
+        // --------- Search results --------- //
+
+        .section_search-results{
+
+            clear:both;
+            margin-top:30px;
+
+            .section-header{
+                overflow:hidden;
+                margin-bottom:15px;
+                h2{
+                    margin:0;
+                    @media #{$global-var_mediaquery-combo-md-lg} {
+                        float: left;
+                    }
+                }
+                .section-header-links{
+                    @media #{$global-var_mediaquery-combo-md-lg} {
+                        float: right;
+                    }
+                }
+            }
+        }
+
+        .moBlock_text-snippet {
+            color: #fff;
+        }
+
+    }
+}

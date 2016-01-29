@@ -1,0 +1,78 @@
+/*==========================================================================
+   HACKS
+   This file contains dirty (but necessary) CSS hacks
+==========================================================================*/
+
+// This hack is used on the stock browser of the Samsung tablets
+// Their stock browser does not handle well CSS3 transitions, therefore, disable them all!
+body.force-no-css3-transitions *{
+    -webkit-transition:none !important;
+    transition:none !important;
+}
+
+// When using a mobile device, and the user selected the desktop mode, we've gotta make sure that the header isn't in position fixed. Why? because position fixed causes lots of issues when zooming on mobile.
+body.forced-desktop-viewport #hd{
+    #hd-site-nav, #hd-top, #hd-site-search{
+        position:absolute;
+        float:left;
+        width:100%;
+    }
+}
+
+/*------------------------------------------------------------
+   VERY DIRTY HACK, TO BE REMOVED IN 2016!!!!!
+------------------------------------------------------------*/
+// --------- 2015 buttons style override --------- //
+// Only for 2015, there are certain buttons that should be set to blue
+// These blue buttons are an exception because they are not contained in the styleguide
+// Therefore in 2016 we should resolve this override and use buttons ONLY contained in the styleguide (so we should remove all the cr@p below)
+
+// Hover in header/masthead
+#hd .hd-campaign-button{
+    &:hover, &:active, &:focus, &.active{
+        color: #000;
+        background-color: #fff;
+        border-color: #fff;
+    }
+}
+
+// "Back to black" exceptions
+.section_event-list .btn-base,
+.event-host--event-grid .btn-base,
+.events-view input[type="submit"],
+.mospace--newsfeed-editor .btn-base,
+.mospace--newsfeed-editor a.button,
+#mogress-container .btn-base,
+body.events-view .event-view-container .more-info-btn,
+body.edit-details-index #mospace-edit-details .edit-section .btn-base,
+body.edit-details-index #mospace-edit-details .edit-section .btn-negative,
+body.edit-details-index #mospace-edit-details #confirm-leave-team {
+    color: #fff;
+    background-color: #000;
+    border-color: #000;
+    &:hover, &:active, &:focus, &.active{
+        color: #000;
+        background-color: #fff;
+        border-color: #fff;
+    }
+}
+
+#mogress-container .btn-base{
+    // This override was required to add a black border on hover only for mogress, if in the future the style of the campaign buttons changes, we should remove this override
+    &:hover, &:active, &:focus{
+        border-color: #000;
+        border-width:2px;
+        @include rem(line-height, 32px);
+    }
+}
+
+// --------- END ~ 2015 buttons style override (to be removed in 2016!!) --------- //
+
+/*------------------------------------------------------------
+   MISC STUFF
+------------------------------------------------------------*/
+// Place the cookie banner at the bottom of the screen, so that it doesn't get over the header
+.cc-cookies {
+    bottom: 0 !important;
+    top: auto !important;
+}

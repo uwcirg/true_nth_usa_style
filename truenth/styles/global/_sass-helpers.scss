@@ -1,0 +1,220 @@
+//==========================================================================
+// HELPERS
+// This is a collection of useful mixins and functions available globally
+//==========================================================================
+
+//------------------------------------------------------------
+// REM CONVERTER
+// Source: http://hugogiraudel.com/2013/03/18/ultimate-rem-mixin/
+// Usage example: @include rem(font-size, 1.6rem); -or- @include rem(padding, 20px 10px);
+//------------------------------------------------------------
+
+@function parseInt($n) {
+  @return $n / ($n * 0 + 1);
+}
+
+@mixin rem($property, $values) {
+  $px : ();
+  $rem: ();
+
+  @each $value in $values {
+
+    @if $value == 0 or $value == auto {
+      $px : append($px , $value);
+      $rem: append($rem, $value);
+    }
+
+    @else { 
+      $unit: unit($value);   
+      $val: parseInt($value);
+
+      @if $unit == "px" { 
+        $px : append($px,  $value);
+        $rem: append($rem, ($val / 10 + rem));
+      }
+
+      @if $unit == "rem" {
+        $px : append($px,  ($val * 10 + px));
+        $rem: append($rem, $value);
+      }
+    }
+  }
+
+// --- Commented out by Franco on 29-06-2015 --- //
+// --- "rem" are useless in our case, because the root element ( <html> ) does not change its font-size on different media queries --- //
+// --- uncomment the lines below to restore the original functionality --- //
+//  @if $px == $rem {
+//    #{$property}: $px; 
+//  } @else {
+    #{$property}: $px; 
+//    #{$property}: $rem;
+//  }
+}
+
+//------------------------------------------------------------
+// VISUALLY HIDDEN
+// Hide the element, but it is still readable by screen-readers
+//------------------------------------------------------------
+@mixin visually-hidden(){
+    border:0 !important;
+    clip:rect(0 0 0 0) !important;
+    height:1px !important;
+    margin:-1px !important;
+    overflow:hidden !important;
+    padding:0 !important;
+    position:absolute !important;
+    width:1px !important;
+}
+
+//------------------------------------------------------------
+// TEXT HIDDEN
+//------------------------------------------------------------
+@mixin hidden-text(){
+    text-indent:100% !important;
+    white-space:nowrap !important;
+    overflow:hidden !important;
+}
+
+//------------------------------------------------------------
+// CSS TRINAGLE
+// Important: usually this fuction is used within the pseudo-selectors ":before" or ":after"
+// Usage example: @include css-triangle('top', 16px, #FFF);
+//------------------------------------------------------------
+@mixin css-triangle($dir, $size, $color) {
+    content:'';
+    display:block;
+    border: $size transparent double; // double is needed in order to fix a rendering issue in Firefox and IE
+    position: absolute;
+ 
+    @if ($dir == 'top') {
+        border-bottom:$size $color solid;
+    }
+    @else if ($dir == 'right') {
+        border-left:$size $color solid;
+    }
+    @else if ($dir == 'bottom') {
+        border-top:$size $color solid;
+    }
+    @else if ($dir == 'left') {
+        border-right:$size $color solid;
+    }
+}
+
+//------------------------------------------------------------
+// "EMPTY" TRIAGLE WITH BORDER
+// This function is NOT to be used within the pseudo-selectors ":before" or "after"
+// Usage example: @include bordered-css-triangle('bottom', #FFF, #000, 8px, 100%, 90%);
+//------------------------------------------------------------
+@mixin bordered-css-triangle($dir, $bg-color, $stroke-color, $size:8px, $top:100%, $left:0) {
+
+    &:before, &:after {
+        content: '';
+        position: absolute;
+        width:0;height:0;
+        top:$top;
+        left:$left;
+        bottom:auto;
+        right:auto;
+        border-style: double; // double is needed in order to fix a rendering issue in Firefox and IE
+        border-color: transparent;
+    }
+
+    // Stroke
+    &:before {
+
+        border-width: $size;
+
+        @if ($dir == 'top') {
+            border-bottom:$size $stroke-color solid;
+            border-top-width:0;
+            margin-top: -$size;
+            margin-left: -$size;
+        }
+        @else if ($dir == 'bottom') {
+            border-top:$size $stroke-color solid;
+            border-bottom-width:0;
+            margin-top: 0;
+            margin-left: -$size;
+        }
+        @else if ($dir == 'right') {
+            border-left:$size $stroke-color solid;
+            border-right-width:0;
+            margin-left:0;
+            margin-top: -$size;
+        }
+        @else if ($dir == 'left') {
+            border-right:$size $stroke-color solid;
+            border-left-width:0;
+            margin-left: -$size;
+            margin-top: -$size;
+        }
+
+    }
+
+    // BG color fill
+    &:after {
+
+        border-width: $size - 2;
+
+        @if ($dir == 'top') {
+            border-bottom:$size $bg-color solid;
+            border-top-width:0;
+            margin-top: -($size - 2);
+            margin-left:-($size - 2);
+        }
+        @else if ($dir == 'bottom') {
+            border-top:$size $bg-color solid;
+            border-bottom-width:0;
+            margin-top: 0;
+            margin-left:-($size - 2);
+        }
+        @else if ($dir == 'right') {
+            border-left:$size $bg-color solid;
+            border-right-width:0;
+            margin-left: 0;
+            margin-top:-($size - 2);
+        }
+        @else if ($dir == 'left') {
+            border-right:$size $bg-color solid;
+            border-left-width:0;
+            margin-left: -($size - 2);
+            margin-top:-($size - 2);
+        }
+
+    }
+
+}
+
+//------------------------------------------------------------
+// FONT FACE IMPORT
+// Usage example: @include font-face('Conv_AvenirLTCom85Heavy', '2013/fonts/avenirltcom/AvenirLTCom85Heavy', 'AvenirLTCom85Heavy', 700);
+//------------------------------------------------------------
+
+@mixin font-face($family, $path, $svg-id: null, $weight: normal, $style: null) {
+    @font-face {
+        font-family: '#{$family}';
+        @if $weight { font-weight: $weight; } // Note: Firefox is a naughty boy and will apply faux bold on top even if this is "bold" or "700"
+        @if $style  { font-style: $style; }
+        $svg-if-any: "";
+        @if $svg-id {
+            $svg-if-any: "," + font-url('#{$path}.svg##{$svg-id}') + " format('svg')";
+        }
+        src: font-url('#{$path}.eot');
+        src: font-url('#{$path}.eot?#iefix') format('eot'),font-url('#{$path}.woff') format('woff'),font-url('#{$path}.ttf') format('truetype')#{$svg-if-any};
+    }
+}
+
+//------------------------------------------------------------
+// RGBA FALLBACK
+// This function guarantees a background-color with alpha up to IE8
+// Usage example: @include alpha-background-color(#FFF, 0.8);
+//------------------------------------------------------------
+
+@mixin alpha-background-color($color, $alpha) {
+    $rgba:rgba($color, $alpha);
+    $ie-hex-str:ie-hex-str($rgba);
+    *background-color:$color; // IE7 and below
+    background-color:$rgba;
+    -ms-filter:"progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#{$ie-hex-str}',endColorstr='#{$ie-hex-str}')"; // IE8
+    zoom:1;
+}

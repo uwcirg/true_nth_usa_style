@@ -1,0 +1,39 @@
+/*==========================================================================
+   DISPLAYED UPON THE COMPLETION OF THE DONATE FORM
+==========================================================================*/
+
+#review {
+
+    .donate-review-partial {
+
+        h2 {
+            margin: 0;
+            padding: 0;
+        }
+
+        .lead {
+            margin: 15px 0;
+
+            span {
+                font-weight: bold;
+            }
+        }
+
+        .alert {
+            margin-top: 10px;
+        }
+
+        // Actions
+
+        .this-or-that-container {
+            .item {
+                display: inline-block;
+
+                .process-donation {
+                    width: 240px;
+                    margin-right: 20px;
+                }
+            }
+        }
+    }
+}

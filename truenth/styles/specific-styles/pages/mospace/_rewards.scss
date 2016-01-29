@@ -1,0 +1,83 @@
+/* PAGES > MOSPACE > REWARDS */
+
+$prize-item-list-image-size-px: 90px;
+
+#mospace-rewards-wrapper {
+
+    h3.subheading {
+        margin: 20px 0;
+    }
+
+    .reward-row {
+        @include clearfix;
+        border-top: 1px solid #CCCCCC;
+        padding: 10px 0;
+
+        .reward-description p, .reward-status p {
+            margin-bottom: 0;
+        }
+        .reward-status {
+            p {
+                display: inline;
+                + p {
+                    display: block;
+                    margin: 0;
+                    br {
+                        display: none;
+                    }
+                }
+            }
+            a {
+                float: right;
+                color: $global-var_featured-color-1;
+            }
+        }
+    }
+
+    .prize-item + .prize-item {
+        margin-top: -1px;
+    }
+
+    .prize-item-name {
+        margin:0;padding:0;
+        line-height: 1;
+    }
+
+    .prize-item-image {
+        float: left;
+        width: $prize-item-list-image-size-px;
+        height: $prize-item-list-image-size-px;
+        line-height: $prize-item-list-image-size-px;
+        overflow: hidden;
+        text-align: center;
+        img {
+            @include inline-block(middle);
+            max-width: $prize-item-list-image-size-px;
+            max-height: $prize-item-list-image-size-px;
+        }
+    }
+
+    .prizesCompsLink {
+        padding-top: 10px;
+    }
+
+    @media #{$global-var_mediaquery-combo-xs-sm}{
+        
+        .reward-thumbnail{
+            text-align: center;
+        }
+
+        h4{
+            margin: 10px 0;
+        }
+    }
+
+    .alert{
+        margin-bottom: 0;
+    }
+
+    .reward-alert-row{
+        margin-bottom: 10px;
+    }
+
+}

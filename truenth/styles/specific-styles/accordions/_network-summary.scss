@@ -1,0 +1,35 @@
+/* Accordion > Network Summary */
+.partial_network-stats{
+    .summary-info{
+        float: left;
+        width: 100%;
+
+        .overflow{
+            width: 100%;
+            clear:both;
+            float:left;
+
+            .info-label{
+                text-transform: capitalize;
+                float:left;
+                padding-right:5px;
+            }
+
+            .info{
+                float: right;
+                @include rem(font-size, 14px);
+
+                ul{
+                    padding: 0;
+                    margin: 0;
+                    list-style-type: none;
+                    
+                    ol{
+                        list-style-type: none;
+                        padding-bottom: 5px;
+                    }
+                }
+            }
+        }
+    }
+}

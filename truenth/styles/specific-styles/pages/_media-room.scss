@@ -1,0 +1,15 @@
+/* MEDIA ROOOM SCSS */
+
+.mediaroom {
+    table{
+        tbody, tfoot{
+            tr:hover{
+                background:none;
+            }
+        }
+    }
+	.list-group {
+		padding-right: 20px
+		;
+	}
+}

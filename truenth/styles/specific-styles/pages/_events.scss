@@ -1,0 +1,357 @@
+/*==========================================================================
+   EVENTS
+==========================================================================*/
+
+
+
+/*------------------------------------------------------------
+   EVENTS HOST
+------------------------------------------------------------*/
+
+.events-host{
+
+    .event-host--host-event-item {
+        text-align: center;
+
+        .event-host--host-event-item--description {
+            @include rem(margin-bottom, 10px);
+            color: #fff;
+            height: 115px;
+        }
+    }
+
+    .event-host--event-grid{
+        margin-top: 20px;
+    }
+
+    .event-host--host-event-item{
+        background: $global-var_featured-color-1;
+        margin-bottom: 25px;
+        height: 200px;
+        color: #fff;
+
+        @media #{$global-var_mediaquery-xs}{ 
+            min-height: 0;
+        }
+
+        h3{
+            color: #fff;
+        }
+
+        .event-host--host-event-item--container{
+            text-align: left;
+            padding: 15px 10px;
+        }
+
+        .event-host--host-event-item--photo{
+            height: 200px;
+            margin: 0 auto;
+            overflow: hidden;
+            padding: 0;
+
+        }
+
+    }
+
+    .set-child-img-flex-center a{
+        border: 1px solid red;
+        float: left;
+        display: block;
+    }
+
+    .ellipsis{
+
+        &:after{
+            @include background-image(linear-gradient(to right, rgba(255, 255, 255, 0), $global-var_featured-color-1 40%));
+        }
+
+    }
+
+
+}
+
+
+
+
+/*------------------------------------------------------------
+   EVENTS VIEW
+------------------------------------------------------------*/
+
+.events-view{
+
+    .event-view-splash-wrapper{
+        overflow: hidden;
+
+        html.ie9 &, html.ie8 &{
+            text-align: center;
+        }
+
+    }
+
+    @media #{$global-var_mediaquery-combo-md-lg}{
+        .set-child-img-flex-center{
+            height: 400px;
+        }
+    }
+
+    .event-splash-image{
+        width: 100%;
+        height: auto;
+    }
+
+    html.ie9 &, html.ie8 &{
+
+        .event-splash-image{
+            width: auto;
+            margin: 0 auto;
+        }
+
+        .community-splash{
+            text-align: center;
+        }
+                    
+    }
+
+    .split-bg{
+        background-color: #5F7783;
+        padding-left: 0;
+        margin-bottom: 25px;
+    }
+    
+    @media #{$global-var_mediaquery-combo-xs-sm}{ 
+
+        .split-bg-margin-clear{
+            margin: 2px 0 2px 0;
+        }
+    }
+
+    .event-list-container{
+
+        .event-list-date{
+            text-align: left;
+        }
+    }
+
+    .event-view-details{
+
+        h1{
+            color: #fff;
+            margin: 15px 0 5px 0;
+        }
+
+        @media #{$global-var_mediaquery-xs}{ 
+
+            h1{
+                margin:0;
+            }
+
+        }
+
+        p{
+            color: #fff;
+            margin-bottom: 5px;
+
+             @media #{$global-var_mediaquery-xs}{ 
+                margin-bottom: 0;
+                font-size: 14px;
+            }
+        }
+
+        ul{
+            margin: 0;
+            padding: 0;
+        }
+
+        li{
+            padding-left: 0;
+        }
+    }
+
+    @media #{$global-var_mediaquery-xs}{ 
+        
+        .event-view-details{
+            padding:20px 10px;
+        }
+
+    }
+
+    .event-view-date{
+        background: #000;
+        text-align: center;
+
+        h2, h3, p{
+            color: #fff;
+            font-weight: 100;
+            margin: 0;
+        }
+
+        ul li{
+            list-style: none;
+        }
+    }
+
+    .event-view-actions {
+        @media #{$global-var_mediaquery-xs}{
+            padding-top:0;
+        }
+
+        p {
+            color: #fff;
+            margin: 0;
+            line-height: 14px;
+            text-transform: uppercase;
+            text-align: right;
+            margin-right: 10px;
+        }
+    }
+
+    .event-list-actions_buttons{
+        margin: 10px 10px 0 10px;
+        text-align: right;
+    }
+
+    .event-view-splash{
+
+        img{
+            width: 100%;
+            height: auto;
+        }
+    }
+
+    .event-info-table{
+        background: #C4C6C7;
+        padding: 20px 10px;
+        margin-bottom: 20px;
+
+        h4{
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+
+        .address-bar{
+            padding-top: 15px;
+        }
+    }
+
+    .icon-event-date {
+        background-color: transparent;
+        border: 1px solid #9F9F9F;
+        border-radius: 0;
+        border-left: 0;
+
+        span {
+            @include rem('font-size', 18px);
+        }
+    }
+
+    .search-wrapper{
+        background: #5F7783;
+        padding: 15px;
+
+        h2{
+            color: #fff;
+        }
+
+        @media #{$global-var_mediaquery-xs}{ 
+            margin-top: 20px;
+        }
+    }
+
+    .community-splash{
+        max-height: 400px;
+    }
+
+    .event-featured-colour{
+
+        .split-bg{
+            background-color: #7E725B;
+        }
+    }
+
+    .no-padding-left{
+        padding-left: 0;
+    }
+
+    @media #{$global-var_mediaquery-xs}{
+            
+        .no-padding-left{
+            padding: 0;
+        }
+
+    }
+
+
+
+
+
+}
+
+
+
+/*==========================================================================
+   REGISTER EVENT
+==========================================================================*/
+
+body.events-register, body.events-edit {
+
+    #create-an-event-page-intro-text{
+        margin:0 0 40px 0;
+    }
+
+    .event-details {
+        @include rem(margin-top, 20px);
+    }
+
+    .event-terms {
+        @include rem(margin, 20px 0);
+
+        span {
+            color: $global-var_featured-color-8;
+        }
+    }
+}
+
+
+/* Event confirmation page (following a new event registration) */
+.events-register-event {
+
+    .thank-you-box {
+
+        .create-fb-event {
+            float: left;
+            padding-left: 50px;
+            width: 80%;
+        }
+    }
+}
+
+
+
+
+
+/*------------------------------------------------------------
+   CAROUSEL FIXES
+------------------------------------------------------------*/
+
+.events-carousel .partial_home {
+    
+    #splash-controls-wrapper {
+        position: absolute;
+
+        #splash-controls {
+            padding-left: 0;
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+

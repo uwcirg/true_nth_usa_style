@@ -1,0 +1,270 @@
+/*==========================================================================
+   NEWSFEED POST CREATION
+ ~ Style of the form for creating a new post and attaching media files
+==========================================================================*/
+
+.partial_newsfeed-share {
+
+    position: relative; // needed for the loading overlay
+
+    // --------- Post structure --------- //
+
+    @extend %clearfix;
+    padding:0 0 15px 0;
+
+    .partial_newsfeed-widget-post{
+        @extend %clearfix;
+    }
+
+    // --------- Profile image --------- //
+
+    .widget-layout-margin{
+        padding:0 12px 0 0; // Removes padding from bootstrap grid, gives the avatar a little more space
+    }
+    img.profile-picture{
+        width:100%;
+        height:auto;
+    }
+
+    // --------- Post Type Select --------- //
+
+    #mospace_postMoveAction{
+        display: none;
+        margin-left:0px;
+        width: 100%;
+    }
+    
+    #mospace-move-update-enable{
+        padding-left: 10px;
+        padding-top: 15px;
+        text-align: center;
+    }
+
+    #mospace_postMoveAction--mov-actions{
+        margin-top: -20px;
+        position:relative;
+    }
+
+    // --------- Input form --------- //
+
+    #mospace_postForm{
+
+        position: relative;
+        padding-right:0;
+
+        // Align vertically all blocks
+        .save-post-strip{ display:table; }
+        .ff-control{
+            .ff-paperclip-icon, .ff-field{
+                vertical-align:top;
+                display:table-cell;
+                @media #{$global-var_mediaquery-combo-xs-sm}{
+                    display:block;
+                    float:left;
+                    width:100%;
+                }
+            }
+            .ff-facebook-share,.ff-team-share{
+                @media #{$global-var_mediaquery-combo-xs-sm}{
+                    margin-top:2%;
+                }
+            }
+        }
+
+        /*------------------------------------------------------------
+           Fields style
+        ------------------------------------------------------------*/
+
+        // --------- Textarea --------- //
+
+        textarea{
+            min-height:82px;
+            margin-bottom:10px;
+        }
+
+        // --------- Image/Video attach --------- //
+
+        .ff-paperclip-icon{ padding-right:8px; }
+
+        .attach-field{
+            min-width:120px;
+
+            .action-list{
+                margin:0;padding:0;
+                list-style:none;
+
+                li{
+                    margin:0;
+                    padding:0 4px 0 0;
+                    float:left;
+
+                    a{
+                        text-transform:uppercase;
+                    }
+                }
+            }
+        }
+
+        // --------- Post-to checkboxes --------- //
+
+        .ff-checkbox_field{
+            .ff-checkbox_control{
+                position: relative;
+                min-width:110px;
+
+                input{
+                    position:absolute;top:0;left:0;
+                }
+                label{
+                    padding:1px 0 0 20px;
+                    line-height:18px;
+                }
+
+            }
+        }
+
+        // --------- Post button --------- //
+
+        .ff-button_field{
+            width: 100%; // This forces the table-cell to occupy as much space as possible
+            .ff-button_control{ float:right; }
+            a{
+                height:30px;
+                line-height:29px;
+                padding:0 28px;
+            }
+        }
+
+        // --------- Post attachment --------- //
+
+        .callout-block {
+            margin-top: 10px;
+            padding: 15px 0;
+
+            // Upper triangle:
+            &:before{ // Do not use the native arrow from callout-block, instead use an external element to be positioned absolutely
+                display:none !important;
+            }
+            .callout-block-triangle{
+                position: absolute;
+                top:0;left:0;
+                margin-left: 6px;
+                &:after{
+                    @include css-triangle('top', 6px, #FFF);
+                    top:-12px;
+                    left:-12px; // The left position is set by a javascript
+                }
+            }
+
+            // Close button:
+            .cancel-attachment{
+
+                position: absolute;
+                top:0;right:0;
+
+                a {
+                    @extend .text-hide;
+                    position: absolute;
+                    top: 20px;
+                    right: 0px;
+                    text-decoration: none;
+                    &, &:hover, &:focus, &:active {
+                        color: #FFF;
+                    }
+                    &:focus {
+                        text-decoration: underline;
+                    }
+
+                    &:before {
+                        content: '\00d7';
+                        color: #FFF;
+                        font-weight: bold;
+                        font-size: 28px;
+                    }
+                }
+            }
+
+            // --------- Attachment methods [image] --------- //
+
+            #image-attachment {
+
+                .image-attachment-methods {
+                    // Layout alignment and style:
+                    @extend .list-unstyled;
+                    margin: 0;
+                    padding: 0;
+                    li {
+                        display: inline-block;
+                        @media #{$global-var_mediaquery-combo-xs-sm} {
+                            display: block;
+                            margin-bottom: 5px;
+                        }
+                    }
+                }
+            }
+
+            // --------- Attachment methods [video] --------- //
+
+            #video-attachment{
+
+                .ff-horizontal_fieldset{
+
+                    // Layout alignment and style:
+                    @extend .list-unstyled;
+                    margin:0;padding:0;
+                    display:table;
+                    width:100%;
+
+                    >.ff-field{
+                        display:table-cell;
+                        padding-left:12px;
+                    }
+                    >.ff-field:first-child{
+                        padding-left:0;
+                    }
+                    .ff-search_textbox_field{
+                        width:100%; // This forces the table-cell to occupy as much space as possible
+                    }
+
+                    // Fields style:
+                    .ff-field{
+                        a { // (button)
+                            padding:0 28px;
+                        }
+                    }
+
+                }
+
+            }
+
+            // --------- Uploaded image box --------- //
+
+            #mospace_postAttachment{
+
+                #mospace-post-attachment-image h5,
+                #mospace-post-attachment-video h5{
+                    display:inline-block;
+                }
+
+                #mospace-post-attachment-image a,
+                #mospace-post-attachment-video a{ // (delete image)
+                    color: #fff;
+                    margin-left: .4em;
+                    text-transform: uppercase;
+                }
+
+            }
+
+        }
+
+        // --------- Error Message --------- //
+
+        .error-message {
+            margin-top: 20px;
+        }
+            
+    }
+
+}
+
+

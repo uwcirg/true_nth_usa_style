@@ -1,0 +1,132 @@
+
+.prizes-index{
+
+    picture{
+        display: block; // Needed so that the image gets expanded full-width
+    }
+
+    .intro-text{
+        margin: 10px 0 15px 0;
+        height: 75px;
+    }
+
+    #intro{
+        margin-bottom: 25px;
+        @media #{$global-var_mediaquery-combo-xs-sm}{
+            text-align:left;
+        }
+    }
+
+    .prize--details{
+        h3{
+            margin: 10px 0 10px 0;
+        }
+
+        h3 a{
+            text-decoration: none;
+        }
+    }
+
+    .prize-item {
+        @include clearfix();
+        margin-bottom: 10px;
+    }
+    
+    @media #{$global-var_mediaquery-combo-md-lg}{
+        .prize-item {
+            height: 450px;
+        }
+    }
+
+    @media #{$global-var_mediaquery-sm}{ 
+        .prize-item {
+            height: 450px;
+        }
+    }
+
+    .international{
+        margin: 10px 0 0 0;
+        
+        h3{
+            margin-bottom: 25px;
+        }
+
+        h3 a{
+            text-decoration: none;
+        }
+
+        @media #{$global-var_mediaquery-xs}{ 
+            .prize--image{
+                text-align: center;
+            }
+        }
+
+    }
+
+}
+
+
+.prizes {
+    padding-bottom: 40px;
+
+    ul {
+        list-style: none;
+        padding-left: 0;
+        margin-bottom: 20px;
+
+        li {
+            margin-bottom: 7px;
+        }
+    }
+
+    hr {
+        border: none;
+        border-bottom: 1px solid $global-var_featured-color-3;
+    }
+
+    .gallery-thumb img {
+        margin-bottom: 30px;
+        width: 100%;
+    }
+
+    .share-widgets {
+        .facebookShare {
+            cursor: pointer;
+            img {
+                max-width: none;
+                position: relative;
+                top: -6px;
+            }
+        }
+    }
+    .back-to-price {
+        float: right;
+        @media #{$global-var_mediaquery-xs}{
+            float: none;
+            margin-top: -15px;
+        }
+    }
+    .list-inline > li {
+        padding-left: 0;
+        .fb_iframe_widget {
+            top: -6px;
+        }
+        .emailthis-button {
+            top: -6px;
+        }
+    }
+
+    @media #{$global-var_mediaquery-combo-xs-sm}{
+        .featured-image {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+    }
+
+    object, embed,
+    iframe {
+        max-width: 100%;
+    }
+
+}
+

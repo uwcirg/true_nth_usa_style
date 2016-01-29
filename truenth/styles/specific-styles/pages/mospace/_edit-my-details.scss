@@ -1,0 +1,191 @@
+#mospace-edit-details {
+
+    // horizontal line below he headings
+    hr {
+        border-top: 1px solid $global-var_featured-color-8;
+    }
+
+    // button actions
+    .mospace_formButtons {
+        text-transform: uppercase;
+        margin-top: 10px;
+        .save {
+            margin-right:10px;
+        }
+        .cancel {
+            margin-left: 10px;
+        }
+    }
+
+    // edit details occupation block
+    .edit-occupation-details {
+        .edit-details-company {
+            .occupation-title:after {
+                content: " | ";
+                padding: 0 10px;
+            }
+
+            .occupation-options {
+                margin-bottom: 15px;
+                span {
+                    text-transform: capitalize;
+                }
+            }
+        }
+    }
+
+    // edit details personal URL block
+    .edit-details-personalurl {
+        // italic for the mospace address
+        .personal-url, #edit-personalurl-data-url {
+            text-transform: lowercase;
+            font-style: italic;
+        }
+
+        .personalurl-intro, #edit-personalurl-intro {
+            margin-bottom: 15px;
+        }
+
+        .mospace-personalurl-label {
+            text-transform: lowercase;
+            font-style: italic;
+            font-weight: normal;
+            line-height: 35px;
+        }
+
+        .length-constraint-mospace_txtbxPersonalUrl {
+            input {
+                width: 80%;
+            }
+            span {
+                margin-left: 10px;
+            }
+        }
+    }
+
+    .mospace_galaLocInfo	{ display: none }
+    #mospace_locLocationData,#mospace_delLocationData,#mospace_delLocationID,#mospace_locLocationID { display: none}
+    #mospace_locLocationChange,#mospace_delLocationChange { display: none }
+
+    .edit-occupation-details .hidden-section {
+        @extend %callout-block;
+
+    }
+
+    .edit-section {
+        h2 {
+            padding-bottom: 30px;
+        }
+    }
+
+    #edit-yourDetails-data, #edit-yourDetails-form {
+            padding: 7px 0 10px 0;
+            position: relative;
+    }
+
+    #edit-contact-options-form {
+        position: relative;
+    }
+
+    .edit-details-block {
+        padding-bottom: 20px;
+        clear: left;
+
+        textarea {
+            color: $global-var_primary-font-color;
+        }
+
+        .mospace_edit {
+
+            display: inline-block;
+
+            &:before{
+                vertical-align: middle;
+                @extend .fa;
+                @extend .fa-edit:before;
+                @include rem(font-size, 23px);
+                color:$global-var_featured-color-1 !important;
+            }
+
+            &, &:hover{
+                text-decoration:none;
+            }
+            &:active, &:focus{
+                text-decoration:underline;
+            }
+            
+        }
+
+    }
+
+    .edit-team-details,
+    .edit-details-company,
+    .edit-details-locale {
+            padding: 7px 0 20px 0;
+    }
+
+    .form_radio_wrapper {
+            float: left;
+    }
+
+    .divider {
+        padding: 0 10px;
+    }
+
+    .gender-selector-divider {
+        padding: 0 10px;
+        float: left;
+    }
+
+    #edit-correspondance-form, .edit-background {
+        hr {
+            margin: 10px 0 5px 0;
+            border-top: 1px solid $global-var_featured-color-8;
+            padding-bottom: 10px;
+        }
+
+        .correspondence-content {
+            padding-bottom: 15px;
+        }
+
+    }
+
+
+    .edit-background {
+
+        #edit-background-form {
+            position: relative;
+        }
+
+        .image {
+            width: 169px;
+        }
+        
+        .mospace_formButtons {
+            clear: both;
+        }
+
+        p {
+            margin: 0;
+            padding: 0;
+            font-weight: bold;
+        }
+    }
+
+    .js-disconnect-facebook-link {
+        cursor: pointer;
+    }
+
+    .disconnect-facebook-form {
+        display: none;
+    }
+
+}
+
+#profile-privacy-private-wrapper,
+#privacy-location-private-wrapper,
+#privacy-team-private-wrapper,
+#news-correspondance {
+    padding-bottom: 10px;
+}
+

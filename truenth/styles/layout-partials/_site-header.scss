@@ -1,0 +1,1464 @@
+/*==========================================================================
+   LOCAL VARS & MIXINS
+==========================================================================*/
+
+// Desktop views (md + lg)
+$site-header_hd-top-height_md-lg: 52px;
+$site-header_hd-top-logo-height_md-lg: 52px; // Same as top-header
+$site-header_hd-top-other-height_md-lg: 52px; // Same as top-header
+$site-header_hd-bottom-height_md-lg: 38px;
+
+// Mobile & Tablet views (xs + sm)
+$site-header_hd-top-logo-height_xs-sm: 52px;
+$site-header_hd-top-other-height_xs-sm: 52px;
+$site-header_hd-top-height_xs-sm: $site-header_hd-top-logo-height_md-lg + $site-header_hd-top-other-height_xs-sm;
+$site-header_hd-bottom-height_xs-sm: 0px; // The site-nav is in side-position, therefore the bottom-header has no height
+
+// Mobile & Tablet views (xs + sm) -- Shrinked mod
+$site-header_hd-top-logo-height_xs-sm_shrinked: 38px;
+$site-header_hd-top-other-height_xs-sm_shrinked: 52px;
+$site-header_hd-top-height_xs-sm_shrinked: $site-header_hd-top-logo-height_xs-sm_shrinked + $site-header_hd-top-other-height_xs-sm_shrinked;
+
+// This mixing is used to reset the style of the normal text and links of the header
+@mixin site-header_text-style-reset(){
+    color:#FFF;
+    font-weight:normal;
+    text-decoration:none;
+    text-transform:uppercase;
+    @include rem(font-size, 11px);
+}
+@mixin site-header_links-style-reset(){
+    @include site-header_text-style-reset();
+    &:hover, &:focus, &:active{
+        text-decoration:underline;
+    }
+}
+
+/*==========================================================================
+   HEADER CONTAINERS
+==========================================================================*/
+
+#hd{
+    width:100%;
+    height:$site-header_hd-top-height_md-lg + $site-header_hd-bottom-height_md-lg;
+    // On mobile layout, there is no hd-bottom, therefore activate the bottom-shadow
+    @media #{$global-var_mediaquery-combo-xs-sm}{
+        height:$site-header_hd-top-logo-height_xs-sm + $site-header_hd-top-other-height_xs-sm;
+    }
+}
+
+.layout-embed {
+    header {
+        display:none;
+    }
+}
+
+
+#hd-top{
+
+    position:fixed;width:100%;top:0;left:0;
+    width:100%;
+    background:#000;
+    padding:0;
+
+    #hd-other{
+        height:$site-header_hd-top-other-height_md-lg;
+        float:right;
+        position:relative;
+        background:#000;
+
+        @media #{$global-var_mediaquery-combo-xs-sm}{
+            float:none;
+            height:$site-header_hd-top-other-height_xs-sm;
+        }
+
+    }
+
+    // On mobile layout, there is no hd-bottom, therefore activate the bottom-shadow
+    @media #{$global-var_mediaquery-combo-xs-sm}{
+        @include box-shadow(0px 0px 8px rgba(0,0,0,.35));
+    }
+
+}
+
+#hd-bottom{
+    width:100%;
+}
+
+/*==========================================================================
+   SITE LOGO
+==========================================================================*/
+
+#hd-logo-heading{
+
+    display:table; // Needed for vertical centering
+    height:$site-header_hd-top-logo-height_md-lg;
+    transition: height .6s ease; // Used for the "shrink" effect
+    width:auto;
+    float:left;
+    margin:0;padding:0;
+
+    #hd-logo-link{ // a
+        display:table-cell;
+        vertical-align:middle;
+        text-align:center;
+        padding:0 6px;
+    }
+
+    #hd-logo{ // img
+        display:block;
+        width:auto;
+        max-width:100%;
+        height:$site-header_hd-top-logo-height_md-lg - 12px;
+        transition: height .6s ease; // Used for the "shrink" effect
+    }
+
+    @media #{$global-var_mediaquery-combo-xs-sm}{
+        float:none;
+        margin:0 auto; // Horizontal centering
+        height:$site-header_hd-top-logo-height_xs-sm;
+        #hd-logo-link{ // a
+            vertical-align:bottom;
+        }
+        #hd-logo{ // img
+            height:$site-header_hd-top-logo-height_xs-sm - 6px;
+        }
+    }
+
+}
+
+/*==========================================================================
+   DROPDOWN BUTTONS
+==========================================================================*/
+
+// --------- Common buttons style --------- //
+
+.hd-popup-btn{
+    display:block;
+    float:right;
+    position:relative;
+    line-height:$site-header_hd-top-other-height_md-lg;
+    height:$site-header_hd-top-other-height_md-lg;
+    text-align:center;
+    width:60px;
+    @media #{$global-var_mediaquery-combo-xs-sm}{
+        width:45px;
+    }
+}
+
+// --------- Search button style --------- //
+
+#hd-popup-btn_search{
+    @include rem(font-size, 22px);
+    @media #{$global-var_mediaquery-combo-xs-sm}{
+        margin-left:10px;
+    }
+}
+
+// --------- Site-nav button style --------- //
+
+#hd-popup-btn_site-nav{
+    @include rem(font-size, 30px);
+    overflow:hidden;
+    transition: max-width .6s ease, padding .6s ease, opacity .6s ease, visibility .6s ease;
+
+    // Hidden by default in desktop:
+    opacity:0;visibility:hidden;max-width:0px;
+    // Visible in mobile:
+    @media #{$global-var_mediaquery-combo-xs-sm}{
+        opacity:1;visibility:visible;max-width:60px;
+        margin-right:6px;
+    }
+}
+
+// --------- Native/close icons --------- //
+
+.hd-popup-btn_site-nav--icon,
+.hd-popup-btn_search--icon{
+
+    // General style
+    position:absolute;
+    width:100%;height:100%;
+    left:0;
+    line-height:inherit;
+    &, &:hover{
+        color:#FFF;
+    }
+    &.active, &:active, &:focus{
+        text-decoration:underline;
+    }
+
+    // Inactive state
+    opacity:0;visibility:hidden;
+    top:20%;
+    transition:top .5s ease, opacity .5s ease, visibility .5s ease;
+    // Active state
+    &.active{
+        opacity:1;visibility:visible;
+        top:0%;
+    }
+    
+}
+#hd-popup-btn_site-nav--close-icon,
+#hd-popup-btn_search--close-icon{
+    @include rem(font-size, 20px);
+}
+
+/*==========================================================================
+   SITE NAV, DEFAULT DROP-DOWN VERSION (DESKTOP)
+==========================================================================*/
+
+#hd-site-nav{
+
+    position:fixed;top:$site-header_hd-top-height_md-lg;
+    left:0;right:0; // This emulates the width to be 100%. However we NEED thw width to be "auto"!
+    height:$site-header_hd-bottom-height_md-lg;
+    display:block;width:auto; // IMPORTANT: keep display:block; and width:auto; these two will avoid weird CSS3 transitions from the desktop state to the mobile state (due to the width transition; infact width:auto will avoid any CSS3 transitions)
+    padding:0;
+    #hd-site-nav--inner{ // Center the menu
+        display:table;margin:0 auto;width:auto;
+    }
+
+    background:#FFF;
+    @include box-shadow(0px 0px 8px rgba(0,0,0,.35));
+    html.ie8 &{ border-bottom:1px solid #999; } // IE8 doesn't support box-shadow, therefore add some border
+
+    /*------------------------------------------------------------
+       COMMON STYLE, SHARED ELEMENTS
+    ------------------------------------------------------------*/
+
+    .site-nav--menu{
+
+        &, li { margin:0;padding:0;list-style:none; } // Style reset
+
+        a{
+            height:$site-header_hd-bottom-height_md-lg;
+            line-height:$site-header_hd-bottom-height_md-lg;
+            display:block;
+            position: relative;
+            @include rem(font-size, 11px);
+            text-transform: uppercase;
+            white-space: nowrap;
+            transition: color .3s ease, background-color .3s ease;
+            color:#000;
+            background:transparent;
+            text-decoration: none;
+            &.current, &:hover, &:active, &:focus{
+                text-decoration: none;
+            }
+        }
+
+    }
+
+    /*------------------------------------------------------------
+       1st LEVEL STYLE
+    ------------------------------------------------------------*/
+
+    .site-nav--menu_lv-1{ // UL
+        position:relative;
+        @media #{$global-var_mediaquery-combo-xs-sm}{
+            float:none;
+        }
+    }
+
+    .site-nav--menu-link_lv-1, .site-nav--menu-button_lv-1{ // A links
+        padding:0 16px;
+    }
+
+    // 1st-level-parent-items must have a triangle
+    .site-nav--menu-item_lv-1.site-nav--menu-item_parent .site-nav--menu-button_lv-1{
+        padding-right:22px;
+        &:after{
+            @include css-triangle('bottom', 4px, #444);
+            position:absolute;
+            top:50%;margin-top:-2px;
+            right:7px;
+            transition:border-color .3s ease;
+        }
+        &.active, &:hover{
+            &:after{
+                @media #{$global-var_mediaquery-combo-md-lg}{
+                    border-top-color:#FFF;
+                }
+                @media #{$global-var_mediaquery-combo-xs-sm}{
+                    border-left-color:#FFF;
+                }
+            }
+        }
+    }
+
+    // Current state
+    .site-nav--menu-link_lv-1, .site-nav--menu-button_lv-1{
+        &.current{ 
+            background:$global-var_featured-color-7;
+            color:#000;
+        }
+    }
+
+    // Hover/Focus states
+    .site-nav--menu-link_lv-1, .site-nav--menu-button_lv-1{
+        &.active, &:hover{ 
+            background:#000;
+            color:#FFF;
+        }
+    }
+    .site-nav--menu-item_lv-1:hover{ // This is needed in order to keep the parent item highlighted when hovering sub-levels
+        .site-nav--menu-link_lv-1, .site-nav--menu-button_lv-1{
+            background:#000;
+            color:#FFF;
+            &:after{ // Triangle
+                border-top-color:#FFF;
+            }
+        }
+    }
+
+    /*------------------------------------------------------------
+       SUB-LEVELS STYLE
+    ------------------------------------------------------------*/
+
+    .site-nav--item_lv-2{ // LI
+        position:relative;
+    }
+    .site-nav--menu_lv-2{ // UL
+        position:absolute;
+        top:100%;
+        min-width:200px;
+        background:#FFF;
+        @include box-shadow(1px 3px 6px rgba(0, 0, 0, .3));
+
+        // Sub-level links style
+        a{
+            transition: color .2s ease, background-color .2s linear;
+            // SH: MODEV-1211 This is the 2014 colour, here until we are given the real colour for subnav text
+            color: #1F2440;
+            padding:0 16px;
+            min-width:200px;
+            &:hover, &:focus, &:active{ // Hover/Focus states
+                background:$global-var_featured-color-8;
+                color:#FFF;
+            }
+            &.current{ // Current state
+                background:$global-var_featured-color-7;
+                color:#000;
+            }
+        }
+
+        // On desktop layout, do not show the heading and the back button for the sub-levels
+        .site-nav--menu-item_heading,
+        .site-nav--menu-item_back-btn{
+            display:none;
+            visibility:hidden;
+        }
+    }
+
+    // --------- Show/hide states --------- //
+
+    .site-nav--menu_lv-2{ // UL
+
+        visibility:hidden;
+        opacity:0;
+        top:112%;
+        transition: opacity .2s ease, visibility .2s ease, top .2s ease;
+        // On desktop, it is requested to have a short delay before showing the sub-menu:
+        &.delayed-visibility{
+            transition: opacity .2s ease .25s, visibility .2s ease .25s, top .2s ease .25s;
+        }
+
+        &.active{
+            top:100%;
+            opacity:1;
+            visibility:visible;
+            html.ie8 & { // Not sure why, but IE8 needs this stuff:
+                display:block;
+                visibility:visible;
+            }
+        }
+    }
+
+}
+
+/*==========================================================================
+   SITE NAV, SIDE-MOD (MOBILE)
+==========================================================================*/
+
+$side-site-nav_width: 290px;
+$side-site-nav_inner-menus-padding: 30px;
+
+@media #{$global-var_mediaquery-combo-xs-sm}{
+    #hd-site-nav{
+
+        /*------------------------------------------------------------
+           SIDE-BAR CONTAINER STYLE
+        ------------------------------------------------------------*/
+
+        width:auto; top:0;
+        left:auto; // right aligned!
+        height:100%;
+        margin:0;
+        background:#FFF;
+        @include box-shadow(0px 0px 6px rgba(0,0,0,.4));
+        // Gotta make some space on the top otherwise the side-bar would be cut on top:
+        padding-top:$site-header_hd-top-height_xs-sm;
+
+        // Active/hidden states:
+        width:0;
+        transition: .7s width ease, padding-top .6s ease;
+        &.active{
+            width:$side-site-nav_width;
+        }
+        &.lv-2-menu-active{ // When a 2nd level menu is open, make more space for it
+            width:$side-site-nav_width + $side-site-nav_inner-menus-padding;
+        }
+
+        #hd-site-nav--inner{
+            position:relative;
+            height:100%;
+            display:block;
+            overflow: hidden;
+            overflow-x: hidden;
+            overflow-y: auto;
+            width:100%;
+        }
+
+        /*------------------------------------------------------------
+           MENUS POSITIONING
+        ------------------------------------------------------------*/
+
+        // All levels
+        .site-nav--menu{
+            min-height:100%;
+            width:$side-site-nav_width;
+            float:none;
+            z-index:1; // Make also sure the sub-menus are rendered on top of all the rest
+
+            // Hidden/Active states:
+            transition: .7s left ease;
+        }
+
+        // First level
+        .site-nav--menu_lv-1{
+            position:relative; // Allow sub-menus to be positioned absolutely based on the outer container
+        }
+
+        // Second level
+        .site-nav--menu_lv-2{
+            top:0;bottom:0; // Important: leave bottom:0 because when the height of the device is too small this allows the sub-menu to expand for the whole height of the outer container
+            left:$side-site-nav_width;
+            width:$side-site-nav_width;
+            overflow:auto;
+            visibility:visible; opacity:1; // Force the element to be always visible, I needed to add this because Safari has serious bugs on transitioning visibility when an element is in position fixed
+            transition: .7s left ease;
+            &.active{ left:$side-site-nav_inner-menus-padding; top:0; }
+        }
+
+        // Menu items
+        .site-nav--menu-item{
+            float:none;
+            position:static; // Allow sub-menus to be positioned absolutely based on the outer container
+            width:100%;
+        }
+
+        /*------------------------------------------------------------
+           MENUS' STYLE AND COLORS
+        ------------------------------------------------------------*/
+
+        // --------- All-levels style --------- //
+
+        .site-nav--menu{
+            list-style:none;
+            padding:0 $side-site-nav_inner-menus-padding;
+            cursor:pointer;
+            a, .site-nav--menu-heading{
+                text-align:right;
+                font-weight:normal;
+                line-height: 16px;
+                height: auto;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                white-space: normal;
+            }
+        }
+
+        .site-nav--menu-item_lv-1.site-nav--menu-item_parent .site-nav--menu-button_lv-1{
+            &:after{ // Change the orientation of the triangle to right
+                @include css-triangle('right', 4px, #444);
+                margin-top: -4px;
+                right: 4px;
+            }
+        }
+
+        // --------- First level style --------- //
+
+        .site-nav--menu_lv-1{
+            background:#FFF;
+            a, a:hover, a:focus, a:active{
+                color:#000;
+                border-bottom:1px solid #000;
+                @include rem(font-size, 15px);
+            }
+        }
+
+        // --------- Second level style --------- //
+
+        .site-nav--menu_lv-2{
+
+            // Container style:
+            background:#000;
+            @include box-shadow(none);
+
+            // All buttons/links style:
+            a{
+                color:#FFF;
+                font-weight:normal;
+                &, &:hover, &:focus, &:active, &.current{
+                    @include rem(font-size, 13px);
+                }
+                &:hover, &:focus, &:active, &.current{
+                    background:#FFF;
+                    color:#000;
+                }
+            }
+
+            // Sub-menu heading style:
+            .site-nav--menu-heading{
+                @include rem(font-size, 15px);
+                font-weight:bold;
+                text-transform:uppercase;
+                border-style:solid;
+                border-color:#FFF;
+                border-width:1px 0;
+            }
+
+            // On mobile/table layouts, show the heading and the back button for the sub-levels:
+            .site-nav--menu-item_heading,
+            .site-nav--menu-item_back-btn{
+                display:block;
+                visibility:visible;
+            }
+
+            // Back button style:
+            .site-nav--menu-back-btn{
+                text-transform:none;
+                position:relative;
+                &:hover, &:focus, &:active{
+                    background:transparent;
+                    color:#FFF;
+                    text-decoration:underline;
+                }
+                &:before{
+                    @include css-triangle('left', 4px, #FFF);
+                    margin-top: -5px;
+                    position:relative;
+                    display:inline-block;
+                    margin-right:6px;
+                }
+            }
+
+            // Sub-menu's Heading style:
+            .site-nav--menu-heading{
+                color:#FFF;
+                padding-left:10px;
+            }
+
+        }
+
+        // --------- Special --------- //
+
+        // This is the triangle of the sub-menu container
+        // I had to put it here because the overflow set to the sub-menus wouldn't allow me to set it as part of it
+        #hd-site-nav--inner{
+            &:after{
+                @include css-triangle('left', 12px, #000);
+                position: absolute;
+                top: 6px;
+                margin-left: 10px;
+                z-index: 1; // Needed
+                left: 100%;
+                opacity:0;
+                transition: left .7s ease, opacity .4s ease;
+            }
+        }
+        &.lv-2-menu-active #hd-site-nav--inner{ // This is the active state
+            &:after{
+                opacity:1;
+                left:0%;
+            }
+        }
+    }
+}
+
+/*==========================================================================
+   SITE NAV, OTHER STUFF
+==========================================================================*/
+
+#hd-site-nav{
+
+    // --------- Campaign buttons --------- //
+
+    .site-nav--menu-item_campaign-buttons{ // LI
+
+        // The buttons are showed only on mobile
+        display:none;
+        @media #{$global-var_mediaquery-xs}{
+            display:block;
+        }
+
+        border-bottom: 1px solid #000;
+        padding:5px 0;
+        text-align:right; // IMPORTANT! this will force the button donate to the right id "sign-up" is hidden
+
+        // Buttons style:
+        .site-nav--menu-campaign-button{
+            @extend %btn-base;
+            padding:0;
+            width:49%;
+            margin:10px 0;
+            overflow:hidden;text-overflow:ellipsis;
+            &:hover, &:active, &:focus{
+                @include rem(font-size, 13px);
+            }
+        }
+        .site-nav--menu-campaign-button_donate{
+            margin-right:2%;
+            // Note: when the "sign up" button is disabled, make it full width
+            body.user-logged-in &{
+                width:100%;
+                margin-right:0;
+            }
+        }
+
+        // "Sign up" button is hidden when user is logged in
+        .site-nav--menu-campaign-button_sign-up{
+            body.user-logged-in &{ display:none !important; }
+        }
+
+    }
+
+}
+
+/*==========================================================================
+   SITE NAV, Transition animation between desktop & mobile styles
+==========================================================================*/
+
+#hd-site-nav{
+    &.xs-sm, &.md-lg{
+        opacity:1; margin-top:0px;
+    }
+    &.transitioning{
+        transition: opacity .6s ease, margin-top .6s ease;
+    }
+    &.xs-sm{
+        @media #{$global-var_mediaquery-combo-md-lg}{
+            opacity:0; margin-top:-$site-header_hd-bottom-height_md-lg;
+        }
+    }
+    &.md-lg{
+        @media #{$global-var_mediaquery-combo-xs-sm}{
+            opacity:0; margin-top:-$site-header_hd-bottom-height_md-lg;
+        }
+    }
+}
+
+/*==========================================================================
+   "SHRINKED" HEADER STYLE MOD
+==========================================================================*/
+
+#hd.shrinked{
+
+    #hd-logo-heading{
+        @media #{$global-var_mediaquery-combo-xs-sm}{
+            height:$site-header_hd-top-logo-height_xs-sm_shrinked;
+            #hd-logo{
+                height:$site-header_hd-top-logo-height_xs-sm_shrinked - 4px;
+            }
+        }
+    }
+
+    #hd-other{
+        @media #{$global-var_mediaquery-combo-xs-sm}{
+            height:$site-header_hd-top-other-height_xs-sm_shrinked;
+        }
+    }
+
+    #hd-top{
+        @media #{$global-var_mediaquery-combo-xs-sm}{
+            height:$site-header_hd-top-height_xs-sm_shrinked;
+        }
+    }
+
+    #hd-site-search{
+        @media #{$global-var_mediaquery-combo-xs-sm}{
+            height:$site-header_hd-top-height_xs-sm_shrinked + $site-header_hd-bottom-height_md-lg;
+            padding-top:$site-header_hd-top-height_xs-sm_shrinked;
+        }
+    }
+
+    #hd-site-nav{
+        @media #{$global-var_mediaquery-combo-xs-sm}{
+            padding-top:$site-header_hd-top-height_xs-sm_shrinked;
+        }
+    }
+
+}
+
+/*==========================================================================
+   TOP HEADER MODULES
+==========================================================================*/
+
+#hd-other{
+
+    /*------------------------------------------------------------
+       HEADER BLOCKS
+    ------------------------------------------------------------*/
+
+    // --------- Vertically alignment --------- //
+    // This make sure that, inipendently of their height, they all get aligned vertically properly
+
+    .hd-other--block{
+        display:table;
+        height:$site-header_hd-top-height_md-lg;
+        float:right;
+    }
+    .hd-other--block-inner{
+        display: table-cell;
+        vertical-align: middle;
+    }
+
+    // --------- Dynamically fade-in --------- //
+    // Note infact that the data in the header gets populated via JS due to the page-caching
+    // Some blocks are initially hidden, when showing them, make a nice fade in
+
+    .hd-other--block.initially-hidden{
+
+        transition: opacity .4s ease, visibility .4s ease, left .4s ease;
+        position:absolute;
+        visibility:hidden;opacity:0;
+        left:-10px;
+        &.initially-hidden_transitioning{
+            position:relative;
+            visibility:visible;opacity:1;
+            left:0px;
+        }
+
+        // Have different delays so the transition is super cool!
+        &#hd-campaign-buttons{transition-delay:0s;}
+        &#hd-login{transition-delay:.3s;}
+        &#hd-auth-user{transition-delay:.6s;}
+        &#hd-notifications{transition-delay:.3s;}
+        
+    }
+
+}
+
+/*------------------------------------------------------------
+   LOGIN
+------------------------------------------------------------*/
+
+#hd-login{
+
+    position:relative;
+    margin-left:14px;
+
+    @media #{$global-var_mediaquery-combo-xs-sm}{
+        #hd-other &{
+            float:left; // On mobile, this will be aligned ofn the left part of the header
+        }
+    }
+
+    @include site-header_text-style-reset();
+
+    // Is the user already logged in? in this case, don't show it!
+    body.user-logged-in &{ display:none !important; }
+
+    // --------- Login button --------- //
+
+    #hd-login-btn{
+        @include site-header_links-style-reset();
+        padding:10px;
+        color:#FFF;
+        position: relative;
+
+        // Triangle:
+        &:before {
+            @include css-triangle('bottom', 4px, #fff);
+            left: -5px;
+            top: 50%;
+            margin-top: -2px;
+            transition:border .3s ease, margin-top .3s ease;
+        }
+        &.active {
+            &:before {
+                @include css-triangle('top', 4px, #fff);
+                margin-top: -6px;
+            }
+        }
+    }
+
+    // --------- Login dropdown panel --------- //
+
+    #hd-login-dropdown {
+
+        position:absolute;
+        transition: opacity .4s ease, visibility .4s ease, top .4s ease;
+        opacity:0;
+        top: 120%;
+        left: -9px;
+        visibility:hidden;
+        padding: 15px;
+        width: 300px;
+        background-color: #000;
+        @include box-shadow(1px 3px 6px rgba(0, 0, 0, .3));
+        &.active {
+            opacity: 1;
+            visibility: visible;
+            top: 100%;
+        }
+        html.ie &{ // Fix for a weird bug on IE8 which shows the dropdown even tho it is hidden
+            display:none;
+            &.active{
+                display:block;
+            }
+        }
+
+        // Error messages panel
+        #hd-login-dropdown--messages {
+            @include rem('font-size', 12px);
+        }
+
+        // "Forgot your password" link & "Login" button
+        #hd-login-state_default--forgot-password-wrapper {
+            float: left;
+            max-width: 70%;
+        }
+        #hd-login-state_default--forgot-password{
+            color: #fff;
+        }
+        #hd-login-state_default--login-btn-wrapper{
+            float:right;
+        }
+
+        // Facebook login button
+        #hd-login-dropdown--facebook-login-wrapper {
+            margin: 15px -15px -15px -15px;
+            border-top: 1px solid #fff;
+        }
+
+        // States transitioning
+        .hd-login-state {
+            transition: opacity .6s ease, right .6s ease, visibility .6s ease;
+            position: relative;
+            right: 0;
+            &.not-visible {
+                opacity: 0;
+                position: absolute;
+                right: 50px;
+                visibility: hidden;
+                .ie8 & {
+                    display: none; // hack for IE8
+                }
+            }
+        }
+
+        // All inputs
+        input[type=email],input[type=password] {
+            color: #000;
+            @include rem(font-size, 14px);
+        }
+
+        // Fix for IE X mark at right of the input field
+        input::-ms-clear, input::-ms-reveal {
+            display:none;
+        }
+
+    }
+
+}
+
+/*------------------------------------------------------------
+   CAMPAIGN BUTTONS
+------------------------------------------------------------*/
+
+#hd-campaign-buttons{
+
+    margin:0 0 0 13px;
+
+    a{
+        padding-left:2em;padding-right:2em;
+    }
+
+    // In mobile they get hidden, they will be available inside the side-nav
+    @media #{$global-var_mediaquery-xs}{
+        display:none !important;
+    }
+
+    // Is the user already logged in? in this case, don't show the "Sign up" button
+    body.user-logged-in & .hd-campaign-button_sign-up{ display:none !important; }
+
+}
+
+/*------------------------------------------------------------
+   NOTIFICATION FEED
+------------------------------------------------------------*/
+
+#hd-notifications{
+
+    margin:0 0 0 10px;
+    position:relative; // Needed for positioning the feed dropdown panel
+
+    // --------- Feed counter --------- //
+
+    #hd-notifications--label{
+        cursor: pointer;
+        display: block;
+        padding: 0;
+        width: 27px;
+        height: 26px;
+        line-height: 23px;
+        @include rem(font-size, 13px);
+        font-weight:normal;
+        text-align:center;
+        text-decoration:none;
+        background:#000;
+        border:2px solid #FFF;
+        border-radius:5px;
+        color:#FFF;
+        transition: background .4s ease, color .4s ease;
+        &.highlighted{
+            background:#FFF;
+            color:#000;
+            font-weight:bold;
+        }
+    }
+
+    // --------- Notification feed panel --------- //
+
+    #hd-notifications--dropdown {
+        @extend .dropdown-panel;
+        padding:0;
+        position: absolute;
+        right:-98px;left:auto;
+        top:100%;
+        width:355px;
+        background:#FFF;
+
+        @media #{$global-var_mediaquery-combo-xs-sm}{
+            max-width:310px; // Make sure the panel doesn't go outside of the smallest resolution
+        }
+
+        // Visibility transition effect:
+        visibility:hidden;
+        opacity:0;
+        margin-top:6px;
+        transition: opacity .3s ease, visibility .3s ease, margin-top .3s ease;
+
+        &.active{
+            visibility:visible;
+            opacity:1;
+            margin-top:0px;
+        }
+
+        .newsfeed-container {
+            position:relative;
+            width: 100%;
+            max-height: 364px;
+            overflow: auto; // Enable inner scrolling
+            padding:15px;
+
+            .notification-widgets{
+                margin: 0;
+                padding: 0;
+                list-style: none;
+
+                .partial_notification-widget {
+                    border-bottom: 1px solid black;
+                    padding: 0 0 4px;
+                    margin: 0 0 10px;
+
+                    .widget-layout-margin,
+                    .widget-layout-main {
+                        float: left;
+                    }
+
+                    .widget-layout-margin {
+                        width: 30px;
+                        margin-right: 10px;
+
+                        img {
+                            width: 30px;
+                            height: auto;
+                        }
+                    }
+
+                    .widget-layout-main {
+                        width: 233px;
+                        margin-top: -3px;
+
+                        .text-caption {
+                            margin-top: 3px;
+                            text-transform: uppercase;
+                        }
+                    }
+                }
+            }
+
+            .not-notifications{
+                .notification {
+                    margin:10px 0 0 0;
+                    display:block;
+                }
+            }
+
+        }
+
+    }
+
+    // Top triangle (showed when the panel is enabled)
+
+    #hd-notifications--dropdown:after{
+        @include css-triangle('top', 6px, #FFF);
+        position: absolute;
+        right:104px;left:auto;
+        z-index:610;
+    }
+    #hd-notifications--dropdown:before {
+        // Top triangle shadow (behind it)
+        content:'';
+        display:block;
+        position:absolute;
+        height:1px;width:12px;
+        @include box-shadow(0px 0px 8px rgba(0, 0, 0, 0.5));
+        right:104px;left:auto;
+    }
+    #hd-notifications--dropdown:after,
+    #hd-notifications--dropdown:before{
+        // Top triangle visibility transition
+        opacity:0;
+        visibility:hidden;
+        top:-6px;
+        transition: opacity .3s ease, visibility .3s ease, top .3s ease;
+    }
+    #hd-notifications--dropdown.active:after, 
+    #hd-notifications--dropdown.active:before{
+        // Top triangle visibility transition
+        opacity:1;
+        visibility:visible;
+        top:-12px;
+    }
+
+}
+
+/*------------------------------------------------------------
+   AUTH USER
+------------------------------------------------------------*/
+
+#hd-auth-user{
+
+    $local-var_user-logo-image-height: 26px; // Helper var
+
+    padding:0 0 0 20px;
+    position: relative;
+
+    // Is the user NOT logged in? then do not display this block
+    body.user-logged-out &{ display:none !important; }
+
+    // --------- User name + icon --------- //
+
+    #hd-auth-user--label{
+
+        // This is the style of the "a" tag
+        @include site-header_links-style-reset();
+        height:$local-var_user-logo-image-height;
+        line-height:$local-var_user-logo-image-height;
+        position:relative;
+        display:block;
+
+        img, .name{
+            height: $local-var_user-logo-image-height;
+            line-height: $local-var_user-logo-image-height;
+            display:block;
+        }
+        .name{
+
+            padding-left: 28px; // Make some space for the arrow
+            padding-right: 8px;
+            margin-right:$local-var_user-logo-image-height; // And make some space for the profile icon
+            position:relative;
+
+            &:after{ // Arrow style:
+                @include css-triangle('bottom',  4px, #FFF);
+                top:50%;
+                margin-top:-2px;
+                left:8px;
+            }
+
+        }
+        img{
+            width: $local-var_user-logo-image-height;
+            position:absolute; // Due to an issue with floating elements on IE8, the image icon has to be positioned absolutely
+            right:0;top:0;left:auto;
+            border:2px solid #FFF;
+            border-radius:5px;
+        }
+
+        // --------- Portable mods --------- //
+
+        @media #{$global-var_mediaquery-combo-xs-sm}{
+
+            width:$local-var_user-logo-image-height;
+
+            .name{
+                // In mobile, hide the text (but still readable by screenreaders)
+                overflow:hidden;
+                text-indent:100%;
+                // And place the arrow besides the icon
+                margin:0;padding:0;
+                position:absolute;
+                top:0px;left:-22px;
+                width:$local-var_user-logo-image-height;
+            }
+
+        }
+
+    }
+
+    // --------- Dropdown show/hide --------- //
+
+    #hd-auth-user--dropdown{
+
+        position:absolute;
+        min-width:100%;
+        top:100%;
+        @media #{$global-var_mediaquery-combo-xs-sm}{
+            right:-80px;left:auto;
+        }
+
+        visibility: hidden;
+        opacity:0;
+        margin-top:6px;
+        transition: opacity .3s ease, visibility .3s ease, margin-top .3s ease;
+        &.active{
+            visibility: visible;
+            opacity:1;
+            margin-top:0px;
+        }
+    }
+
+    // --------- Dropdown menu style --------- //
+
+    #hd-auth-user--dropdown-menu{
+
+        list-style:none;
+        padding:0;margin:0;
+        position: relative;
+        background:#FFFFFF;
+        @include box-shadow(0px 0px 6px rgba(0, 0, 0, .3));
+
+        li{margin:0;padding:0;}
+
+        // Sub-level links style
+        a{
+            transition: color .1s linear, background-color .3s linear;
+            color:#000;
+            padding:0 20px;
+            min-width:200px;
+            white-space:nowrap;
+            display:block;
+            height:26px;line-height:26px;
+            text-transform:uppercase;
+            @include rem(font-size, 11px);
+            font-weight:bold;
+            text-decoration: none;
+            &:hover, &:focus, &:active{
+                background:$global-var_featured-color-1;
+                color:#FFFFFF;
+            }
+        }
+    }
+
+}
+
+/*==========================================================================
+   SITE SEARCH
+==========================================================================*/
+
+#hd-site-search{
+
+    position:fixed;top:0;left:0;width:100%;
+    padding:0;margin:0;
+    background:#000;
+    @include box-shadow(0px 0px 8px rgba(0,0,0,.35));
+
+    // Make this panel go behind the header top for its full-height (this is needed in other to have a nice transition): 
+    height:$site-header_hd-top-height_md-lg + $site-header_hd-bottom-height_md-lg;
+    padding-top:$site-header_hd-top-height_md-lg;
+    @media #{$global-var_mediaquery-combo-xs-sm}{
+        height:$site-header_hd-top-height_xs-sm + $site-header_hd-bottom-height_md-lg;
+        padding-top:$site-header_hd-top-height_xs-sm;
+    }
+
+    // Active/Deactive states
+    margin-top:-40px;
+    visibility:hidden;
+    opacity:0;
+    transition: opacity .4s ease, visibility .4s ease, margin-top .4s ease, padding-top .4s ease, height .4s ease;
+    &.active{
+        margin-top:0px;
+        visibility:visible;
+        opacity:1;
+    }
+
+    #hd-site-search--inner{
+        margin-top:4px; // Vertically align the input field
+    }
+
+    // --------- Search field style --------- //
+
+    input[type="text"]{
+        display:block;
+        padding:0 38px 0 4px;
+        height:30px;
+        line-height:30px;
+        @include rem(font-size, 14px);
+        width:360px;margin:0 18px 0 auto;
+        @media #{$global-var_mediaquery-xs}{
+            width:92%;margin:0 4%;
+        }
+    }
+
+    // --------- Placeholder style for IE8 & IE9 --------- //
+    
+    html.ie9 & .placeholder{
+        position:absolute;
+        width:100%;height:100%;
+        line-height:100%;
+        margin:0;padding:5px 0 0 5px;
+        @include rem(font-size, 11px);
+    }
+
+    html.ie8 & .placeholder{
+        margin:0;padding:0;top:-2px;left:3px;
+        @include rem(font-size, 11px);
+        overflow:visible;
+    }
+
+    /*------------------------------------------------------------
+       SEARCH DROPDOWN
+    ------------------------------------------------------------*/
+
+    #hd-site-search--autocomplete-dropdown{
+
+        // --------- Base style --------- //
+
+        @extend .dropdown-menu;
+        background:#FFF;
+        border:0;
+        position:absolute;
+        left:auto;top:100%;
+        display:block;
+        height: 300px;
+        overflow:scroll;
+        overflow-x:hidden;
+        overflow-y:scroll;
+        width:360px;right:18px;
+        @media #{$global-var_mediaquery-xs}{
+            width:92%;right:4%;
+        }
+
+        // Top triangle
+        &:before{
+            @include css-triangle('top', 6px, #FFF);
+            top:-12px;right:14px;
+        }
+
+        // Hide/show states
+        visibility:hidden;
+        opacity:0;
+        margin-top:20px;
+        transition: opacity .3s ease, visibility .3s ease, margin-top .7s ease;
+        &:before{ // Top triangle transition
+            margin-top:12px;
+            transition: margin-top .8s ease;
+        }
+
+        &.active{
+            visibility:visible;
+            opacity:1;
+            margin-top:0;
+            &:before{ margin-top:0; }
+        }
+
+        // --------- Sections style --------- //
+
+        .section{
+            padding:0 0 6px 0;
+            .section-header{ border-top:1px solid $global-var_featured-color-7; }
+            &:first-child .section-header{ border:0; padding:0; }
+        }
+
+        // --------- Results header --------- //
+
+        .section-header{
+            @extend %clearfix;
+            margin:0 15px 4px 15px;
+            padding:10px 0 0 0;
+            h5{
+                float:left;
+                width:50%;
+                margin:0;
+                @include rem(line-height, 15px);
+            }
+            .section-header-links{
+                float:left;
+                width:50%;
+                text-align:right;
+                @include rem(line-height, 15px);
+            }
+        }
+
+        // --------- Results items --------- //
+
+        .section-body{
+            .results{
+
+                a.item{
+                    color:$global-var_featured-color-2;
+                    text-transform:uppercase;
+                    padding:4px 15px;
+                    height:30px;
+                    @include ellipsis;
+                    @include rem(font-size, 13px);
+                    @include rem(line-height, 22px);
+                    &:hover, &:focus, &:active, &.selected{ // Note "selected" comes from the "updownKeys" plugin, if we get rid of it, or change it, remove this class too
+                        background:$global-var_featured-color-1;
+                        color:#FFF;
+                    }
+                }
+
+                .picture{
+                    &, img{
+                        display:block;
+                        width:22px;height:22px;
+                    }
+                    float:left;
+                    margin-right:8px;
+                }
+
+                .name{
+                    vertical-align:middle;
+                    line-height:22px;
+                }
+
+            }
+        }
+
+        // --------- Results footer --------- //
+
+        .result-summary{
+            padding:0;
+            h5{
+                width:100%;
+            }
+            .section-body{
+                padding:0 15px;
+            }
+        }
+    }
+}
+
+/*==========================================================================
+   LANGUAGES SWITCHER
+==========================================================================*/
+
+#hd-languages-switcher{
+
+    // --------- Positioning of the bar --------- //
+
+    position:absolute;
+    width:100%;
+    @include alpha-background-color(#000, .6);
+    border-style:solid;
+    border-color:#888; // Fallback
+    border-color:rgba(255,255,255,.55);
+    border-width:1px 0;
+    padding-right:50px; // Make sure you leave some space for the close icon
+
+    // Make sure the bar has enough top-spacing to not being covered by the header:
+    margin-top:$site-header_hd-top-height_md-lg + $site-header_hd-bottom-height_md-lg;
+    @media #{$global-var_mediaquery-combo-xs-sm}{
+        margin-top:$site-header_hd-top-height_xs-sm + $site-header_hd-bottom-height_xs-sm;
+    }
+    #hd.shrinked &{
+        @media #{$global-var_mediaquery-combo-xs-sm}{
+            margin-top:$site-header_hd-top-height_xs-sm_shrinked;
+        }
+    }
+
+    // Active/Deactive states
+    opacity:0;visibility:hidden;
+    top:-20px;
+    transition: top .6s ease, opacity .6s ease, visibility .6s ease;
+    &.active{
+        opacity:1;visibility:visible;
+        top:0px;
+    }
+
+    #hd-languages-switcher--inner{
+        overflow: hidden;
+        overflow-x: auto;
+    }
+
+    // --------- The menu style --------- //
+
+    ul{
+        list-style:none;
+        display:table;margin:0 auto;text-align:center; // Horizontally centered
+        padding:0 20px;
+
+        li, a{
+            display:inline-block;
+            color:#FFF;
+            height:38px;line-height:38px;
+            font-weight:bold;
+            text-transform:uppercase;
+            text-decoration:none;
+            padding:0 5px;
+            margin:0 2px;
+            @include rem(font-size, 13px);
+            transition:background .3s ease;
+        }
+
+        a{
+            margin:0;
+        }
+
+        li.selected, a:hover, a:focus, a:active{
+            @include alpha-background-color($global-var_featured-color-7, .55);
+        }
+
+    }
+
+    // --------- Other --------- //
+
+    // The close button
+    #hd-languages-switcher--close-btn{
+        position:absolute;
+        left:auto;right:0;top:0;
+        height:100%;width:50px;
+        cursor:pointer;
+        color:#FFF;
+        @media #{$global-var_mediaquery-combo-xs-sm}{
+            width:58px; // Align with the hamburger menu icon
+        }
+        &:before{
+            display:block;
+            height:100%;line-height:38px;
+            width:100%;text-align:center;
+            color:#FFF;
+            @include rem(font-size, 20px);
+        }
+        &:active, &:focus{
+            text-decoration:underline;
+        }
+    }
+
+}

@@ -1,0 +1,30 @@
+/* Specific Styles: TeamMospace Accordion >> Team Members ( and also NetworkMospace Accordion >> List of Teams MOWEB-1695 )*/
+.partial-team-members, .partial_network-teams {
+    .summary-info {
+        .overflow {
+
+            .member-row {
+                padding-bottom: 10px;
+
+                .member-name {
+                    line-height: 28px;
+                    margin-top: 5px;
+                }
+
+                .amount-raised {
+                    line-height: 41px;
+                    text-align: right;
+                }
+            }
+        }
+    }
+
+    .paginationControl {
+
+        .paginationPages {
+            a {
+                color: $global-var_featured-color-1;
+            }
+        }
+    }
+}

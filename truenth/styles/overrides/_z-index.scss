@@ -1,0 +1,62 @@
+/*==========================================================================
+   Z-INDEX
+ ~ Please use this file to define the z-index of any site elements
+ ~ This way we can easily manage and refactor the z-index priority of all elements across the website.
+==========================================================================*/
+
+// --------- Highest priority (>8000) --------- //
+
+// Loading overlays, this should beat just above everything
+#mo-global-loading-overlay,
+#fancybox-loading{ z-index: 999999999; }
+
+// --------- High priority (~5000 to 8000) --------- //
+
+// Alert-boxes
+#mo-alert-boxes{ z-index:5100; }
+
+// Tooltips inside modals
+body.modal-open{
+    .popover, .tooltip{ z-index:5006; }
+}
+
+// Modals
+#mo-default-modal{ z-index:5000; }
+#mo-default-modal .modal-dialog{ z-index:4999; }
+#mo-default-modal .modal-backdrop{ z-index:4998; }
+
+// --------- Medium-high priority (~1000 to 5000) --------- //
+
+// Header + header elements
+#hd{ z-index:2000; }
+#hd-top{ z-index:1999; }
+#hd-site-nav, #hd-site-search{ z-index:1997; } // #hd-bottom
+#hd-languages-switcher{ z-index:1996; }
+
+// Tooltips (general)
+.popover, .tooltip{ z-index:1900; }
+
+// --------- Medium priority (~500 to 1000) --------- //
+
+// Mogress panel
+#mogress-container{ z-index:800; }
+#mogress-activation-button{ z-index:799; }
+
+// Generic drop-downs
+.dropdown-panel{ z-index:600; }
+
+// --------- Medium-low priority (~100 to 500) --------- //
+
+.faded-overlay:before,
+.loading-overlay:before{ z-index:498; } // faded bg
+.loading-overlay:after{ z-index:499; } // icon
+#mo-default-modal--close-button { z-index: 500; }
+
+// --------- Low priority (100<) --------- //
+
+#ft{ z-index:100; }
+#side-site-nav{ z-index:99; } // Side-nav
+// Home carousel small buttons
+.partial_home #splash-controls-wrapper { z-index:10; }
+.ui-autocomplete.ui-menu { z-index:2; }
+#ft .site-footer-container .site-footer-handle a { z-index:1; }

@@ -1,0 +1,385 @@
+/*==========================================================================
+   NEWSFEED POST
+ ~ Style of comments on mospace
+==========================================================================*/
+
+.partial_newsfeed-post {
+
+    // --------- Post structure --------- //
+    @extend %clearfix;
+    padding:20px 0;
+    border-bottom:1px solid $global-var_featured-color-3;
+    position: relative;
+    &:last-child{ border:0; }
+
+    // --------- Profile image --------- //
+    .widget-layout-margin{
+        padding:0 12px 0 0; // Removes padding from bootstrap grid, gives the avatar a little more space
+    }
+    img.profile-picture{
+        width:100%;
+        height:auto;
+    }
+
+    // --------- User info --------- //
+    .widget-layout-main{
+        padding-right:0; // Removes padding from bootstrap grid
+        word-break: break-all;
+    }
+    .partial_newsfeed-post-inner-header{
+        .title{
+            margin:0;
+            text-overflow: ellipsis; // Considering long names
+            overflow: hidden;
+            font-weight: bold;
+        }
+        .datetime{
+            color:$global-var_featured-color-3;
+            @include rem(font-size, 12px);
+            text-transform: uppercase;
+            font-weight: normal;
+            font-style: normal;
+        }
+    }
+
+    // --------- Post content --------- //
+    .js-post-content{
+        margin-bottom:10px;
+
+        .move-update {
+            margin-top: 10px;
+
+            &--title {
+                margin:0;
+                font-weight: bold;
+            }
+            &--measurement {
+                @include rem(font-size, 40px);
+                font-family: $global-var_secondary-font-family; 
+                font-weight: 100;
+                color: $global-var_primary-font-color;
+                padding-left: 10px;
+                display: block;
+            }
+        }
+
+        .move-update--description{
+            padding-top: 10px;
+        }
+    }
+
+    // --------- Media attachment --------- //
+    .youtube-container{
+        iframe{
+          max-width:100%;
+        }
+    }
+
+    // --------- Post actions --------- //
+
+    .partial_newsfeed-post-actions {
+        margin-top:20px;
+
+        .wysiwyg{
+            margin-bottom:10px;
+        }
+
+    .donation-say-thank-you {
+        float:left;
+
+        .donation-say-thank-you-text{
+            display:block;
+            float:left;
+            text-transform: uppercase;
+            font-weight: bold;
+            @include rem(font-size, 14px);
+        }
+
+        ul{
+            list-style-type: none;
+            padding:0;margin:0;
+            float:left;
+            margin-left:5px;
+
+            li{
+              float:left;
+              text-transform: uppercase;
+            }
+        }
+    }
+
+    .action-list {
+        list-style-type: none;
+        padding:0;
+        margin:0;
+        float:right;
+
+        &.say-thank-you-action{
+        float:left;
+
+    }
+
+    li{
+        float:left;
+        text-transform: uppercase;
+        margin-left: 15px;
+        &:first-child{
+          margin:0;
+        }
+        &.post-action-social-share{
+          margin-right: 5px;
+        }
+    }
+    
+    li a.share-on-facebook{
+
+        &, &:hover, &:focus, &:active{
+            color:#000;
+        }
+        &, & span{
+            text-decoration:none;
+        }
+        &:hover, &:focus, &:active{
+            &, & span{
+                text-decoration:underline;
+            }
+        }
+
+        .share-on-facebook-text{
+          float:left;
+        }
+        .fa-facebook-square{
+          @include rem(font-size, 24px);
+          float:left;
+          margin-left:5px;
+        }
+      }
+    }
+
+    .donation-say-thank-you, .action-list{ // Vertical alignment
+        &, ul, li, span{
+            display:inline-block;
+            height:26px;line-height:26px;
+        }
+    }
+
+    .error-message {
+        margin-top: 20px;
+    }
+
+    }
+
+    // --------- Disabled post style --------- //
+    &.post-hidden {
+        background:inline-image("backgrounds/comment-hidden.png") scroll repeat 0 0 transparent;
+    }
+
+}
+
+.mospace{
+
+    .partial_newsfeed-share{
+
+        .callout-block{
+            padding: 10px;
+        }
+    }
+
+    #mospace-post-anupdate{
+        
+        .mospace-post-anupdate--wrapper{
+            padding: 10px;
+            //background: $global-var_featured-color-1;
+        }
+
+        h4{
+            color: #fff;
+            font-weight: 600;
+        }
+
+        ul{
+            padding: 0;
+            margin: 0;
+        }
+
+        label{
+            color: #fff;
+            text-transform: none;
+        }   
+    }
+
+    .mospace-post-anupdate--form-fields{
+
+        ul.action-list{
+            margin: 0;
+            padding: 0;
+        
+            li{
+                display: table-cell;
+                float: left;
+            }
+
+            a.active i:before{
+                color:#FFF;
+            }
+
+        }    
+        
+        .fa-selected{
+            color: #fff;
+        }
+
+        #mospace-post-attachment{
+            border-top: 1px solid #fff;
+            border-bottom: 1px solid #fff;
+        }
+
+    }
+    
+    .twitter-typeahead{
+        width: 100%;
+    }
+
+    
+    #mospace_postTypeSelect{
+        border-bottom: 1px solid #fff;
+        float: left;
+        width: 100%;
+        
+        //This overides the button styles to display them as tabs.
+        #mospace_postTypeSelect--comment-btn, 
+        #mospace_postTypeSelect--move-btn {
+            border-radius: 3px 3px 0 0;
+            float: left;
+        }
+
+        .active{
+            border: 0;
+        }
+
+        @media #{$global-var_mediaquery-combo-xs-sm}{
+            #mospace_postTypeSelect--comment-btn, 
+            #mospace_postTypeSelect--move-btn {
+                margin-bottom: 0;
+            }
+        }
+
+        @media #{$global-var_mediaquery-xs}{
+            #mospace_postTypeSelect--comment-btn,
+            #mospace_postTypeSelect--move-btn {
+                width: 50%; // stretch the buttons on mobile devices
+            }
+        }
+    }
+
+    @media #{$global-var_mediaquery-combo-xs-sm}{
+        .ff-search_button_control{
+            .btn-negative{
+                width: 100%;
+            }
+        }
+    }
+
+    #mospace_txtbxPostContent{
+        border: 0;
+    }
+
+    #mospace_postMoveAction--label-name{
+        margin: 10px 0;
+    }
+
+    .mospace-post-anupdate--filter-wrap{
+        background: $global-var_featured-color-1;
+        margin-top: 20px;
+    }
+
+//Some ugly overides to fix some layout bugs.
+    #image-attachment{
+        float: left;
+        width: 100%;
+    }
+
+    .mospace-move-type--list-filter{
+        h4{
+            color: #fff;
+            font-weight: 600;
+        }
+    }
+
+    .partial_newsfeed-filter{
+        position:relative; // needed for the arrow below
+    }
+    .arrow-down{
+        @include css-triangle('bottom', 8px, $global-var_featured-color-1);
+        bottom:-15px;
+        top:auto;
+        left:50%;
+        margin-left:-8px;
+    }
+
+    .tt-selectable{
+        color: #000;
+    }
+
+    .tt-selectable:hover{
+        color: #fff;
+    }
+
+    .mospace_postMoveAction--amount-input-measurement{
+        display: inline-block;
+        width: auto;
+        padding-left: 8px;
+        padding-right: 8px;
+        float: right;
+        margin-top: -41px;
+        position: relative;
+        left: -5px;
+        border: 1px solid #ccc;
+        @include border-radius(4px, 4px);
+    }
+
+    #mospace_postForm_button{
+        width: 100%;
+        @media #{$global-var-mediaquery-xs} {
+            margin-bottom: 10px;
+        }
+    }
+
+    #mospace-post-anupdate--icon-list-holder{
+        
+        li{
+            margin: 5px 10px 0 0;
+        }
+        a:hover i:before{
+            color:#FFF;
+        }
+
+    }
+
+    #mospace-post-anupdate--post-options-holder{
+        margin-top: 20px;
+        @media #{$global-var-mediaquery-xs} {
+            margin-top: 0;
+        }
+    }
+
+    #mospace-post-anupdate--post-to-other{
+        margin: 0;
+        padding: 0;
+        float: left;
+        @media #{$global-var-mediaquery-combo-sm-md-lg} {
+            line-height: 35px;
+        }
+        li {
+            display:inline-block;
+            html.ie8 &{
+                float: left;
+                width: 120px;
+            }
+        }
+    }
+}
+
+
+
+

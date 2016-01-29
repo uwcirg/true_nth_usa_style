@@ -1,0 +1,303 @@
+/* PAGES > MOSPACE > DOWNLOADS */
+/*  ---------
+    Downloads
+    ---------   */
+
+.posters-setion{
+
+    .mo-col-1third{
+        margin-bottom: 15px;
+    }
+    
+    @media #{$global-var_mediaquery-combo-xs-sm}{ 
+
+        .poster-img{
+            text-align: center;
+        }
+    }
+}
+
+#mospace-page-downloads{
+    .section {
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+    }
+
+    .section_personalised, 
+    .section_mobile,
+    .section_posters,
+    .section_logos,
+    .section_handy {
+        h3 {
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba($global-var_featured-color-3, 0.5);
+            margin-bottom: 10px;     
+        }
+    }
+
+    .section_mobile {
+        h2 {
+            margin-bottom: 30px;
+        }
+        .mobile-platforms {
+            padding: 0;
+            margin: 0 0 20px 0;
+            width: 100%;
+            background-color: $global-var_featured-color-1;
+            border-radius: 5px;
+            text-align: center;
+        }
+    }
+
+    .download-box {
+        margin-bottom: 15px;
+
+        .text-content {
+            margin-bottom: 15px;
+        }
+        
+        .download-link a {
+            margin-top: 10px;
+        }
+
+        @media #{$global-var_mediaquery-combo-xs-sm}{ 
+
+            .download-link {
+                text-align: center;
+            }
+
+        }
+    }
+
+    .section_personalised .download-box img {
+        height: auto !important;
+    }
+}
+
+#mospace-page-customize-poster,
+#mospace-page-customize-thankyou-poster {
+    h2 {
+        margin-bottom: 10px;
+    }
+
+    .back-to-downloads {
+        margin-bottom: 30px;
+    }
+
+    h5 {
+        padding-bottom: 10px;
+        border-bottom: 1px solid rgba($global-var_featured-color-3, 0.5);  
+        margin-bottom: 10px;
+    }
+
+    .liquid {
+        overflow: hidden;
+        margin-bottom: 15px;
+        height: 91px;
+        width: 100%;
+        position: relative;
+
+        li {
+            list-style: none;
+        }
+
+        .previous,
+        .next {
+            cursor: pointer;
+            height: 101px;
+            text-align: center;
+            width: 8%;
+            float: left;
+            margin-top: -11px;
+            padding-top: 11px;
+            border-top: 3px solid rgba(0, 0, 0, 0);
+            @include rem(font-size, 35px);
+            @include transition( border-top .3s ease-out );
+
+            &:before {
+                color: #000;
+                line-height: 91px;
+                vertical-align: middle;
+                @include transition( color .3s ease-out );
+            }
+
+            &:hover,
+            &:focus,
+            &:active { 
+                border-top: 3px solid $global-var_featured-color-1;
+
+                &:before {
+                    color: $global-var_featured-color-1
+                }
+            }
+        }
+
+        .next {
+            float: right;
+        }
+
+        .wrapper {
+            li {
+                position: relative;
+                cursor: pointer;
+
+                &:before {
+                    width: 100%;
+                    height: 100%;
+                    display: block;
+                    position: absolute;
+                    content: '';
+                    border: 3px solid rgba(0, 0, 0, 0);
+                    @include transition( border .3s ease-out );
+                }
+
+                &.selected:before,
+                &:hover:before,
+                &:focus:before,
+                &:active:before { border: 3px solid $global-var_featured-color-1; }
+            }
+
+            img {
+                width: 91px;
+                height: auto;
+            }
+        }
+    }
+
+    .update-button {
+        text-align: center;
+        .button {
+            min-width: 137px;
+        }
+    }
+
+    .update-button-last {
+        margin-bottom: 20px;
+    }
+
+
+    .poster-preview {
+        margin: 10px 0;
+        border-bottom: 1px solid rgba($global-var_featured-color-3, 0.5);  
+        border-top: 1px solid rgba($global-var_featured-color-3, 0.5);  
+
+
+        .poster-preview-wrap {
+            border-bottom: 3px solid $global-var_featured-color-1;  
+            border-top: 3px solid $global-var_featured-color-1;  
+            padding: 24px 0;
+            margin: -1px 0 -1px 25%;
+            position: relative;
+
+            .mo-icon-up,
+            .mo-icon-down {
+                position: absolute;
+                width: 100%;
+                text-align: center;
+                color: $global-var_featured-color-1;
+                @include rem(font-size, 35px);
+                line-height: 35px;
+                line-height: 1rem;
+            }
+
+            .mo-icon-up { 
+                bottom: -1px; 
+                vertical-align: bottom;
+            }
+            .mo-icon-down { 
+                top: 0; 
+                vertical-align: top;
+            }
+        }
+
+        .poster-preview-display {
+            background-color: $global-var_featured-color-1;
+            height: 400px;
+        }
+
+        .poster-preview-control {
+            padding: 24px 0 24px 5px;
+
+            .button {
+                width: 100%;
+                margin-bottom: 5px;
+            }
+        }
+    }
+
+    .ff-fieldset {
+
+        .ff-story-motivation,
+        .ff-story-standard {
+            border-bottom: 1px solid rgba($global-var_featured-color-3, 0.5);  
+            padding-bottom: 15px;
+            margin: 15px 0;
+        }
+
+        input[type="radio"] {
+            float: left;
+            margin-left: 10px;
+        }
+        
+        label {
+            font-weight: bold;
+            display: block;
+            margin-left: 30px;
+            text-transform: capitalize;
+        }
+
+        .ff-helptext,
+        .ff-textbox_control {
+            display: block;
+            margin-left: 30px;
+        }
+
+        .ff-story-new {
+            .ff-textbox_control {
+                margin-top: 3px;
+            }
+
+            .ff-helptext {
+                color: $global-var_featured-color-3;
+            }
+
+            textarea {
+                min-height: 100px;
+                color: #000;
+                border-color: #000;
+            }
+
+            textarea[disabled="disabled"]{
+                color: $global-var_featured-color-8;
+                border-color: $global-var_featured-color-3;
+            }
+        }
+    }
+
+    .process_message {
+        display: none;
+    }
+}
+
+#mospace-page-share-poster {
+    .mospace-personal-poster-large {
+        margin: 20px 0;
+    }
+
+    h2 {
+        margin-bottom: 10px;
+    }
+
+    .chiclet {
+        margin: 2px 20px 0 0;
+
+        a:before {
+            margin: 0 !important;
+        }
+    }
+}
+
+
+
+
+

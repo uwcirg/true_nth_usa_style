@@ -1,0 +1,11 @@
+/*
+*
+* Featured Event Page Specific styles
+*
+*/
+
+.event-featured {
+  .event-featured--featured-search-results {
+    @include rem(margin-top, 20px);
+  }
+}

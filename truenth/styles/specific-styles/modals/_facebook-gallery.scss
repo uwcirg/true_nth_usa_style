@@ -1,0 +1,146 @@
+/*==========================================================================
+GALLERY DIALOG
+~ This page appears inside a lightbox when the gallery icon is clicked from a private mospace
+==========================================================================*/
+
+$thumbnail-dimension-px: 110px;
+$thumbnail-padding-px: 0;
+$overlay-container-height-px: 24px;
+$ease-in-out-quintic-timing-function: cubic-bezier(1,0,0,1) !default;
+
+#mospace-facebook-gallery-container {
+
+    .facebook-gallery {
+
+        #gallery-thumbs {
+
+            max-height: ( $thumbnail-dimension-px + $thumbnail-padding-px ) * 3;
+            overflow: auto;
+
+            .image-thumbnail {
+                height: 150px;
+                overflow:hidden;
+                margin: $thumbnail-padding-px;
+                margin-bottom: 5px;
+                float: left;
+
+                &.album-gallery {
+                    height: 110px;
+                    margin-bottom: 10px;
+                }
+
+                &.facebook {
+                    cursor: pointer;
+                }
+
+                .right-most {
+                    clear: both;
+                }
+
+                .image-thumbnail-container{
+
+                    height: 110px;
+                    overflow:hidden;
+
+                    img{
+                        min-width: 100%;
+                        min-height: 100%;
+                        width: auto;
+                        height: auto;
+                        max-width: 150%;
+                        max-height: 150%;
+                    }
+                }
+
+                .text-caption{
+                    margin:0;
+                    height: 40px;
+                    line-height: 19px;
+                    overflow:hidden;
+                }
+            }
+        }
+
+        #gallery-controls {
+            padding-top: 10px;
+            clear: both;
+
+            .gallery-error {
+                padding: 10px 0;
+                color: red;
+            }
+
+            .js-facebook-cancel, .js-facebook-back-to-albums {
+                text-transform: uppercase;
+                font-weight: bold !important;
+                float: left;
+            }
+
+            .fa-caret-left {
+                font-size: 23px;
+                color: $global-var_featured-color-1;
+                padding-right: 7px;
+                vertical-align: sub;
+            }
+
+            .spacer {
+                padding: 0 16px 0 0;
+                float: left;
+            }
+        }
+
+        .overlay-options-container {
+                    position: relative;
+
+                    .overlay-options {
+                        position: absolute;
+                        left: 0;
+                        right: 0;
+                        bottom: 0;
+                        height: $overlay-container-height-px;
+
+                        .overlay-option {
+                            width: 24px;
+                            float: left;
+                            clear: right;
+                        }
+                    }
+
+                    &:hover .overlay-options {
+                        bottom: -$overlay-container-height-px;
+                        @include transition(height 200ms $ease-in-out-quintic-timing-function 100ms);
+                    }
+                }
+
+                .overlay-options {
+                    background-color: rgba(255,255,255,0.8);
+                    overflow: hidden;
+                    text-align: center;
+
+                    a {
+                        display: block;
+                        line-height: $overlay-container-height-px;
+                    }
+                }
+            }
+
+            // --------- These rules relate to the gallery profile pic cropping state of the gallery lightbox --------- //
+            #controls-container {
+
+                min-height: 400px;
+                margin-bottom: 20px;
+
+                .image-container {
+                    min-height: 380px;
+                    text-align: center;
+                }
+
+                img#cropper {
+                    max-width:450px;
+                    max-height:480px;
+                }
+
+        }
+
+
+}

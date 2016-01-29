@@ -1,0 +1,24 @@
+/* Specific Styles: Accordion >> My Stats */
+.partial_member-summary{
+	.summary-info{
+		.overflow{
+			width:100%;
+			clear:both;
+			float:left;
+
+			.info-label{
+				float: left;
+				padding-right: 5px;
+			}
+			
+			.info{
+				float:right;
+				text-align: right;
+                max-width:220px;
+                word-break: break-word;
+				@include rem(font-size, 14px);
+				@include rem(line-height, 14px);
+			}
+		}
+	}
+}

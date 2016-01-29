@@ -1,0 +1,141 @@
+/* FAQ SCSS - Not quite an accordian, but almost */
+
+.faq-index-partial {
+
+    .faq-search-box {
+        &:after {
+            @include css-triangle('bottom', 6px, $global-var_featured-color-15);
+            position: absolute;
+            left: 50%;
+            margin-left: -6px;
+        }
+    }
+
+    .search-faq-form {
+        overflow: auto;
+        background-color: $global-var_featured-color-15;
+        padding: 15px;
+        // The DOM order is bad for tabbing.
+        .ew_q {
+            //float: left;
+            //width: 50%;
+            @extend .col-sm-9;
+        }
+        .ew_submit {
+            @extend .col-sm-3;
+            input {
+                //float: right;
+                //width: 49%;
+                width: 100%;
+                display: block;
+            }
+        }
+        dl {
+            margin: 0;
+        }
+        
+    }
+    .section-header-links {
+        h3 {
+            margin-top: 10px;
+        }
+        .section-header-link {
+            margin-left: 10px;
+            @include rem(font-size, 12px);
+        }
+    }
+    #faq-toggle-off {
+        display: none;
+    }
+    .faq-item {
+        a{
+            cursor: pointer;
+        }
+        .faq-item-link {
+            span {
+                &:before {
+                    color: #000;
+                    vertical-align: middle;
+                    width: 12px;
+                    @include rem(font-size, 16px);
+                    @extend .fa;
+                    @extend .fa-caret-right:before;
+                }
+            }
+        }
+        .faq-item-content {
+            display: none;
+        }
+        &.faq-item-open {
+            .faq-item-link {
+                span:before {
+                    @extend .fa-caret-down:before;
+                }
+            }
+            .faq-item-content {
+                // Display content if the parent class is .faq-item-open
+                display: block;
+            }
+            + .faq-item {
+                margin-top: 15px;
+            }
+        }
+    }
+
+    .faq-category-title {
+        @extend h3;
+        margin-top: 25px;
+        &:first-of-type {
+            margin-top: 0;
+        }
+
+    }
+    .faq-search-results {
+        @include rem(margin-top, 20px);
+    }
+
+    #faq-index--search{
+        background-color: #959A8F;
+        margin-bottom: 25px;
+
+        input{
+            margin-bottom: 0;
+        }
+    }
+
+    #faq-index--categories{
+        margin-bottom: 15px;
+
+        h4{
+            margin-bottom: 15px;
+        }
+        .faq-menu li {
+            padding: 0;
+        }
+
+    }
+
+    #faq-index--header-links{
+        ul li:last-child{
+            @media #{$global-var_mediaquery-xs}{
+                float: none;
+            }
+        }
+
+        #faq-toggle-on{
+            display: none;
+        }
+    }
+
+    .list-inline{
+        margin-left: 0;
+    }
+
+    .list-inline li{
+        padding-left: 0;
+    }
+
+
+}
+
+

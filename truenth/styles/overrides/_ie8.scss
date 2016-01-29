@@ -1,0 +1,17 @@
+/*==========================================================================
+   IE8 OVERRIDES
+==========================================================================*/
+
+// Carousel on home page
+html.ie8{
+    .partial_home #tile-ytplayer-overlay a span.youtube-logo .mo-icon {
+        margin-left: 8px;
+        margin-top: 3px;
+    } 
+}
+
+// IE8 has issue rendering and refreshing font-icons. This hack helps avoiding this issue.
+// For more info, see "shims.js"
+html.ie8.force-font-icon-refresh{
+    & :before, & :after{ content:none !important; }
+}

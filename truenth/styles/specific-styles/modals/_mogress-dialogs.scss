@@ -1,0 +1,153 @@
+/*==========================================================================
+   MOGRESS RULES
+ ~ This page appears inside a lightbox when a social icon is clicked
+==========================================================================*/
+.mogress-accept-rules {
+    
+    .js-accept-rules-error {
+        top: -5px;
+        padding-left: 0;
+    }
+    .cms-element-image {
+        text-align: center;
+    }
+}
+
+/*==========================================================================
+   MOGRESS PERSONAL URL
+==========================================================================*/
+.mogress-personalurl-lightbox {
+
+//    .url-label, .url-input {
+//        padding: 0;
+//    }
+//
+//    .url-label {
+//        padding-right: 0;
+//    }
+
+    .url-label label {
+        padding-top: 6px;
+    }
+
+    .url-cancel {
+        padding: 5px 0 0 0;
+        text-transform: uppercase;
+        display: inline;
+    }
+
+    .url-error {
+        padding: 0;
+        p {
+            margin: 0;
+            padding: 0;
+        }
+    }
+    &--actions {
+        text-transform: uppercase;
+    }
+
+    // Add more vertical spacing between stuff
+    .instructions{ margin-bottom:15px; }
+    &--actions{ margin-top: 15px; }
+
+}
+
+/*==========================================================================
+   MOGRESS PICTURE UPLOADER
+==========================================================================*/
+
+.gallery-items-frame {
+
+    a, a:hover {
+        font-weight: normal;
+        margin-right: 20px;
+    }
+
+    .js-mogress-gallery-cancel {
+        text-transform: uppercase;
+    }
+
+    a.js-mogress-gallery-cancel {
+        font-weight: bold;
+        display:inline-block;
+        padding-top: 6px;
+    }
+
+}
+
+.jcrop-holder{
+    margin:0 auto;
+}
+
+.jcrop-keymgr{
+    visibility: hidden;
+}
+
+.js-cancel-cropping {
+    text-transform: uppercase;
+}
+
+.js-save-cropped-image {
+    margin-right: 20px;
+}
+
+a.js-save-cropped-image {
+    font-weight: normal !important;
+}
+.mospace-photo-upload-buttons-container{
+    float:left;
+    margin-top: 15px;
+}
+
+.rotate-buttons {
+    float:right;
+    margin-top: 15px;
+    .js-rotate-image {
+        text-transform: uppercase;
+    }
+    .rotate-right-icon{
+        font-size: 32px;
+        color: $global-var_featured-color-1;
+        padding-right: 5px;
+        vertical-align: middle;
+    }
+}
+
+/*==========================================================================
+   MOGRESS MEMBER TARGET
+==========================================================================*/
+
+.donation-target {
+    &--header {
+        text-transform: capitalize;
+    }
+    &--content {
+        margin-bottom: 10px;
+    }
+    &--footer{
+        margin-top: 10px;
+        text-transform: uppercase;
+    }
+}
+
+/*==========================================================================
+   MOGRESS YOUR OCCUPATION MODAL
+==========================================================================*/
+
+#mo-default-modal .edit-details-company {
+
+    .occupation-title{
+        // since the view is shared between the modal and the edit-my-details page, fake this and make it look like an <h2>
+        @extend %h2;
+    }
+
+    .form-paragraph{ margin-bottom: 15px; }
+    .occupation-options{ margin-bottom: 8px; }
+    .mospace_formButtons{ margin-top: 15px; }
+
+    .cancel{
+        text-transform:uppercase;
+    }
+
+}

@@ -1,0 +1,39 @@
+// --------- Question marks icons --------- //
+
+.mo-question-empty, .mo-question-full{
+
+    display:inline-block;
+    height:28px;
+    line-height:26px; // Considered the 1px border too!
+    width:28px;text-align:center;
+    margin-left:4px;margin-right:4px;
+    border:1px solid #000;
+    font-weight:bold;
+    text-decoration: none;
+    border-radius: 50%;
+    @include rem(font-size, $global-var_base-font-size);
+
+    &:before{
+        content:'?';
+    }
+
+    &:active, &:hover, &:focus{ // In case it is a link:
+        text-decoration: none;
+    }
+    &:focus{
+        text-decoration: underline; // For accessibility reasons
+    }
+
+}
+.mo-question-empty{
+    &, &:active, &:hover, &:focus{
+        background:#FFF;
+        color:#000;
+    }
+}
+.mo-question-full{
+    &, &:active, &:hover, &:focus{
+        background:#000;
+        color:#FFF;
+    }
+}

@@ -1,0 +1,25 @@
+/* LEADERBOARDS SCSS */
+
+.leaderboard-table{
+    tr.row{
+        th{
+            text-transform: uppercase;
+        }
+        th:nth-child(n+2),
+        td:nth-child(n+2){
+            text-align: right;
+        }
+        td:nth-child(n+2){
+            padding-right: 15px;
+        }
+    }
+    tr.totals-row{
+        font-weight: bold;
+        text-transform: uppercase;
+
+        
+        .first{
+            padding: 0 0 0 5px;
+        }
+    }
+}

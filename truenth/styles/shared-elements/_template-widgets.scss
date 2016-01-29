@@ -1,0 +1,319 @@
+/*==========================================================================
+   TEMPLATE WIDGETS STYLES
+==========================================================================*/
+
+
+// full width spacing
+.template-full-width-spacing {
+    padding-top: 5%;
+    padding-bottom: 5%;
+}
+
+// styles for featured header
+.template-widget-featured-header {
+}
+
+
+// styles for full width featured sections with text and media (Video or Image)
+.template-widget-featured-section {
+
+    &--text h2, &--text a {
+        color: inherit;
+    }
+    @media #{$global-var_mediaquery-xs} {
+        display: flex;
+        flex-direction: column;
+        &--media_left {
+            order: 2; // swap the text and media blocks
+        }
+    }
+}
+
+//This is to overide default styling for .media class
+.media:first-child{
+    margin-top: 15px;
+}
+
+
+/*------------------------------------------------------------
+   THE GARY
+------------------------------------------------------------*/
+
+.highlightbox_widget{
+
+    .template-widget-the-gary {
+        min-height: 155px;
+        padding: 20px 25px;
+        border: 1px solid #000;
+        margin: 10px 0;
+
+        .template-widget-the-garry--img-wrapper{
+            
+            picture, img{
+                width: 100%;
+                height: auto;
+            }
+
+            @media #{$global-var_mediaquery-xs}{
+                width: 100%;
+            }
+        }
+
+        .template-widget-the-garry--text-wrapper{
+            padding-left: 15px;
+
+            @media #{$global-var_mediaquery-xs}{
+                padding-left: 0;
+                padding-top: 15px;
+            }
+        }
+    }
+}
+
+/*------------------------------------------------------------
+   THE POPOVER
+------------------------------------------------------------*/
+
+.popoverset_widget{
+
+    .inverted{
+        
+        .template-widget-the-popover--title{
+            background: #000;
+            color: #fff;
+            margin-bottom: 25px;
+        }
+
+        .js-text-overlay--icon:before{
+            color: #fff;
+        }
+    }
+
+    .template-widget-the-popover--content-wrapper{
+        margin: 0 10px;
+    }
+
+    .js-text-overlay--title{
+        padding: 3px 10px;
+    }
+
+}
+
+/*------------------------------------------------------------
+   SOCIAL SHARE
+------------------------------------------------------------*/
+
+.template-widget-share-box {
+    position:relative;
+    &--actions {
+        opacity: 0;
+        background-color: $global-var_featured-color-7;
+        visibility: hidden;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: -10%;
+        bottom: 0;
+        height: 100%;
+        width: 100%;
+        margin: auto;
+        transition: opacity .5s ease, visibility .5s ease, right .3s ease;
+        > div {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 100%;
+            width: 100%;
+            display: table;
+            margin: auto;
+            .template-widget-share-box-buttons {
+                display: table-cell;
+                vertical-align: middle;
+                color: #fff;
+                text-align: center;
+                font-size: 26px;
+                padding:0 6%;html.ie8 &{padding:0 1em;}//IE8 is buggy with %
+                li {
+                    list-style-type: none;
+                }
+                // button styles
+                .btn-social-share {
+                    display: block;
+                    margin: 0 auto;
+                    height: auto;
+                    padding: 12px 4px;
+                    line-height: 20px;
+                    font-weight: normal;
+                    @include rem(font-size, 16px);
+                    text-decoration: none;
+                    text-transform: uppercase;
+                    span {
+                        color: #FFF;
+                    }
+                }
+
+                .btn-facebook {
+                    background-color: #3b5998;
+                    color:#FFF;
+                }
+
+                .btn-twitter {
+                    background-color: #55acee;
+                    color:#FFF;
+                    margin-top: 10px;
+                }
+            }
+        }
+    }
+    &.active {
+        .template-widget-share-box--actions {
+            opacity: 1;
+            visibility: visible;
+            right: 0;
+        }
+    }
+    &--image{
+        display: block;
+        margin: 0 auto; // centered image
+        width:100%; // needed if we want the hover-panel to hover the entire image
+    }
+}
+
+
+/*------------------------------------------------------------
+   COLLAPSE
+------------------------------------------------------------*/
+
+.template-widget-collapse{
+
+    @media #{$global-var_mediaquery-combo-xs-sm}{ 
+        margin-bottom: 25px;
+    }
+
+    .template-widget-collapse--content{
+        margin-top: 10px;
+        -ms-word-break: break-all;
+             word-break: break-all;
+             // Non standard for webkit
+             word-break: break-word;
+        -webkit-hyphens: auto;
+           -moz-hyphens: auto;
+                hyphens: auto;
+    }
+
+    .img-responsive{
+        width: 100%;
+    }
+}
+
+
+/*------------------------------------------------------------
+   CALL TO ACTION POPOVER
+------------------------------------------------------------*/
+
+
+.popoverset_widget {
+    margin-bottom: 25px; // spacing for widget
+
+    // styles for the tiles
+    .template-widget-cta-tile {
+        display: block;
+        border: 1px solid $global-var_featured-color-7;
+        background-color: #fff;
+        > div {
+            position: relative;
+        }
+        &--image {
+            width: 100%;
+            height: auto;
+        }
+
+        &--js-text-overlay {
+            @include alpha-background-color(#000, .6);
+            position: absolute;
+            opacity: 0;
+            visibility: hidden;
+            bottom: -40px;
+            right: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            transition: opacity .4s ease, visibility .4s ease, bottom .4s ease;
+            > div {
+                position: absolute;
+                text-align: center;
+                right: 0;
+                left: 0;
+                top: 0;
+                height: 100%;
+                width: 100%;
+                display: table;
+                > div {
+                    display: table-cell;
+                    vertical-align: middle;
+                    > p {
+                        color: #fff;
+                        padding: 5px;
+                        font-weight: normal;
+                        line-height: 20px;
+                        margin: 0;
+                    }
+                }
+            }
+
+            &.active {
+                opacity: 1;
+                visibility: visible;
+                bottom: 0;
+            }
+        }
+
+        &--js-icon {
+            height: auto;
+            width: 40px;
+            font-size: 24px;
+            position: absolute;
+            opacity: 1;
+            visibility: visible;
+            top: -24px;
+            background-color: #fff;
+            border-radius: 100% 100% 0 0;
+            left: 50%;
+            margin-left: -25px;
+            transition: opacity .4s ease, visibility .4s ease;
+            &.inactive {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+
+        &--heading {
+            height: 100px;
+            font-size: 26px;
+            text-align: center;
+            display: table;
+            margin: 0 auto;
+            padding: 10px;
+            h3 {
+                display: table-cell;
+                vertical-align: middle;
+                text-decoration: underline;
+                @media #{$global-var_mediaquery-combo-xs-sm} {
+                    font-size: 20px;
+                }
+            }
+        }
+
+        @media #{$global-var_mediaquery-combo-xs-sm} {
+            margin-bottom: 10px; // spacing between the tiles
+        }
+
+        &.active {
+            .template-widget-cta-tile--heading h3 {
+                text-decoration: none;
+            }
+        }
+    }
+}

@@ -1,0 +1,51 @@
+body.register-participation {
+
+    color: #fff;
+    background-color: rgba(0,0,0,0.6);
+
+    #content-main {
+        background-color: transparent;
+    }
+
+    #fake-container-monolith {
+        background-color: transparent;
+    }
+    &:before {
+        content: "";
+        background-image: url('../../tmp/tmp-5F7783.png');
+        position: fixed;
+        height: 100%;
+        width: 100%;
+        opacity: 0.5;
+    }
+    .initialPage>div.row a:not(.active) {
+        color: white;
+    }
+    #move-next-button:hover{
+        color:black;
+    }
+    #move-video-presentation-thumbnail {
+        cursor:pointer;
+    }
+    #move-video-presentation-thumbnail img {
+        cursor:pointer;
+        margin-left:10px;
+    }
+
+    // Translucent backdrop
+    .move-backdrop {
+        background-color: rgba(0,0,0,0.5);
+        padding: 5% 10% 5% 10%;
+    }
+
+    // MOVE Grow options
+    .options-mo-grow {
+        &--button {
+            height: 100%;
+            display: inine-block;
+            white-space: normal;
+            vertical-align: middle;
+        }
+    }
+
+}

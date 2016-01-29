@@ -1,0 +1,320 @@
+/*==========================================================================
+   MOVEMBER CUSTOM TEXT-ON-IMAGE CONTAINERS
+==========================================================================*/
+
+/*------------------------------------------------------------
+   STYLE SHARED AMONG ALL TYPES
+------------------------------------------------------------*/
+
+.mo-txt-on-img{
+    position:relative;
+    img, picture {
+        width:100%; // Make sure the image always stretches its width to the outer container
+        display: block;
+    }
+}
+
+.mo-txt-on-img--text{
+    position:absolute;
+    top:0;left:0;
+    width:100%;height:100%;
+    >div{
+        display:table;
+        height:100%;width:100%;
+        padding:2% 0; // Add a minimum top/bottom space
+        >div{
+            display:table-cell;
+        }
+    }
+}
+
+/*------------------------------------------------------------
+   TEXT ALIGNMENTS
+------------------------------------------------------------*/
+
+// --------- Horizontal alignments --------- //
+
+.mo-txt-on-img_txt-pos-top-left,
+.mo-txt-on-img_txt-pos-center-left,
+.mo-txt-on-img_txt-pos-bottom-left{
+    .mo-txt-on-img--text>div>div>div{
+        float:left;
+    }
+}
+.mo-txt-on-img_txt-pos-top-center,
+.mo-txt-on-img_txt-pos-center-center,
+.mo-txt-on-img_txt-pos-bottom-center{
+    .mo-txt-on-img--text>div>div>div{
+        display:table;margin:0 auto;
+    }
+}
+.mo-txt-on-img_txt-pos-top-right,
+.mo-txt-on-img_txt-pos-center-right,
+.mo-txt-on-img_txt-pos-bottom-right{
+    .mo-txt-on-img--text>div>div>div{
+        float:right;
+    }
+}
+
+// --------- Vertical alignments --------- //
+
+.mo-txt-on-img_txt-pos-top-left,
+.mo-txt-on-img_txt-pos-top-center,
+.mo-txt-on-img_txt-pos-top-right{
+    .mo-txt-on-img--text>div>div{
+        vertical-align:top;
+    }
+}
+.mo-txt-on-img_txt-pos-center-left,
+.mo-txt-on-img_txt-pos-center-center,
+.mo-txt-on-img_txt-pos-center-right{
+    .mo-txt-on-img--text>div>div{
+        vertical-align:middle;
+    }
+}
+.mo-txt-on-img_txt-pos-bottom-left,
+.mo-txt-on-img_txt-pos-bottom-center,
+.mo-txt-on-img_txt-pos-bottom-right{
+    .mo-txt-on-img--text>div>div{
+        vertical-align:bottom;
+    }
+}
+
+/*------------------------------------------------------------
+   TEXT WIDTHS
+------------------------------------------------------------*/
+
+.mo-txt-on-img--text>div>div>div{ // Default is 50%
+    width:50%;
+}
+.mo-txt-on-img_txt-width-33{
+    .mo-txt-on-img--text>div>div>div{
+        width:33%;
+    }
+}
+.mo-txt-on-img_txt-width-66{
+    .mo-txt-on-img--text>div>div>div{
+        width:66%;
+    }
+}
+.mo-txt-on-img_txt-width-25{
+    .mo-txt-on-img--text>div>div>div{
+        width:25%;
+    }
+}
+.mo-txt-on-img_txt-width-75{
+    .mo-txt-on-img--text>div>div>div{
+        width:75%;
+    }
+}
+.mo-txt-on-img_txt-width-100{
+    .mo-txt-on-img--text>div>div>div{
+        width:100%;
+    }
+}
+
+/*------------------------------------------------------------
+   TEXT PADDING
+------------------------------------------------------------*/
+
+.mo-txt-on-img_txt-padding-2{
+    .mo-txt-on-img--text>div>div>div{
+        padding:0 2%;
+    }
+}
+.mo-txt-on-img_txt-padding-5{
+    .mo-txt-on-img--text>div>div>div{
+        padding:0 5%;
+    }
+}
+.mo-txt-on-img_txt-padding-10{
+    .mo-txt-on-img--text>div>div>div{
+        padding:0 10%;
+    }
+}
+.mo-txt-on-img_txt-padding-15{
+    .mo-txt-on-img--text>div>div>div{
+        padding:0 15%;
+    }
+}
+
+/*------------------------------------------------------------
+   SPACIAL STYLES
+------------------------------------------------------------*/
+
+
+.mo-txt-on-img_txt-style-negative,
+.mo-txt-on-img_txt-style-negative *{
+    color:#FFF;
+}
+.mo-txt-on-img_txt-style-negative{
+    background-color:#000; // Note: it's important to keep the black bg because if the collapsable mod is enabled together with the negative mod, then the text will end up being white on white, which is illegible
+}
+.mo-txt-on-img_txt-align-center .mo-txt-on-img--text{
+    text-align:center;
+}
+.mo-txt-on-img_txt-align-right .mo-txt-on-img--text{
+    text-align:right;
+}
+
+/*------------------------------------------------------------
+   RESPONSIVE TEXT MOD
+------------------------------------------------------------*/
+
+.mo-txt-on-img_resp-txt{
+
+    // --------- Heading style --------- //
+
+    h1,h2,h3,h4,h5,h6{
+        // lg
+        @include rem(font-size, 47px);
+        @include rem(line-height, 49px);
+        letter-spacing: .5px;
+        // md
+        @media #{$global-var_mediaquery-md}{
+            @include rem(font-size, 47px);
+            @include rem(line-height, 49px);
+            letter-spacing: .5px;
+        }
+        // sm
+        @media #{$global-var_mediaquery-sm}{
+            @include rem(font-size, 32px);
+            @include rem(line-height, 36px);
+            letter-spacing: .5px;
+        }
+        // xs
+        @media #{$global-var_mediaquery-xs}{
+            @include rem(font-size, 27px);
+            @include rem(line-height, 30px);
+            letter-spacing: .5px;
+        }
+    }
+
+    // --------- Sub-text --------- //
+
+    p{
+
+        text-transform:uppercase;
+
+        // lg
+        @include rem(font-size, 17px);
+        @include rem(line-height, 20px);
+        letter-spacing: .5px;
+        // md
+        @media #{$global-var_mediaquery-md}{
+            @include rem(font-size, 18px);
+            @include rem(line-height, 20px);
+            letter-spacing: .5px;
+        }
+        // sm
+        @media #{$global-var_mediaquery-sm}{
+            @include rem(font-size, 16px);
+            @include rem(line-height, 20px);
+            letter-spacing: .5px;
+        }
+        // xs
+        @media #{$global-var_mediaquery-xs}{
+            @include rem(font-size, 16px);
+            @include rem(line-height, 20px);
+            letter-spacing: .5px;
+        }
+    }
+
+    // --------- Buttons --------- //
+
+    // All styles:
+    .btn-base{
+
+        // lg, md, sm
+        @include rem(font-size, 11px);
+        // xs
+        @media #{$global-var_mediaquery-xs}{
+            @include rem(font-size, 9px);
+        }
+
+        background:transparent;
+        border-width:1px;
+        transition:color .2s ease, background-color .2s ease, border-color .2s ease, outline .2s ease;
+        &:hover, &:active, &:focus{
+            // Make sure there is no gradient or shadow! (for example from the base button)
+            @include background-image( none );
+            @include box-shadow(none);
+        }
+
+    }
+
+    // Disabled style (common)
+    .btn-base.disabled,
+    &.mo-txt-on-img_txt-style-negative .btn-base.disabled{
+        &, &:hover, &:active, &:focus{
+            background:transparent;
+            @include box-shadow(none);
+        }
+    }
+
+    // Default style:
+    .btn-base{
+        border-color:#000;
+        color:#000;
+        &:hover, &:focus{ // Over
+            background:#000;
+            color:#FFF;
+        }
+        &:active{ // Click/Active
+            background:transparent;
+            @include box-shadow(0 0 0 1px #000); // Emulate a double border on the outside
+            color:#000;
+        }
+        // Disabled sub-style
+        &.disabled{
+            &, &:hover, &:active, &:focus{
+                border-color:#58595b;
+                color:#58595b;
+            }
+        }
+    }
+
+    // Negative style: Reverts to black if small, as white text wraps onto a black bg @MODEV-1284
+    &.mo-txt-on-img_txt-style-negative .btn-base{
+
+        border-color:#FFF;
+        color:#FFF;
+        &:hover, &:focus{ // Over
+            background:#FFF;
+            color:#000;
+        }
+        &:active{ // Click/Active
+            background:transparent;
+            @include box-shadow(0 0 0 1px #FFF); // Emulate a double border on the outside
+            color:#FFF;
+        }
+        // Disabled sub-style
+        &.disabled{
+            &, &:hover, &:active, &:focus{
+                border-color:#bcbec0;
+                color:#bcbec0;
+            }
+        }
+    }
+
+}
+
+/*------------------------------------------------------------
+   COLLAPSE MODS
+------------------------------------------------------------*/
+
+.mo-txt-on-img_xs-collapse{
+    .mo-txt-on-img--text{
+        @media #{$global-var_mediaquery-xs}{
+            position:relative; // Force the text container to go below the image
+            >div>div>div{
+                // Reset some CSS styles
+                padding:1em 0;
+                width:100%;
+            }
+            [class*="btn-"]{
+                width:100%;
+            }
+        }
+    }
+}

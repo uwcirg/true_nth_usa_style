@@ -1,0 +1,299 @@
+/*==========================================================================
+   MOSPACE CASH DONATIONS - GLOBAL
+==========================================================================*/
+
+.donations-cash-donations,
+.donations-create-donation,
+.donations-edit-donation {
+
+    position: relative;
+    padding-bottom: 30px;
+
+    // temp until we can get rid of mogress
+    #mogress-activation-button {
+        display: none;
+    }
+
+    // --------- Back Button --------- //
+
+    .back-to-previous-page-container {
+        width: 100%;
+        top: 0;
+        right: 5px;
+        text-align: right;
+    }
+
+    // --------- General Form Styles --------- //
+
+    .form_element {
+        @include make-row();
+        margin-bottom: 10px;
+
+        .form_element_label {
+            @include make-md-column(4);
+        }
+
+        .form_element_input {
+            @include make-md-column(8);
+            position: relative;
+
+            .action-icon-help {
+                position: absolute;
+                top: 0;
+                right: 5px;
+            }
+        }
+    }
+
+    .form_radio_wrapper {
+
+        input[type=radio] {
+            width: 12px;
+            vertical-align: top;
+        }
+
+        label {
+            width: 92%;
+        }
+    }
+
+    // --------- Heading that needs a bit more space --------- //
+
+    .middle-heading {
+        margin-top: 20px;
+        margin-bottom: 13px;
+    }
+
+    // --------- Currency --------- //
+
+    .memberpayment-amount-container {
+        position: relative;
+
+        #memberpayment-currency {
+            position: absolute;
+            top: 7px;
+            right: 430px;
+            width: 100px;
+            text-align: right;
+        }
+    }
+
+    #memberpayment-receipt-notavailable {
+        @include make-md-column(8);
+        @include make-md-column-offset(4);
+        padding: 7px 11px 7px 35px;
+        display: none;
+    }
+
+    // --------- Footer --------- //
+
+    .form-footer {
+        padding-top: 20px;
+        padding-bottom: 30px;
+
+        .form_element_input {
+            width: 100%;
+            float: none;
+
+            #submit {
+                width: 100%;
+            }
+        }
+
+        .cancel-button-wrapper a {
+            display: inline-block;
+            margin: 6px 0 0 15px;
+        }
+    }
+
+    // --------- Bottom row of tables --------- //
+
+    .total-outstanding {
+
+        td {
+            padding: 10px 0 10px 10px;
+
+            &.last {
+                text-align: right;
+            }
+        }
+
+        .btn-base {
+
+            vertical-align: middle;
+            overflow: hidden;
+            @include rem('font-size', 1.1rem);
+            @include rem('line-height', 2.5rem);
+            @include rem('height', 2.5rem);
+            @include rem('padding', 0 1rem);
+        }
+
+        .total-outstanding-label {
+            text-transform: uppercase;
+            font-weight: bold;
+            text-align: right;
+            line-height: 1.2;
+            @include rem('font-size', 12px);
+        }
+    }
+
+}
+
+/*==========================================================================
+   MOSPACE CASH DONATIONS - PAGE 1 - LIST DONATIONS
+==========================================================================*/
+
+.donations-cash-donations {
+
+    // --------- List of donations --------- //
+
+    #donation-details {
+
+        // Heading
+
+        h3 {
+            position: relative;
+
+            .action-icon {
+                margin: -15px 0 0 5px;
+                position: relative;
+                top: -2px;
+                left: 5px;
+            }
+        }
+
+        // Table
+
+        #memberpayment-listing {
+
+            // Amount
+
+            td.amount {
+                text-align: right;
+            }
+
+            // Actions
+
+            td.actions {
+                text-align: right;
+                width: 150px;
+
+                .alert {
+                    margin-bottom: 0;
+                    text-align: center;
+                }
+            }
+
+            .table-message {
+                padding: 0;
+
+                .alert-info {
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+
+    // --------- Payment Complete Actions  --------- //
+
+    .payment-confirmation-actions {
+        margin-top: 30px;
+
+        .btn-default {
+            margin-right: 15px;
+        }
+    }
+
+    .interac-details {
+        @include rem('padding', 10px 0px);
+
+        span {
+            @include rem('font-size', 12px);
+            display: block;
+        }
+    }
+}
+
+/*==========================================================================
+   MOSPACE CASH DONATIONS - PAGE 2 - ADD A CASH DONATION
+==========================================================================*/
+
+.donations-create-donation {
+
+    .process_message {
+        margin-bottom: 20px;
+    }
+
+    #memberpayment-receipt-notavailable {
+        padding: 7px 11px 7px 35px;
+    }
+
+}
+
+/*==========================================================================
+   MOSPACE CASH DONATIONS - PAGE 3 - EDIT CASH DONATION
+==========================================================================*/
+
+.donations-edit-donation {
+
+
+
+}
+
+/*==========================================================================
+   MOSPACE CASH DONATIONS - PAGE 4 - PAY FOR DONATIONS
+==========================================================================*/
+
+.donations-pay-donations {
+
+    // temp until we can get rid of mogress
+    #mogress-activation-button {
+        display: none;
+    }
+
+    // --------- Back Button --------- //
+
+    .back-to-previous-page-container {
+        width: 100%;
+        position: absolute;
+        top: 0;
+        right: 5px;
+        text-align: right;
+    }
+
+    // --------- Footer --------- //
+
+    .process_message {
+        margin-bottom: 0;
+    }
+
+    .form-footer {
+        padding-top: 20px;
+        padding-bottom: 30px;
+
+        .form_element_input {
+            width: 100%;
+            float: none;
+
+            #submit,
+            #continue {
+                width: 100%;
+            }
+        }
+
+        .form-footer-required-back {
+            margin-top: 20px;
+        }
+
+        .cancel-button-wrapper a {
+            display: inline-block;
+            margin: 6px 0 0 15px;
+        }
+    }
+
+    .payment-errors {
+        color: $global-var_featured-color-error;
+        margin: -5px 0 15px;
+    }
+
+}

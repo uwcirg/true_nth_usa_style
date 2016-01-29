@@ -1,0 +1,53 @@
+
+#content-container{
+    position:relative;
+}
+
+#content-main {
+    background: #FFF;
+    position:relative;
+    padding-top:20px;padding-bottom:20px; // Do not set lateral paddings, they're already set by the "container" class
+
+    // padding override for full-width pages - @MODEV-829
+    // TO-DO 2016: this exception should be avoided and removed. We'll use content-top/content-bottom to load full-width stuff
+    &.full-width {
+        padding: 0;
+    }
+}
+
+#content-bottom{
+    // Add some spacing to the bottom of the content
+    padding-bottom:2.5em;
+}
+#content-main.full-width+#content-bottom{
+    // However, if in full-width mode, then do not add any bottom space
+    // Note: if in 2016 we remove the "full-width" exception on #content-main, then we should change this too
+    padding-bottom:0;
+}
+
+// The "fake-container-monolith" is used to simulate the content container to extend till the footer
+// It basically fits below everything else and it is stretched for the whole height of the <body>
+#fake-container-monolith{
+    height:100%;
+    position:absolute;
+    top:0;left:0;right:0;bottom:0;
+    background: #FFF;
+}
+
+ // --------- "Sign up" & "donate" buttons --------- //
+
+.content-top--campaign-buttons{
+
+        a{ display:block; }
+
+// On user logged in, hide the "Sign up" button
+        body.user-logged-in & .content-top--campaign-buttons--sign-up-wrapper{ display:none !important; }
+        body.user-logged-in & .content-top--campaign-buttons--donate-wrapper{ width:100% !important; }
+
+}
+
+// --------- Other --------- //
+
+.hero-img picture{
+    display: block;
+}

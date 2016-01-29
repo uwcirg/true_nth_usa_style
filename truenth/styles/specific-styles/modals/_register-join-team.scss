@@ -1,0 +1,76 @@
+/*==========================================================================
+   DISPLAYED DURING REGISTRATION WHEN CHOOSING PARTICIPATION TYPE
+==========================================================================*/
+
+.join-team-modal {
+    .textbox-container {
+        input[type="text"] {
+            width: 100%;
+        }
+    }
+    .ff-search_button_control {
+        @extend .fa;
+        position: relative;
+        cursor: pointer;
+        color: #fff;
+        width: 35px; height: 35px;
+        overflow:hidden; // Nedded, otherwise the <input> goes outside of the parent container
+        &:before {
+            @extend .fa-search:before;
+            border-radius: 9px;
+            color: #fff;
+            background: $global-var_featured-color-2;
+            position: absolute;
+            top: 0;left: 0;
+            width: 35px; height: 35px;
+            line-height: 35px;
+            text-align: center;
+            font-size: 125%;
+        }
+        input#join {
+            @include opacity(0);
+            width:100%;
+            text-indent:100px; // Ie still shows the inner text, so hide it
+            position: relative;
+            z-index: 1;
+        }
+    }
+}
+
+// Modal search results
+.team-modal--search-results {
+    overflow: hidden;
+    &--list {
+        &--result {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid $global-var_featured-color-12;
+
+            &--btn {
+                width: 100%;
+            }
+            &--team-name {
+                margin-bottom: 0;
+            }
+            &--team-captain {
+                display: block;
+                margin-bottom: 15px;
+            }
+
+            &:last-child {
+                border-bottom: none;
+            }
+
+            &--metric {
+                text-align: center;
+
+                &--figure {
+                    display: block;
+                    font-weight: bold;
+                }
+            }
+
+        }
+
+    }
+}

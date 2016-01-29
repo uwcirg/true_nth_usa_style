@@ -1,0 +1,118 @@
+/*==========================================================================
+   SINGLE NEWS ITEM/PAGE
+==========================================================================*/
+
+.news {
+
+    // --------- Back to News & Share Links --------- //
+    .news-header {
+        @include clearfix;
+        margin-bottom: 0px;
+
+        // --------- Share Links top right --------- //
+        .social-links {
+            line-height: 1;
+
+            & > div {
+                display: inline-block;
+                margin-left: 5px;
+            }
+        }
+
+    }
+
+    .hero-img {
+        width: 100%;
+        margin: 15px 0 0 0;
+        
+        img {
+            width: 100%;
+        } 
+    }
+
+    .news-article {
+
+        .fb-comments {
+            margin-top: 25px;
+        }
+
+        .hero-img, .article_hero  {
+        padding-bottom: 20px;
+        }
+
+        img {
+            padding-bottom: 20px;
+        }
+
+        .author-date {
+            text-transform: uppercase;
+            padding-bottom: 1.5rem;
+        }
+
+        .title {
+            h2 {
+                margin-bottom: .5rem;
+            }
+        } 
+    }
+
+    .news-sidebar {
+        padding-left: 20px;
+
+        .facebookShare {
+            margin-left: -9px;
+        }
+
+        .emailLike, .facebookLike, .facebookShare, .reTweet {
+            height:20px;
+            margin-bottom:10px;
+        }
+
+        .view-all-btn{
+            margin-top:10px;
+            padding-top:10px;
+            border-top:1px solid #000;
+            a{
+                height:31px;line-height:30px;
+                padding:0;
+                text-align:center;
+                text-overflow:ellipsis;
+                white-space:nowrap;
+                width:100%;
+            }
+        }
+    }
+
+    #article-header{
+        margin-top: 50px;
+        text-transform: uppercase;
+    }
+
+    #doc4 > #bd{
+        padding-top: 0;
+    }
+
+    .news-social-links{
+        margin-bottom: 20px;
+        .share-widgets {
+            line-height: 22px; // to align the social icons in news page
+        }
+    }
+
+    .reTweet{
+        position: relative;
+        top: 5px;
+    }
+
+    #article-body{
+        margin-bottom: 35px;
+    }
+
+
+    figcaption{
+        text-transform: uppercase;
+        color: #000;
+        font-weight: bold;
+    }
+
+}

@@ -307,7 +307,7 @@ blockquote{
     p{ margin:0; padding:0; }
 
     footer{
- 
+
         // xs + sm
         @include rem(font-size, 10px);
         @include rem(line-height, 14px);
@@ -342,7 +342,7 @@ blockquote{
         @media #{$global-var_mediaquery-xs}{
             padding-left:8.5%;
         }
-        
+
         footer{
             padding: 10px 0 10px 8.5%;
             &:before{ content: '- '; }
@@ -352,7 +352,7 @@ blockquote{
     }
 
     &.blockquote-negative{
-        
+
         color:#FFF;
         background:#000;
 
@@ -530,7 +530,7 @@ input[type="submit"].btn-fancy-alternate,
         color:transparent;
         @include text-shadow(none);
     }
-    
+
 }
 
 /*------------------------------------------------------------
@@ -543,7 +543,7 @@ input[type="button"].btn-negative,
 input[type="reset"].btn-negative,
 input[type="submit"].btn-negative,
 %btn-negative{
-    
+
     color:#FFF;
     background: transparent;
     border:2px solid #FFF;
@@ -731,7 +731,7 @@ select, select[multiple], select[size],
     // --------- Validation style for inputs --------- //
 
     // Note: The validation classes can be applied to either the parent container or the element itself
-    &.valid, .valid & { 
+    &.valid, .valid & {
         border-color: $global-var_featured-color-ok;
         color: $global-var_featured-color-ok;
         background:inline-image("icons/valid.png") scroll no-repeat 99% 50% #fff;
@@ -793,7 +793,7 @@ input[type=file]{ cursor:pointer; }
 ::-webkit-file-upload-button{ cursor: pointer; }
 
 select option[selected]{
-    background:#000;    
+    background:#000;
     color:#FFF;
 }
 
@@ -863,7 +863,7 @@ textarea:focus, input:focus, select:focus{
 ==========================================================================*/
 
 table{
-    
+
     width:100%;
     border:0;
 
@@ -1034,7 +1034,7 @@ table{
     &:before, &:after{
         color: inherit; // This hack will make firefox inherit the color from the parent
     }
-    
+
 }
 
 /*==========================================================================
@@ -1617,7 +1617,7 @@ $local-var_mo-inner-gutter:2%;
         position:absolute;
         line-height:20px;
         left:4px;top:0;
-        @include rem(font-size, 16px); 
+        @include rem(font-size, 16px);
     }
     &:active, &:focus{
         text-decoration:underline;

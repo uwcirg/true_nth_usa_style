@@ -1,0 +1,227 @@
+/*==========================================================================
+GALLERY DIALOG
+~ This page appears inside a lightbox when the gallery icon is clicked from a private mospace
+==========================================================================*/
+
+#mospace-gallery-container {
+
+    h2.title{
+        margin-bottom:15px;
+    }
+    p.mospace-gallery-description{
+        margin-bottom:0;
+    }
+
+    .mospace-gallery {
+
+        #gallery-thumbs { 
+
+            max-height: 335px;
+            overflow: auto;
+            
+            .image-thumbnail {
+                margin: 12px 0;
+
+                &.facebook {
+                    cursor: pointer;
+                }
+
+                .right-most {
+                    clear: both;
+                }
+            }
+        }
+
+        #gallery-controls {
+            clear: both;
+
+            .gallery-error {
+                padding: 10px 0;
+                color: red;
+            }
+
+            .buttons {
+                padding-top: 10px;
+            }
+
+            .error-message {
+                top: 0px;
+            }
+        }
+
+        //fix the different size between fa and mo-icon
+        .js-media-link {
+            margin: 0;
+            @include rem(line-height, 20px);
+            text-decoration:none !important; // IE shows the underline, why??
+            &.js-rotate-thumbnail i, &.js-delete-image i{ @include rem(font-size, 20px); }
+            &.js-select-as-profile-picture i{ @include rem(font-size, 23px); }
+            i, i:before,
+            i, i:before{
+                text-decoration:none !important; // IE shows the underline, why??
+            }
+        }
+
+        .overlay-options-container {
+            position: relative;
+
+            i,
+            .overlay-separator { 
+                @include transition(color .3s ease-in-out);
+                color: $global-var_featured-color-3;//grey
+            } 
+
+            &:hover i,
+            &:hover .overlay-separator {
+                color: $global-var_featured-color-2;//blue
+            }
+
+            .js-media-link:hover i {
+                color: $global-var_featured-color-1;//orange
+            }
+        }
+
+        .overlay-options {
+            text-align: center;
+            padding-top: 5px;
+            min-height: 31px;
+
+            .overlay-option {
+                margin: 0;
+                width: 32%;
+                float: left;
+            }
+
+            .overlay-separator {
+                width: 2%;
+                float: left;
+            }
+
+            .cancel-delete {
+                display: none;
+                width: 100%;
+                position: absolute;
+                left: 0;
+                color: $global-var_featured-color-1;
+                text-align: center;
+                text-transform: uppercase;
+                font-weight: bold;
+                margin: 0;
+                @include rem(line-height, 20px);
+                @include rem(font-size, 14px);
+            } 
+        }
+
+        .image-container {
+            position: relative;
+            height: 110px; // Set a fixed height so the floating grid doesn't break
+            overflow:hidden; // Avoid overflowing of portraight images
+            @media #{$global-var_mediaquery-xs}{
+                height:auto;
+            }
+
+            img{
+                display:block;
+                width:100%;
+                top:0;bottom:0;left:0;right:0;margin:auto; // Always center vertically and horizontally
+            }
+
+            .overlay-image {
+                height: 100%;
+                width: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                display: none;
+                background-color: rgba(31, 36, 64, .75); //$global-var_featured-color-2 & opacity 0.75;
+            }
+
+            .overlay-delete {
+                color: white;
+                text-align: center;
+                text-transform: uppercase;
+                font-weight: bold;
+                @include rem(font-size, 14px);
+
+                &:before {
+                    @include rem(font-size, 36px);
+                    display: block;
+                    margin: 21px auto 6px;
+                }
+            }
+            .overlay-loading {
+                background-position:center center;
+                background-repeat:no-repeat;
+                background-image:url("#{$global-var_path-to-imgs}/icons/loader-animation-whiteonblue.gif");
+            }
+        }
+    }
+
+    // The convoluted contents of the upload button - modified at load time by javascript
+    .image-upload-button {
+        padding: 0px;
+        width: 100%;
+        cursor: pointer;
+        @media #{$global-var_mediaquery-combo-xs-sm}{
+            margin:5px auto;
+        }
+
+        div {
+            width: 100%;
+            cursor: pointer;
+        }
+
+        .qq-upload-button {
+            width:100%;
+            position:absolute;
+            right:0;top:0;
+            margin:-1px; // Due to the border of the outer button
+            padding:0;
+            input[type="file"]{
+                @include opacity(0);
+            }
+        }
+    }
+
+    // This belongs to the stock form of the javascript upload script - should always be hidden
+    ul.qq-upload-list {
+        display:none;
+    }
+
+    .mospace-import-facebook-button{
+        width: 100%;
+        margin:0;
+        height:auto; padding:0; // Stack the text if the viewport gets too tiny (xs)
+    }
+
+    // --------- These rules relate to the gallery profile pic cropping state of the gallery lightbox --------- //
+    #controls-container {
+
+        display:table;
+        margin:20px auto;
+        min-height:400px;
+
+        .image-container {
+            display:table-cell;
+            vertical-align:middle;
+        }
+
+        img#cropper {
+            
+        }
+
+    }
+
+    // --------- "not-mogress" lightbox mods --------- //
+    // Those overrides are applied only if the lightbox is NOT fired from the mogress panel
+    &.not-mogress-context{
+
+        #gallery-controls{
+            padding-top:28px;
+            margin-top:12px;
+            border-top: 1px solid $global-var_featured-color-3;
+        }
+
+    }
+
+}

@@ -1,0 +1,44 @@
+/*==========================================================================
+SOCIAL DIALOG
+~ This page appears inside a lightbox when a social icon is clicked
+NOTE: This stuff seems to be duplicated inside _social-dialog.scss
+==========================================================================*/
+.social-dialog {
+
+    // --------- Container size --------- //
+    overflow:hidden;
+
+    // --------- Side tabs --------- //
+    .social-content{
+
+        textarea{
+            height:230px;
+            @media #{$global-var_mediaquery-combo-xs-sm}{
+                height:122px;
+            }
+        }
+
+        #spokesperson-details textarea{
+            min-height: 130px;
+            margin-bottom:10px;
+        }
+
+        label.be-spokesperson-phone{
+            line-height:35px;
+        }
+    }
+
+    // --------- Other elements --------- //
+    textarea~small.description{
+        position:relative;
+        top:-10px;
+    }
+    label[for="be-spokesperson-checkbox"]{
+        margin:5px 0 8px 0;
+    }
+
+}
+
+.social-error {
+    padding: 40px;
+}

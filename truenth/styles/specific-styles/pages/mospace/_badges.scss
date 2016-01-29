@@ -1,0 +1,124 @@
+#mospace-page-badges {
+
+    .summary-badge {
+        color:$global-var_featured-color-4; // Cream
+        background: $global-var_featured-color-1;
+        border-radius:50%;
+        display: block;
+        margin:16px auto 0 auto;
+        width:175px;
+        height:175px;
+        line-height:175px;
+        font-weight:bold;
+        text-align:center;
+        @include rem(font-size, 144px);
+        @include clearfix;
+        font-family: $global-var_featured-font-family-1; // Imported from Google-fonts - Montserrat
+    }
+
+    .summary-details {
+        a.button {
+            margin-top: 10px;
+        }
+
+        p.feedback {
+          padding-top: 10px;
+        }
+    }
+
+    .summary-box{
+        margin-bottom: 10px;
+    }
+
+    .section {
+        border-top: 1px solid black;
+        padding: 20px;
+
+        h2 {
+            margin-bottom: 10px;
+        }
+    }
+
+    // No border against the top section
+    .section-first, .section-first .section {
+        border-top: none;
+        padding-top: 0px;
+    }
+
+    // They are insiting on a slightly different margin for the top item
+    .section-first h2 {
+        margin-bottom: 20px;
+    }
+
+    .badges-section {
+        .pastcampaigns-thumbnails {
+            float: left;
+            padding: 15px 0px;
+            clear: both;
+
+            .year {
+                margin-bottom: 5px;
+                float: left;
+
+                .image {
+                    display: block;
+                    width: 170px;
+                    height: 100px;
+                    overflow: hidden;
+                    position: relative;
+                    margin: 0;
+                }
+
+                .button {
+                    margin-top: 5px;
+                }
+
+                label {
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+
+    .healthnumbers-section {
+        .healthnumbers-input {
+            position: relative;
+            display: inline-block;
+
+            input {
+                float: left;
+                clear: right;
+                margin-right: 15px;
+            }
+
+            label {
+                height: auto;
+                float: left;
+                clear: both;
+                font-weight: normal;
+                text-transform: none;
+            }
+        }
+
+        .content {
+            @include clearfix;
+        }
+    }
+
+    .platinum-club {
+        a.uppercase {
+            text-transform: uppercase;
+        }
+    }
+
+    .badge-modal {
+
+        min-height: 200px;
+        min-width: 200px;
+
+        img {}
+
+    }
+
+
+}
